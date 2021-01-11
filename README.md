@@ -1,6 +1,6 @@
 # Astroplant UI Flutter Widgets
 
-![Astroplant UI](https://i.ibb.co/9qq7rNN/logo-3.png =150x)
+![AstroplantUI](https://i.ibb.co/9qq7rNN/logo-3.png=150x)
 
 ### Input Form
 
