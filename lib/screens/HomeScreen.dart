@@ -37,16 +37,26 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Column(
               children: [
-                CTextInput(
-                    textHint: "Email",
-                    textColor: Colors.lightGreenAccent,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CTextInput(
+                      textHint: "Email",
+                      textColor: Colors.lightGreenAccent,
+                  ),
                 ),
-                CTextInput(
-                  textHint: "Password",
-                  isPasswordType: true
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CTextInput(
+                    textHint: "Password",
+                    textColor: Colors.white10,
+                    isPasswordType: true
+                  ),
                 ),
-                CTextInput(
-                  icon: Icon(Icons.search, color: Colors.lightGreenAccent),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CTextInput(
+                    icon: Icon(Icons.search, color: Colors.lightGreenAccent),
+                  ),
                 ),
                 CToggleSwitch(
                     value: status,

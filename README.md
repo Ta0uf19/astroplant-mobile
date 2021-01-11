@@ -1,16 +1,37 @@
-# app
+# Astroplant UI Flutter Widgets
 
-A new Flutter project.
+![Astroplant UI](https://i.ibb.co/9qq7rNN/logo-3.png =150x)
 
-## Getting Started
+### Input Form
 
-This project is a starting point for a Flutter application.
+![Input form](https://i.ibb.co/LNDxLt5/image.png)
 
-A few resources to get you started if this is your first Flutter project:
+#### Sample Usage
+```dart
+    CTextInput(  
+      textHint: "Password",
+      textColor: Color(0xFFDCDCDC),
+      isPasswordType: true,
+      icon: Icon(Icons.search, color: Colors.lightGreenAccent), 
+      backgroundColor: Color(0xFF1D1D1D)
+      fontSize: 18
+    ),
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Checkbox Form
+ ![](https://i.ibb.co/Ycqd2vM/image.png)
+ 
+#### Sample Usage
+```dart
+    CToggleSwitch(  
+	  value: status,  
+	  width: 35,  
+	  height: 20,  
+	  toggleSize: 15,  
+	  onToggle: (val) {  
+		  setState(() {  
+			  status = val;  
+		 });
+	  }
+	)
+```

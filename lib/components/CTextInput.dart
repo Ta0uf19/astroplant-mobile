@@ -9,7 +9,7 @@ class CTextInput extends StatefulWidget {
   /// Provide a way for the user to securely enter a password.
   /// The element is presented as a one-line plain text editor control in which the text is obscured so
   /// that it cannot be read, usually by replacing each character with a symbol such as the asterisk ("*") or a dot ("•").
-  /// /// Defaults to [false].
+  /// Defaults to [false].
   final bool isPasswordType;
 
   // The [hintText] attribute specifies a short hint that describes the expected value of an input field
@@ -26,13 +26,17 @@ class CTextInput extends StatefulWidget {
   /// Specify the background color of the input
   final Color backgroundColor;
 
+  // Specify the font size
+  final double fontSize;
+
   const CTextInput({
     Key key,
     this.textHint,
     this.textColor = defaultTextColor,
     this.isPasswordType = false,
     this.icon,
-    this.backgroundColor = defaultBackgroundColor
+    this.backgroundColor = defaultBackgroundColor,
+    this.fontSize = 18
   }) : super(key: key);
 
   _CTextInputState createState() => _CTextInputState();
@@ -51,14 +55,16 @@ class _CTextInputState extends State<CTextInput> {
         borderRadius:  BorderRadius.circular(7),
       ),
       child: TextField(
+        textAlignVertical: TextAlignVertical.center,
         obscureText: widget.isPasswordType && _obscureText,
         style: TextStyle(
-            fontSize: 18,
+            fontSize: widget.fontSize,
             fontFamily: "Larsseit",
             color: widget.textColor,
             fontWeight: FontWeight.w600
         ),
         decoration: InputDecoration(
+          contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 2),
           hintText: widget.textHint,
           hintStyle: TextStyle(
             color: widget.textColor
