@@ -41,12 +41,19 @@
 
 #### Sample Usage
 ```dart
-    CTextInput(  
-      textHint: "Password",
-      textColor: Color(0xFFDCDCDC),
-      isPasswordType: true,
-      icon: Icon(Icons.search, color: Colors.lightGreenAccent), 
-      backgroundColor: Color(0xFF1D1D1D)
-      fontSize: 18
-    ),
+CButton(
+	text: "Kit1 : AFC58",
+	colorText: Colors.black,
+	colorBackground: COLOR_GREEN,
+	fontSize: 16,
+	height: 40,
+	borderRadius: BorderRadius.only(
+	    bottomLeft: const Radius.circular(40.0),
+	    topLeft: const Radius.circular(40.0)),
+	prefixIcon: Icon(
+	    Icons.autorenew,
+	    color: Colors.black
+	),
+	onPressed: () { },
+      ),
 ```
