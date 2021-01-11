@@ -34,3 +34,19 @@
 	  }
 	)
 ```
+
+### Button Form
+
+![Button form](https://ibb.co/ss5FTxC/CButton.jpg)
+
+#### Sample Usage
+```dart
+    CTextInput(  
+      textHint: "Password",
+      textColor: Color(0xFFDCDCDC),
+      isPasswordType: true,
+      icon: Icon(Icons.search, color: Colors.lightGreenAccent), 
+      backgroundColor: Color(0xFF1D1D1D)
+      fontSize: 18
+    ),
+```
