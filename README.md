@@ -71,9 +71,9 @@ CButton(
 			  CBottomNavItem(CustomIcons.commands),  
 			  CBottomNavItem(CustomIcons.settings),  
 			],  
-			iconStyle: IconStyle(size: 23),
-			color: Colors.green,
-			backgroundColor: Colors.black
+		    iconStyle: IconStyle(size: 23),
+		    color: Colors.green,
+		    backgroundColor: Colors.black
 		),
 	)
 ```
