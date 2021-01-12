@@ -40,6 +40,10 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/fonts/Icons.ttf
+
     - family: Larsseit
       fonts:
         - asset: assets/fonts/Larsseit-Thin.ttf

@@ -34,3 +34,23 @@
 	  }
 	)
 ```
+
+### Bottom Navigation Bar
+![](https://i.ibb.co/R09d8q1/ezgif-com-gif-maker-1.gif)
+
+#### Sample Usage
+
+```dart
+   return Scaffold(
+	    bottomNavigationBar: CBottomNav(  
+		    items: [  
+			  CBottomNavItem(CustomIcons.dashboard),  
+			  CBottomNavItem(CustomIcons.commands),  
+			  CBottomNavItem(CustomIcons.settings),  
+			],  
+			iconStyle: IconStyle(size: 23),
+			color: Colors.green,
+			backgroundColor: Colors.black
+		),
+	)
+```

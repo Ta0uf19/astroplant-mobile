@@ -1,9 +1,12 @@
+import 'package:app/components/CBottomNav.dart';
 import 'package:app/components/CToggleSwitch.dart';
 import 'package:app/components/CTextInput.dart';
 import 'package:app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../CustomIcons.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -18,6 +21,17 @@ class _HomeScreenState extends State<HomeScreen> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.black,
+      bottomNavigationBar: CBottomNav(
+        items: [
+          CBottomNavItem(CustomIcons.dashboard),
+          CBottomNavItem(CustomIcons.commands),
+          CBottomNavItem(CustomIcons.settings),
+        ],
+        iconStyle: IconStyle(
+            size: 23
+        ),
+      ),
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
@@ -41,14 +55,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: CTextInput(
                       textHint: "Email",
-                      textColor: Colors.lightGreenAccent,
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CTextInput(
                     textHint: "Password",
-                    textColor: Colors.white10,
                     isPasswordType: true
                   ),
                 ),
