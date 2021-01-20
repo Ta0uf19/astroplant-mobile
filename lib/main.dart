@@ -1,4 +1,3 @@
-import 'package:app/constants.dart';
 import 'package:app/screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 void main() {
