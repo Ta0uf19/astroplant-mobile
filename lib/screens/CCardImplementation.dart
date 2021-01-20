@@ -115,21 +115,21 @@ class _CCardImplementationState extends State<CCardImplementation> {
 
                     ),
                     colorBackground: Color.fromRGBO(29, 29, 29, 1),
-                    onPressed: () {
+                    /*onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: const Text('onPressed CCard'),
                       ));
-                    },
+                    },*/
                     suffixWidget: Container(
                       alignment: Alignment.topRight,
                       child: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
                         color: Colors.white,
-                        onPressed: () {
+                       /* onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: const Text('onPressed suffixWidget'),
                           ));
-                        },
+                        },*/
 
                       ),
                     ),
@@ -150,11 +150,11 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       ),
                     ),
                     colorBackground: Colors.white,
-                    onPressed: () {
+                    /*onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: const Text('onPressed CCard'),
                       ));
-                    },
+                    },*/
                     suffixWidget: Container(
                       width: 20,
                       color: Colors.red,
@@ -182,21 +182,21 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       ],
                     ),
                     colorBackground: Color.fromRGBO(29, 29, 29, 1),
-                    onPressed: () {
+                   /* onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content: const Text('onPressed CCard'),
                       ));
-                    },
+                    },*/
                     suffixWidget: Container(
                       alignment: Alignment.topRight,
                       child: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
                         color: Colors.white,
-                        onPressed: () {
+                        /*onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: const Text('onPressed suffixWidget'),
                           ));
-                        },
+                        },*/
 
                       ),
                     ),
