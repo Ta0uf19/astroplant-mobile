@@ -1,8 +1,6 @@
+import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
 
-const COLOR_BLACK = Color.fromRGBO(48, 47, 48, 1.0);
-const COLOR_GREY = Color.fromRGBO(141, 141, 141, 1.0);
-const COLOR_GREEN = Color.fromRGBO(53, 239, 127, 1.0);
 
 const defaultTextColor = COLOR_BLACK;
 const defaultBackgroundColor = COLOR_GREEN;
@@ -47,6 +45,8 @@ class CButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
+
     return FlatButton(
       color: this.colorBackground,
       height: this.height,
@@ -67,7 +67,7 @@ class CButton extends StatelessWidget {
           this.prefixIcon!= null ? prefixIcon : Container(),
           Text(
             this.text,
-            style: TextStyle(color: this.colorText, fontSize: this.fontSize),
+              style: themeData.textTheme.headline3.copyWith(color: colorText),
           ),
           this.suffixIcon!= null ? suffixIcon : Container(),
 

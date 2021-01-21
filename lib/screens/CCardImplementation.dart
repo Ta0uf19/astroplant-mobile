@@ -4,8 +4,6 @@ import 'package:app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-const COLOR_GREEN = Color.fromRGBO(53, 239, 127, 1.0);
-
 class CCardImplementation extends StatefulWidget {
   @override
   _CCardImplementationState createState() => _CCardImplementationState();
