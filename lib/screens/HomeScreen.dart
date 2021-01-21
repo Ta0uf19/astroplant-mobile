@@ -12,7 +12,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../CustomIcons.dart';
 
-const COLOR_GREEN = Color.fromRGBO(53, 239, 127, 1.0);
 
 class HomeScreen extends StatefulWidget {
   @override
