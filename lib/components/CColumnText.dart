@@ -4,7 +4,7 @@ const Color defaultColorText = Colors.black;
 const String defaultTitle = "Title";
 const String defaultsSubTitle = "SubTitle";
 const String defaultDescription = "Description";
-const double defaultSpaceBetween = 8.0;
+const double defaultSpaceBetween = 0.0;
 const double defaultFontSize = 15.0;
 
 class CColumnText extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const Color defaultColorBackground = Colors.white;
-const double defaultWidth = double.infinity;
+const double defaultWidth = null;
 const double defaultHeight = 120;
 const double defaultBorderRadius = 20;
 const double defaultPadding = 16.0;

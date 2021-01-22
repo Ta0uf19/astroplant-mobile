@@ -20,9 +20,10 @@ class CButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   final double fontSize;
-
+  final TextStyle textStyle;
   final BorderRadiusGeometry borderRadius;
   final double borderWidth;
+  EdgeInsetsGeometry padding;
   final Color borderColor;
   final Icon prefixIcon;
   final Icon suffixIcon;
@@ -33,6 +34,8 @@ class CButton extends StatelessWidget {
     this.width = defaultWidth,
     this.onPressed,
     this.text,
+    this.textStyle,
+    this.padding ,
     this.fontSize = defaultFontSize,
     this.colorText = defaultTextColor,
     this.colorBackground = defaultBackgroundColor,
@@ -52,7 +55,7 @@ class CButton extends StatelessWidget {
       height: this.height,
       minWidth: this.width,
       onPressed: this.onPressed,
-
+      padding: this.padding == null ? EdgeInsets.only(right: 16,left: 16) : this.padding,
       shape: RoundedRectangleBorder(
         borderRadius: this.borderRadius,
         side: BorderSide(
@@ -63,11 +66,12 @@ class CButton extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           this.prefixIcon!= null ? prefixIcon : Container(),
           Text(
             this.text,
-              style: themeData.textTheme.headline3.copyWith(color: colorText),
+            style: textStyle == null ?themeData.textTheme.headline3.copyWith(color: colorText) : textStyle.copyWith(color: colorText),
           ),
           this.suffixIcon!= null ? suffixIcon : Container(),
 

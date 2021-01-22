@@ -1,17 +1,12 @@
-
-import 'package:app/components/CBottomNav.dart';
 import 'package:app/components/CButton.dart';
-
-import 'package:app/components/CToggleSwitch.dart';
 import 'package:app/components/CTextInput.dart';
 import 'package:app/constants.dart';
+import 'package:app/screens/ConfigurationScreen.dart';
 import 'package:app/screens/HomeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 
-import '../CustomIcons.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -98,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                        MaterialPageRoute(builder: (context) => ConfigurationScreen()),
                       );
                     },
                   ),
