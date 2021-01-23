@@ -2,6 +2,7 @@ import 'package:app/components/CBottomNav.dart';
 import 'package:app/components/CButton.dart';
 import 'package:app/components/CCard.dart';
 import 'package:app/components/CColumnText.dart';
+import 'package:app/components/CHeader.dart';
 import 'package:app/components/CTextInput.dart';
 import 'package:app/components/CToggleSwitch.dart';
 import 'package:app/constants.dart';
@@ -26,8 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      backgroundColor: Colors.black,
+    return Scaffold(      backgroundColor: Colors.black,
+      appBar: CHeader.buildAppBarWithCButton(title: "Configuration"),
       bottomNavigationBar: CBottomNav(
         items: [
           CBottomNavItem(CustomIcons.dashboard),
@@ -36,13 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         iconStyle: IconStyle(size: 23),
       ),
-      appBar: AppBar(
+
+      /*AppBar(
         elevation: 0,
         leading: IconButton(
           icon: SvgPicture.asset('assets/icons/menu.svg'),
           onPressed: () {},
         ),
-      ),
+      ),*/
       //appbar = HeaderMenu
       body: Column(
         children: <Widget>[
@@ -183,6 +185,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
+
     );
   }
+
+
+
 }
