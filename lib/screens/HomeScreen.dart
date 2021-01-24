@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ThemeData themeData = Theme.of(context);
 
   return Scaffold(      backgroundColor: Colors.black,
-      appBar: CHeader.buildAppBarWithCButton(title: "Configuration"),
+      appBar: CHeader.buildAppBarWithCButton(context: context, title: "Configuration"),
 
       bottomNavigationBar: CBottomNav(
         items: [

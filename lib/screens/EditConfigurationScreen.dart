@@ -2,6 +2,7 @@ import 'package:app/components/CBottomNav.dart';
 import 'package:app/components/CButton.dart';
 import 'package:app/components/CCard.dart';
 import 'package:app/components/CColumnText.dart';
+import 'package:app/components/CHeader.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/EditRulesScreen.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,10 +36,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
         iconStyle: IconStyle(size: 23),
         index: 2,
       ),
-      appBar: AppBar(
-        elevation: 0,
-        title: Text("Edit Configuration"),
-      ),
+      appBar: CHeader.buildAppBarWithCButton(context: context,title: "Edit Configuration"),
       body: ListView.builder(
           itemCount: 1,
           itemBuilder: (BuildContext context, int block) {

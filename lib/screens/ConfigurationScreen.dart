@@ -1,6 +1,7 @@
 import 'package:app/components/CBottomNav.dart';
 import 'package:app/components/CCard.dart';
 import 'package:app/components/CColumnText.dart';
+import 'package:app/components/CHeader.dart';
 import 'package:app/components/CToggleSwitch.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/EditConfigurationScreen.dart';
@@ -26,6 +27,8 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
     ThemeData themeData = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.black,
+      appBar: CHeader.buildAppBarWithCButton(context: context,title: "Configuration"),
+
       bottomNavigationBar: CBottomNav(
         items: [
           CBottomNavItem(CustomIcons.dashboard),
@@ -44,10 +47,6 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
         },
         child: Icon(Icons.add),
       ) ,
-      appBar: AppBar(
-        elevation: 0,
-        title: Text("Configurations",style: themeData.textTheme.headline2 ,),
-      ),
       body: Container(
         width: size.width,
         padding: EdgeInsets.only(

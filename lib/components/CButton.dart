@@ -134,6 +134,7 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
             Text(
               this.text,
               style: textStyle,
+              textAlign: TextAlign.center,
             ),
             this.suffixIcon!= null ? suffixIcon : Container(),
 
