@@ -34,6 +34,7 @@ class CBottomNav extends StatefulWidget {
 class CBottomNavState extends State<CBottomNav> {
   int currentIndex;
   IconStyle iconStyle;
+  double itemWidth;
 
   @override
   void initState() {
@@ -44,7 +45,7 @@ class CBottomNavState extends State<CBottomNav> {
   @override
   Widget build(BuildContext context) {
     iconStyle = widget.iconStyle ?? IconStyle();
-    double itemWidth = (MediaQuery.of(context).size.width) / widget.items.length;
+    itemWidth = (MediaQuery.of(context).size.width) / widget.items.length;
 
     return Container(
         height: 60,
