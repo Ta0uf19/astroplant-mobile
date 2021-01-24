@@ -4,8 +4,6 @@ import 'package:app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-const COLOR_GREEN = Color.fromRGBO(53, 239, 127, 1.0);
-
 class CCardImplementation extends StatefulWidget {
   @override
   _CCardImplementationState createState() => _CCardImplementationState();
@@ -115,21 +113,24 @@ class _CCardImplementationState extends State<CCardImplementation> {
 
                     ),
                     colorBackground: Color.fromRGBO(29, 29, 29, 1),
-                    /*onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+
+                    onPressed: () {
+                      Scaffold.of(context).showSnackBar(SnackBar(
                         content: const Text('onPressed CCard'),
                       ));
-                    },*/
+                    },
                     suffixWidget: Container(
                       alignment: Alignment.topRight,
                       child: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
                         color: Colors.white,
-                       /* onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+
+                        onPressed: () {
+                          Scaffold.of(context).showSnackBar(SnackBar(
+
                             content: const Text('onPressed suffixWidget'),
                           ));
-                        },*/
+                        },
 
                       ),
                     ),
@@ -150,11 +151,12 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       ),
                     ),
                     colorBackground: Colors.white,
-                    /*onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+
+                    onPressed: () {
+                      Scaffold.of(context).showSnackBar(SnackBar(
                         content: const Text('onPressed CCard'),
                       ));
-                    },*/
+                    },
                     suffixWidget: Container(
                       width: 20,
                       color: Colors.red,
@@ -182,21 +184,21 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       ],
                     ),
                     colorBackground: Color.fromRGBO(29, 29, 29, 1),
-                   /* onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    onPressed: () {
+                      Scaffold.of(context).showSnackBar(SnackBar(
                         content: const Text('onPressed CCard'),
                       ));
-                    },*/
+                    },
                     suffixWidget: Container(
                       alignment: Alignment.topRight,
                       child: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
                         color: Colors.white,
-                        /*onPressed: () {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        onPressed: () {
+                          Scaffold.of(context).showSnackBar(SnackBar(
                             content: const Text('onPressed suffixWidget'),
                           ));
-                        },*/
+                        },
 
                       ),
                     ),

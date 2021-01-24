@@ -1,7 +1,8 @@
+import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
 
 const Color defaultColorBackground = Colors.white;
-const double defaultWidth = double.infinity;
+const double defaultWidth = null;
 const double defaultHeight = 120;
 const double defaultBorderRadius = 20;
 const double defaultPadding = 16.0;
@@ -31,6 +32,8 @@ class CCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      shadowColor: COLOR_BLACK,
+      elevation: 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),
       ),

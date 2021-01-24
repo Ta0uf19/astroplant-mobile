@@ -13,7 +13,6 @@ import 'package:flutter_svg/svg.dart';
 
 import '../CustomIcons.dart';
 
-const COLOR_GREEN = Color.fromRGBO(53, 239, 127, 1.0);
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -26,9 +25,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    ThemeData themeData = Theme.of(context);
 
-    return Scaffold(      backgroundColor: Colors.black,
+  return Scaffold(      backgroundColor: Colors.black,
       appBar: CHeader.buildAppBarWithCButton(title: "Configuration"),
+
       bottomNavigationBar: CBottomNav(
         items: [
           CBottomNavItem(CustomIcons.dashboard),
@@ -96,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     text: "Hi, Astroplant",
                     suffixIcon: Icon(Icons.ac_unit),
                     prefixIcon: Icon(Icons.access_time),
-                    colorText: Colors.black,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
                     colorBackground: COLOR_GREEN,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {
@@ -123,11 +124,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   colorBackground: Color.fromRGBO(29, 29, 29, 1),
-                  /*onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  onPressed: () {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+
                       content: const Text('onPressed CCard'),
                     ));
-                  },*/
+                  },
                   suffixWidget: Padding(
                     padding: const EdgeInsets.only(right :8.0),
                     child: CToggleSwitch(
@@ -146,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: CButton(
                     text: "Edit rules",
-                    colorText: Colors.black,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
                     borderColor: Colors.black,
                     colorBackground: Colors.transparent,
                     borderRadius: BorderRadius.circular(28),
@@ -158,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: CButton(
                     text: "Add",
-                    colorText: Colors.black,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
                     suffixIcon: Icon(Icons.add),
                     borderRadius: BorderRadius.circular(8),
                     onPressed: () {},
@@ -169,9 +171,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: CButton(
                     text: "Kit1 : AFC58",
-                    colorText: Colors.black,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
                     colorBackground: COLOR_GREEN,
-                    fontSize: 16,
                     height: 40,
                     borderRadius: BorderRadius.only(
                         bottomLeft: const Radius.circular(40.0),
