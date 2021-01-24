@@ -1,9 +1,7 @@
+
 import 'package:app/components/IToggleable.dart';
 import 'package:flutter/material.dart';
-
-const COLOR_BLACK = Color.fromRGBO(0, 0, 0, 1.0);
-const COLOR_GREY = Color.fromRGBO(141, 141, 141, 1.0);
-const COLOR_GREEN = Color.fromRGBO(53, 239, 127, 1.0);
+import 'package:app/constants.dart';
 
 const defaultTextColor = COLOR_BLACK;
 const defaultBackgroundColor = COLOR_GREEN;
@@ -115,9 +113,8 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
 
   @override
   Widget build(BuildContext context) {
-
-
-    //Color color = activeToggle ? disabledColorBackground;
+    final ThemeData themeData = Theme.of(context);
+    final Color colorText = (activeToggle ? defaultTextColor : (disabled ? disabledColorText : this.colorText));
 
     return Container(
       child: FlatButton(
@@ -140,7 +137,7 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
             this.prefixIcon!= null ? prefixIcon : Container(),
             Text(
               this.text,
-              style: TextStyle(color: activeToggle ? defaultTextColor : (disabled ? disabledColorText : this.colorText), fontSize: this.fontSize),
+              style: TextStyle(color: colorText, fontSize: this.fontSize),
             ),
             this.suffixIcon!= null ? suffixIcon : Container(),
 

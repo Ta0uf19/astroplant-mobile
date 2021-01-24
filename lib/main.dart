@@ -1,5 +1,7 @@
 import 'package:app/constants.dart';
 import 'package:app/screens/HomeScreen.dart';
+import 'package:app/screens/ToggleWidgetScreen.dart';
+import 'package:app/screens/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 void main() {
   runApp(MyApp());
@@ -13,13 +15,15 @@ class MyApp extends StatelessWidget {
       title: 'Hello',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.black,
-        //textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
+        primaryColor: COLOR_BLACK,
+        backgroundColor: COLOR_BLACK,
+        accentColor: COLOR_GREEN,
+        textTheme: TEXT_THEME_DEFAULT,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Larsseit'
       ),
       initialRoute: '/',
-      home: HomeScreen(),
+      home: WelcomeScreen(),
     );
   }
 

@@ -89,7 +89,88 @@ CButton(
 | color | color of the selected item border                                                           | Color(0xFF6F717C)                     |
 | iconStyle         | icon styles (`size`, `onSelectSize`, `color`, `onSelectColor`)             | null                             
 
-## Card Metric (CCardMetric)
+
+## CCard
+![](https://i.ibb.co/gRFHL45/CCard.jpg)
+
+#### Sample Usage
+
+```dart
+   return CCard(
+                    body: CColumnText(
+                      title: "Temp",
+                      subTitle: "Identifier : #127",
+                      description: "Virtual temperature sensor",
+                      colorText: Colors.white,
+
+                    ),
+                    colorBackground: Color.fromRGBO(29, 29, 29, 1),
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: const Text('onPressed CCard'),
+                      ));
+                    },
+                    suffixWidget: Container(
+                      alignment: Alignment.topRight,
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_forward_ios),
+                        color: Colors.white,
+                        onPressed: () {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: const Text('onPressed suffixWidget'),
+                          ));
+                        },
+
+                      ),
+                    ),
+                  )
+```
+
+#### Props
+
+| Name              | Explanation                                                             |
+|-------------------|-------------------------------------------------------------------------|
+| colorBackground   | the backgroud color of the card                                         |
+| width             | the width of the card                                                   |
+| height            | the height of the card                                                  |
+| borderRadius      | the raduis of the card                                                  |
+| padding           | padding of the card                                                     |
+| onPressed         | (required) callback when the card is pressed                            |
+| body              | the main widget that the Card display                                   |
+| suffixWidget      | widget in the right of the body widget always stick to the end          |
+
+## CColumnText
+
+#### Description
+
+Show three texts in column (title, subtitle and description)
+
+#### Sample Usage
+
+```dart
+   return CColumnText(
+                      title: "Temp",
+                      subTitle: "Identifier : #127",
+                      description: "Virtual temperature sensor",
+                      colorText: Colors.white,
+
+                    ),
+```
+
+#### Props
+
+| Name              | Explanation                                                             |
+|-------------------|-------------------------------------------------------------------------|
+| colorText         | the color of the three texts                                            |
+| fontSize          | fontsize of the title, subTitle and description take fontsize-2         |
+| title             | a text with size = fontsize, color = colorText                          |
+| subTitle          | a text with size = fontsize-2, color = colorText.withOpacity(0.5)       |
+| description       | a text with size = fontsize-2, color = colorText.withOpacity(0.25)      |
+| spaceBetween      | space between the three texts                                           |
+
+
+
+ ## Card Metric (CCardMetric)
  ![]( https://i.ibb.co/8xVKPzL/image.png)
 ```dart
 CCardMetric(  
@@ -129,11 +210,11 @@ CToggleWidget(
          onPressed: () {},  
       ),  
       CCardMetric(  
-      title: "Air Co² Sensor",  
-      subtitle: "Carbon concentration",  
-      measure: "550",  
-      unit: "ppm",  
-      onPressed: () {},  
+         title: "Air Co² Sensor",  
+         subtitle: "Carbon concentration",  
+         measure: "550",  
+         unit: "ppm",  
+         onPressed: () {},  
       ),
    ]
 )
