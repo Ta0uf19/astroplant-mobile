@@ -71,9 +71,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
                   child: CButton(
                     text: "Hi, Astroplant",
-                    colorText: Colors.black,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
                     colorBackground: COLOR_GREEN,
-                    fontSize: 18,
                     height: 56,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {

@@ -4,6 +4,7 @@ import 'package:app/components/CColumnText.dart';
 import 'package:app/components/CToggleSwitch.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/EditConfigurationScreen.dart';
+import 'package:app/screens/ToggleWidgetScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -35,7 +36,12 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
         index: 2,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ToggleWidgetScreen()),
+          );
+        },
         child: Icon(Icons.add),
       ) ,
       appBar: AppBar(
@@ -70,7 +76,8 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                   ],
                 ),
                 colorBackground: Color.fromRGBO(29, 29, 29, 1),
-                onPressed: () {Navigator.push(
+                onPressed: () {
+                  Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => EditConfigurationScreen()),
                 );},

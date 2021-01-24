@@ -16,6 +16,7 @@ class ToggleWidgetScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    ThemeData themeData = Theme.of(context);
     return Scaffold(
         backgroundColor: Colors.black,
         bottomNavigationBar: CBottomNav(
@@ -81,7 +82,7 @@ class ToggleWidgetScreen extends StatelessWidget {
                   defaultSelectedIndex: 0,
                   children: [
                     CButton(
-                      fontSize: 14,
+                      textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
                       borderRadius: BorderRadius.circular(5),
                       text: "Month",
                       onPressed: () {
@@ -90,7 +91,7 @@ class ToggleWidgetScreen extends StatelessWidget {
                       disabled: true,
                     ),
                     CButton(
-                      fontSize: 14,
+                      textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
                       text: "Year",
                       onPressed: () {
                         log("pressed 1");
@@ -99,7 +100,7 @@ class ToggleWidgetScreen extends StatelessWidget {
                       disabled: true,
                     ),
                     CButton(
-                      fontSize: 14,
+                      textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
                       text: "Hi, Astroplant",
                       onPressed: () {
                         log("pressed 3.");

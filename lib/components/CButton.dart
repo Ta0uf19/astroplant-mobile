@@ -20,12 +20,10 @@ const Color disabledColorText = Colors.white;
 class CButton extends StatelessWidget implements IToggleable<CButton> {
 
   final String text;
-  final Color colorText;
   final Color colorBackground;
   final double height;
   final double width;
   final VoidCallback onPressed;
-  final double fontSize;
   final TextStyle textStyle;
   final BorderRadiusGeometry borderRadius;
   final double borderWidth;
@@ -45,8 +43,6 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
     this.text,
     this.textStyle,
     this.padding ,
-    this.fontSize = defaultFontSize,
-    this.colorText = defaultTextColor,
     this.colorBackground = defaultBackgroundColor,
     this.borderRadius = BorderRadius.zero,
     this.borderWidth = defaultBorderWidth,
@@ -78,13 +74,11 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
     bool disabled,
   }) {
     if ((text == null || identical(text, this.text)) &&
-        (colorText == null || identical(colorText, this.colorText)) &&
         (colorBackground == null ||
             identical(colorBackground, this.colorBackground)) &&
         (height == null || identical(height, this.height)) &&
         (width == null || identical(width, this.width)) &&
         (onPressed == null || identical(onPressed, this.onPressed)) &&
-        (fontSize == null || identical(fontSize, this.fontSize)) &&
         (borderRadius == null || identical(borderRadius, this.borderRadius)) &&
         (borderWidth == null || identical(borderWidth, this.borderWidth)) &&
         (borderColor == null || identical(borderColor, this.borderColor)) &&
@@ -98,12 +92,10 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
 
     return new CButton(
       text: text ?? this.text,
-      colorText: colorText ?? this.colorText,
       colorBackground: colorBackground ?? this.colorBackground,
       height: height ?? this.height,
       width: width ?? this.width,
       onPressed: onPressed ?? this.onPressed,
-      fontSize: fontSize ?? this.fontSize,
       borderRadius: borderRadius ?? this.borderRadius,
       borderWidth: borderWidth ?? this.borderWidth,
       borderColor: borderColor ?? this.borderColor,
@@ -118,7 +110,7 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    final Color colorText = (activeToggle ? defaultTextColor : (disabled ? disabledColorText : this.colorText));
+    final Color colorText = (activeToggle ? defaultTextColor : (disabled ? disabledColorText : this.textStyle.color));
 
     return Container(
       child: FlatButton(
@@ -141,7 +133,7 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
             this.prefixIcon!= null ? prefixIcon : Container(),
             Text(
               this.text,
-              style: textStyle == null ?themeData.textTheme.headline3.copyWith(color: colorText) : textStyle.copyWith(color: colorText,fontSize: this.fontSize),
+              style: textStyle,
             ),
             this.suffixIcon!= null ? suffixIcon : Container(),
 

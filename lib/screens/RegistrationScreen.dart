@@ -83,9 +83,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
                   child: CButton(
                     text: "Create an account",
-                    colorText: Colors.black,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
                     colorBackground: COLOR_GREEN,
-                    fontSize: 18,
                     height: 56,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {

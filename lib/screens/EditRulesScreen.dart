@@ -67,7 +67,6 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           text: "Add",
                           textStyle: themeData.textTheme.headline5
                               .copyWith(color: COLOR_BLACK),
-                          colorText: COLOR_BLACK,
                           colorBackground: COLOR_GREEN,
                           suffixIcon: Icon(
                             Icons.add,
@@ -137,7 +136,6 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           text: "Add",
                           textStyle: themeData.textTheme.headline5
                               .copyWith(color: COLOR_BLACK),
-                          colorText: COLOR_BLACK,
                           colorBackground: COLOR_GREEN,
                           suffixIcon: Icon(
                             Icons.add,
@@ -207,7 +205,6 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           text: "Add",
                           textStyle: themeData.textTheme.headline5
                               .copyWith(color: COLOR_BLACK),
-                          colorText: COLOR_BLACK,
                           colorBackground: COLOR_GREEN,
                           suffixIcon: Icon(
                             Icons.add,
@@ -393,8 +390,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                     height: 100,
                     padding: EdgeInsets.all(7),
                     text: "Create new Kit",
-                    textStyle: themeData.textTheme.headline3,
-                    colorText: COLOR_GREY_MEDIUM,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_GREY_MEDIUM),
                     colorBackground: Colors.transparent,
                     suffixIcon: Icon(
                       Icons.add,
@@ -413,9 +409,10 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                   ),
                 ),
                 CButton(
+                  height: 56,
                   text: "Sign Out",
-                  colorText: COLOR_WHITE,
                   colorBackground: COLOR_GREY_DARK,
+                  textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_WHITE),
                   borderRadius: BorderRadius.circular(28),
                   onPressed: () {
                     Navigator.push(

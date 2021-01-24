@@ -87,9 +87,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
                   child: CButton(
                     text: "Sign In",
-                    colorText: Colors.black,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
                     colorBackground: COLOR_GREEN,
-                    fontSize: 18,
                     height: 56,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {

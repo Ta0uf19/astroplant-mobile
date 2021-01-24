@@ -98,7 +98,6 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                           text: "Add",
                           textStyle: themeData.textTheme.headline5
                               .copyWith(color: COLOR_BLACK),
-                          colorText: COLOR_BLACK,
                           colorBackground: COLOR_GREEN,
                           suffixIcon: Icon(
                             Icons.add,
@@ -161,11 +160,12 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                   Container(
                     margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
                     child: CButton(
+                      height: 56,
                       padding: EdgeInsets.all(5),
                       text: "Edit rules",
-                      colorText: COLOR_WHITE,
                       colorBackground: COLOR_BLACK,
                       borderColor: COLOR_WHITE,
+                      textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_WHITE),
                       borderWidth: 1,
                       borderRadius: BorderRadius.circular(28),
                       onPressed: () {
@@ -180,10 +180,11 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                   Container(
                     margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
                     child: CButton(
+                      height: 56,
                       padding: EdgeInsets.all(5),
                       text: "Delete Configuration",
-                      colorText: COLOR_WHITE,
                       colorBackground: COLOR_BLACK,
+                      textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_WHITE),
                       borderColor: Colors.red,
                       borderWidth: 1,
                       borderRadius: BorderRadius.circular(28),
