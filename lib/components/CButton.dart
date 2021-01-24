@@ -26,10 +26,12 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
   final double width;
   final VoidCallback onPressed;
   final double fontSize;
+  final TextStyle textStyle;
   final BorderRadiusGeometry borderRadius;
   final double borderWidth;
+  EdgeInsetsGeometry padding;
   final Color borderColor;
-  final Icon prefixIcon;
+  final Widget prefixIcon;
   final Icon suffixIcon;
   final Color splashColor;
   final bool activeToggle;
@@ -41,6 +43,8 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
     this.width,
     @required this.onPressed,
     this.text,
+    this.textStyle,
+    this.padding ,
     this.fontSize = defaultFontSize,
     this.colorText = defaultTextColor,
     this.colorBackground = defaultBackgroundColor,
@@ -137,7 +141,7 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
             this.prefixIcon!= null ? prefixIcon : Container(),
             Text(
               this.text,
-              style: TextStyle(color: colorText, fontSize: this.fontSize),
+              style: textStyle == null ?themeData.textTheme.headline3.copyWith(color: colorText) : textStyle.copyWith(color: colorText,fontSize: this.fontSize),
             ),
             this.suffixIcon!= null ? suffixIcon : Container(),
 

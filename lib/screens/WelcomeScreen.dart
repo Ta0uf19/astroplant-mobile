@@ -1,22 +1,9 @@
-
-import 'package:app/components/CBottomNav.dart';
 import 'package:app/components/CButton.dart';
-
-import 'package:app/components/CToggleSwitch.dart';
-import 'package:app/components/CTextInput.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/LoginScreen.dart';
 import 'package:app/screens/RegistrationScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-
-import '../CustomIcons.dart';
-
-const double defaultPaddingSides = 37.0;
-const double defaultPaddingTop = 19.0;
-const double defaultPaddingBottom = 27.0;
 
 class WelcomeScreen extends StatefulWidget {
   @override
