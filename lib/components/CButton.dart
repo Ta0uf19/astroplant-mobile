@@ -1,24 +1,30 @@
-import 'package:app/constants.dart';
-import 'package:flutter/material.dart';
 
+import 'package:app/components/IToggleable.dart';
+import 'package:flutter/material.dart';
+import 'package:app/constants.dart';
 
 const defaultTextColor = COLOR_BLACK;
 const defaultBackgroundColor = COLOR_GREEN;
-const double defaultHeight = 56;
-const double defaultWidth = double.infinity;
-const double defaultFontSize = 18;
-const double defaultBorderRadius = 28;
-const double defaultBorderWidth = 0;
+const double defaultHeight = 30;
+const double defaultFontSize = 14.0;
+const double defaultBorderRadius = 5.0;
+const double defaultBorderWidth = 0.0;
 const Color defaultBorderColor = Colors.transparent;
 
-class CButton extends StatelessWidget {
+/// disabled (not selected) toggle style
+const Color disabledColorBackground = Colors.transparent;
+const Color disabledBorderColor = Colors.white;
+const double disabledBorderWidth = 3.0;
+const Color disabledColorText = Colors.white;
+
+class CButton extends StatelessWidget implements IToggleable<CButton> {
+
   final String text;
   final Color colorText;
   final Color colorBackground;
   final double height;
   final double width;
   final VoidCallback onPressed;
-
   final double fontSize;
   final TextStyle textStyle;
   final BorderRadiusGeometry borderRadius;
@@ -27,12 +33,15 @@ class CButton extends StatelessWidget {
   final Color borderColor;
   final Widget prefixIcon;
   final Icon suffixIcon;
+  final Color splashColor;
+  final bool activeToggle;
+  final bool disabled;
 
   CButton({
     Key key,
     this.height = defaultHeight,
-    this.width = defaultWidth,
-    this.onPressed,
+    this.width,
+    @required this.onPressed,
     this.text,
     this.textStyle,
     this.padding ,
@@ -44,38 +53,100 @@ class CButton extends StatelessWidget {
     this.borderColor = defaultBorderColor,
     this.prefixIcon,
     this.suffixIcon,
+    this.splashColor = Colors.white70,
+    this.activeToggle = false,
+    this.disabled = false
   }) : super(key: key);
+
+  /// Used for toggle active/disable state
+
+  CButton copyWith({
+    String text,
+    Color colorText,
+    Color colorBackground,
+    double height,
+    double width,
+    VoidCallback onPressed,
+    double fontSize,
+    BorderRadiusGeometry borderRadius,
+    double borderWidth,
+    Color borderColor,
+    Icon prefixIcon,
+    Icon suffixIcon,
+    Color splashColor,
+    bool activeToggle,
+    bool disabled,
+  }) {
+    if ((text == null || identical(text, this.text)) &&
+        (colorText == null || identical(colorText, this.colorText)) &&
+        (colorBackground == null ||
+            identical(colorBackground, this.colorBackground)) &&
+        (height == null || identical(height, this.height)) &&
+        (width == null || identical(width, this.width)) &&
+        (onPressed == null || identical(onPressed, this.onPressed)) &&
+        (fontSize == null || identical(fontSize, this.fontSize)) &&
+        (borderRadius == null || identical(borderRadius, this.borderRadius)) &&
+        (borderWidth == null || identical(borderWidth, this.borderWidth)) &&
+        (borderColor == null || identical(borderColor, this.borderColor)) &&
+        (prefixIcon == null || identical(prefixIcon, this.prefixIcon)) &&
+        (suffixIcon == null || identical(suffixIcon, this.suffixIcon)) &&
+        (splashColor == null || identical(splashColor, this.splashColor)) &&
+        (activeToggle == null || identical(activeToggle, this.activeToggle)) &&
+        (disabled == null || identical(disabled, this.disabled))) {
+      return this;
+    }
+
+    return new CButton(
+      text: text ?? this.text,
+      colorText: colorText ?? this.colorText,
+      colorBackground: colorBackground ?? this.colorBackground,
+      height: height ?? this.height,
+      width: width ?? this.width,
+      onPressed: onPressed ?? this.onPressed,
+      fontSize: fontSize ?? this.fontSize,
+      borderRadius: borderRadius ?? this.borderRadius,
+      borderWidth: borderWidth ?? this.borderWidth,
+      borderColor: borderColor ?? this.borderColor,
+      prefixIcon: prefixIcon ?? this.prefixIcon,
+      suffixIcon: suffixIcon ?? this.suffixIcon,
+      splashColor: splashColor ?? this.splashColor,
+      activeToggle: activeToggle ?? this.activeToggle,
+      disabled: disabled ?? this.disabled,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final Color colorText = (activeToggle ? defaultTextColor : (disabled ? disabledColorText : this.colorText));
 
-    return FlatButton(
-      color: this.colorBackground,
-      height: this.height,
-      minWidth: this.width,
-      onPressed: this.onPressed,
-      padding: this.padding == null ? EdgeInsets.only(right: 16,left: 16) : this.padding,
-      shape: RoundedRectangleBorder(
-        borderRadius: this.borderRadius,
-        side: BorderSide(
-            color: this.borderColor,
-            width: this.borderWidth,
-            style: BorderStyle.solid
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          this.prefixIcon!= null ? prefixIcon : Container(),
-          Text(
-            this.text,
-            style: textStyle == null ?themeData.textTheme.headline3.copyWith(color: colorText) : textStyle.copyWith(color: colorText),
+    return Container(
+      child: FlatButton(
+        splashColor: this.splashColor,
+        color: activeToggle ? defaultBackgroundColor : (disabled ? disabledColorBackground : this.colorBackground),
+        height: this.height,
+        minWidth: this.width,
+        onPressed: this.onPressed,
+        shape: RoundedRectangleBorder(
+          borderRadius: this.borderRadius,
+          side: BorderSide(
+              color: activeToggle ? defaultBorderColor : (disabled ? disabledBorderColor : this.borderColor),
+              width: activeToggle ? defaultBorderWidth : (disabled ? disabledBorderWidth : this.borderWidth),
+              style: BorderStyle.solid
           ),
-          this.suffixIcon!= null ? suffixIcon : Container(),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            this.prefixIcon!= null ? prefixIcon : Container(),
+            Text(
+              this.text,
+              style: textStyle == null ?themeData.textTheme.headline3.copyWith(color: colorText) : textStyle.copyWith(color: colorText,fontSize: this.fontSize),
+            ),
+            this.suffixIcon!= null ? suffixIcon : Container(),
 
-        ],
+          ],
+        ),
       ),
     );
   }

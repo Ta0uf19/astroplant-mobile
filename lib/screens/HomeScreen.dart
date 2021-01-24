@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   colorBackground: Color.fromRGBO(29, 29, 29, 1),
                   onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    Scaffold.of(context).showSnackBar(SnackBar(
                       content: const Text('onPressed CCard'),
                     ));
                   },

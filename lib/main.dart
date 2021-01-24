@@ -1,4 +1,6 @@
 import 'package:app/constants.dart';
+import 'package:app/screens/HomeScreen.dart';
+import 'package:app/screens/ToggleWidgetScreen.dart';
 import 'package:app/screens/WelcomeScreen.dart';
 import 'package:flutter/material.dart';
 

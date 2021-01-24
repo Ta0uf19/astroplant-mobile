@@ -89,6 +89,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     text: "Sign In",
                     colorText: Colors.black,
                     colorBackground: COLOR_GREEN,
+                    fontSize: 18,
+                    height: 56,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {
                       Navigator.push(

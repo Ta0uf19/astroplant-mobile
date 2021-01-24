@@ -73,6 +73,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     text: "Hi, Astroplant",
                     colorText: Colors.black,
                     colorBackground: COLOR_GREEN,
+                    fontSize: 18,
+                    height: 56,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {
                       Navigator.push(

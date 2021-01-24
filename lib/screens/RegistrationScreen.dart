@@ -85,6 +85,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     text: "Create an account",
                     colorText: Colors.black,
                     colorBackground: COLOR_GREEN,
+                    fontSize: 18,
+                    height: 56,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {
                       Navigator.push(
