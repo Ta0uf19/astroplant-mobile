@@ -113,6 +113,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
 
                     ),
                     colorBackground: Color.fromRGBO(29, 29, 29, 1),
+
                     onPressed: () {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: const Text('onPressed CCard'),
@@ -123,8 +124,10 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       child: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
                         color: Colors.white,
+
                         onPressed: () {
                           Scaffold.of(context).showSnackBar(SnackBar(
+
                             content: const Text('onPressed suffixWidget'),
                           ));
                         },
@@ -148,6 +151,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       ),
                     ),
                     colorBackground: Colors.white,
+
                     onPressed: () {
                       Scaffold.of(context).showSnackBar(SnackBar(
                         content: const Text('onPressed CCard'),
