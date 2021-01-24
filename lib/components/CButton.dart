@@ -25,7 +25,7 @@ class CButton extends StatelessWidget {
   final double borderWidth;
   EdgeInsetsGeometry padding;
   final Color borderColor;
-  final Icon prefixIcon;
+  final Widget prefixIcon;
   final Icon suffixIcon;
 
   CButton({

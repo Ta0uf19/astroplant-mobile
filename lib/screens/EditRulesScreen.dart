@@ -3,12 +3,13 @@ import 'package:app/components/CButton.dart';
 import 'package:app/components/CCard.dart';
 import 'package:app/components/CColumnText.dart';
 import 'package:app/constants.dart';
+import 'package:app/screens/WelcomeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 import '../CustomIcons.dart';
-
 
 class EditRulesScreen extends StatefulWidget {
   @override
@@ -37,11 +38,10 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
       appBar: AppBar(
         elevation: 0,
         title: Text("Config1 Rules"),
-
       ),
       body: ListView.builder(
           itemCount: 1,
-          itemBuilder: (BuildContext context,int block){
+          itemBuilder: (BuildContext context, int block) {
             return Container(
               width: size.width,
               padding: EdgeInsets.only(
@@ -65,12 +65,18 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           height: 25,
                           padding: EdgeInsets.all(5),
                           text: "Add",
-                          textStyle : themeData.textTheme.headline5.copyWith(color: COLOR_BLACK),
+                          textStyle: themeData.textTheme.headline5
+                              .copyWith(color: COLOR_BLACK),
                           colorText: COLOR_BLACK,
                           colorBackground: COLOR_GREEN,
-                          suffixIcon: Icon(Icons.add,size: 16,),
+                          suffixIcon: Icon(
+                            Icons.add,
+                            size: 16,
+                          ),
                           borderRadius: BorderRadius.circular(8),
-                          onPressed: () {},
+                          onPressed: () {
+                            showBottomSheetSelectPeripherals(title: "List of inputs");
+                          },
                         ),
                       ],
                     ),
@@ -97,14 +103,19 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},
-                          suffixWidget: Container(
-                              alignment: Alignment.topRight,
-                              child: IconButton(
-                                icon: Icon(Icons.zoom_out_map, color : COLOR_WHITE),
-                                onPressed: () {  },
-
-                              )
-
+                          suffixWidget:  GestureDetector(
+                            child: Container(
+                                alignment: Alignment.topRight,
+                                margin: EdgeInsets.only(top: 10,right: 5),
+                                child: SvgPicture.asset(
+                                  "assets/icons/menu.svg",
+                                  width: 20,
+                                  height: 20,
+                                ),
+                            ),
+                            onTap: () {
+                              print("onTap called.");
+                            },
                           ),
                         ),
                       );
@@ -124,12 +135,18 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           height: 25,
                           padding: EdgeInsets.all(5),
                           text: "Add",
-                          textStyle : themeData.textTheme.headline5.copyWith(color: COLOR_BLACK),
+                          textStyle: themeData.textTheme.headline5
+                              .copyWith(color: COLOR_BLACK),
                           colorText: COLOR_BLACK,
                           colorBackground: COLOR_GREEN,
-                          suffixIcon: Icon(Icons.add,size: 16,),
+                          suffixIcon: Icon(
+                            Icons.add,
+                            size: 16,
+                          ),
                           borderRadius: BorderRadius.circular(8),
-                          onPressed: () {},
+                          onPressed: () {
+                            showBottomSheetSelectPeripherals(title: "List of outputs");
+                          },
                         ),
                       ],
                     ),
@@ -156,14 +173,19 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},
-                          suffixWidget: Container(
+                          suffixWidget:  GestureDetector(
+                            child: Container(
                               alignment: Alignment.topRight,
-                              child: IconButton(
-                                icon: Icon(Icons.zoom_out_map, color : COLOR_WHITE),
-                                onPressed: () {  },
-
-                              )
-
+                              margin: EdgeInsets.only(top: 10,right: 5),
+                              child: SvgPicture.asset(
+                                "assets/icons/menu.svg",
+                                width: 20,
+                                height: 20,
+                              ),
+                            ),
+                            onTap: () {
+                              print("onTap called.");
+                            },
                           ),
                         ),
                       );
@@ -183,10 +205,14 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           height: 25,
                           padding: EdgeInsets.all(5),
                           text: "Add",
-                          textStyle : themeData.textTheme.headline5.copyWith(color: COLOR_BLACK),
+                          textStyle: themeData.textTheme.headline5
+                              .copyWith(color: COLOR_BLACK),
                           colorText: COLOR_BLACK,
                           colorBackground: COLOR_GREEN,
-                          suffixIcon: Icon(Icons.add,size: 16,),
+                          suffixIcon: Icon(
+                            Icons.add,
+                            size: 16,
+                          ),
                           borderRadius: BorderRadius.circular(8),
                           onPressed: () {},
                         ),
@@ -215,14 +241,19 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},
-                          suffixWidget: Container(
+                          suffixWidget:  GestureDetector(
+                            child: Container(
                               alignment: Alignment.topRight,
-                              child: IconButton(
-                                icon: Icon(Icons.zoom_out_map, color : COLOR_WHITE),
-                                onPressed: () {  },
-
-                              )
-
+                              margin: EdgeInsets.only(top: 10,right: 5),
+                              child: SvgPicture.asset(
+                                "assets/icons/menu.svg",
+                                width: 20,
+                                height: 20,
+                              ),
+                            ),
+                            onTap: () {
+                              print("onTap called.");
+                            },
                           ),
                         ),
                       );
@@ -231,8 +262,171 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                 ],
               ),
             );
-          }
-      ),
+          }),
+    );
+  }
+
+  void showBottomSheetSelectPeripherals({title = "List of peripherals"}) {
+    Size size = MediaQuery.of(context).size;
+    ThemeData themeData = Theme.of(context);
+    showBarModalBottomSheet(
+      bounce: true,
+      context: context,
+      builder: (context) => SingleChildScrollView(
+          controller: ModalScrollController.of(context),
+          child: Container(
+            width: size.width,
+            padding: EdgeInsets.only(
+                left: DEFAULT_PADDING_SIDES_SMALL,
+                right: DEFAULT_PADDING_SIDES_SMALL,
+                top: DEFAULT_PADDING,
+                bottom: DEFAULT_PADDING),
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                  child: Text(
+                    title,
+                    style: themeData.textTheme.headline3
+                        .copyWith(color: COLOR_BLACK),
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                  child: Text(
+                    "Choose a peripheral to add",
+                    style: themeData.textTheme.subtitle2
+                        .copyWith(color: COLOR_BLACK),
+                  ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                      child: CCard(
+                        height: 100,
+                        borderRadius: 7,
+                        body: Row(
+                          children: [
+                            CColumnText(
+                              title: "Temp",
+                              subTitle: "Identifier : #127",
+                              description: "Virtual temperature sensor",
+                              colorText: COLOR_BLACK,
+                            ),
+                          ],
+                        ),
+                        colorBackground: COLOR_WHITE,
+                        onPressed: () {},
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          )),
+    );
+  }
+
+  void showBottomSheetSelectKit() {
+    Size size = MediaQuery.of(context).size;
+    ThemeData themeData = Theme.of(context);
+    showBarModalBottomSheet(
+      bounce: true,
+      context: context,
+      builder: (context) => SingleChildScrollView(
+          controller: ModalScrollController.of(context),
+          child: Container(
+            width: size.width,
+            padding: EdgeInsets.only(
+                left: DEFAULT_PADDING_SIDES_SMALL,
+                right: DEFAULT_PADDING_SIDES_SMALL,
+                top: DEFAULT_PADDING,
+                bottom: DEFAULT_PADDING),
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "List of kits",
+                    style: themeData.textTheme.headline3
+                        .copyWith(color: COLOR_BLACK),
+                  ),
+                ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                      child: CCard(
+                        height: 100,
+                        borderRadius: 7,
+                        body: Row(
+                          children: [
+                            SvgPicture.asset('assets/icons/kit.svg',),
+                            SizedBox(width: 20,),
+                            CColumnText(
+                              title: "Kit #251",
+                              subTitle: "Rabat, Morocco",
+                              description: "Some text for the description",
+                              colorText: COLOR_BLACK,
+                            ),
+                          ],
+                        ),
+                        colorBackground: COLOR_WHITE,
+                        onPressed: () {},
+                      ),
+                    );
+                  },
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                  child: CButton(
+                    height: 100,
+                    padding: EdgeInsets.all(7),
+                    text: "Create new Kit",
+                    textStyle: themeData.textTheme.headline3,
+                    colorText: COLOR_GREY_MEDIUM,
+                    colorBackground: Colors.transparent,
+                    suffixIcon: Icon(
+                      Icons.add,
+                      size: 36,
+                      color: COLOR_GREY_MEDIUM,
+                    ),
+                    prefixIcon: SvgPicture.asset(
+                      "assets/icons/kit_empty.svg",
+                      width: 50,
+                      height: 50,
+                    ),
+                    borderWidth: 1,
+                    borderColor: COLOR_GREY_LIGHT,
+                    borderRadius: BorderRadius.circular(8),
+                    onPressed: () {},
+                  ),
+                ),
+                CButton(
+                  text: "Sign Out",
+                  colorText: COLOR_WHITE,
+                  colorBackground: COLOR_GREY_DARK,
+                  borderRadius: BorderRadius.circular(28),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                    );
+                  },
+                ),
+              ],
+            ),
+          )),
     );
   }
 }

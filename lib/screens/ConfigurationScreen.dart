@@ -59,7 +59,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                 height: 100,
                 body: Row(
                   children: [
-                    Image.asset('assets/icons/configuration.png',),
+                    SvgPicture.asset('assets/icons/configuration.svg',),
                     SizedBox(width: 20,),
                     CColumnText(
                       title: "Configuration",
