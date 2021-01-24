@@ -91,7 +91,7 @@ CButton(
 
 
 ## CCard
-![](https://i.ibb.co/gRFHL45/CCard.jpg)
+![](https://i.ibb.co/7zf556p/68747470733a2f2f692e6962622e636f2f675246484c34352f43436172642e6a7067.jpg)
 
 #### Sample Usage
 
