@@ -1,19 +1,18 @@
-import 'package:app/components/CButton.dart';
-import 'package:app/components/CTextInput.dart';
+import 'package:app/components/cbutton.dart';
+import 'package:app/components/ctext_input.dart';
 import 'package:app/constants.dart';
-import 'package:app/screens/ConfigurationScreen.dart';
-import 'package:app/screens/HomeScreen.dart';
+import 'package:app/screens/auth/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
 
-class LoginScreen extends StatefulWidget {
+class RegistrationScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _RegistrationScreenState createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   bool status = false;
 
   @override
@@ -21,10 +20,10 @@ class _LoginScreenState extends State<LoginScreen> {
     Size size = MediaQuery
         .of(context)
         .size;
-    final ThemeData themeData = Theme.of(context);
+    ThemeData themeData = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: COLOR_BLACK,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
       ),
@@ -45,7 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     margin: EdgeInsets.only(bottom: DEFAULT_PADDING*3),
                     child: Text(
-                      "Log In",
+                      "Join the community",
+                      textAlign: TextAlign.center,
                       style: themeData.textTheme.headline1,
                     ),
                   ),
@@ -54,26 +54,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
                         child: CTextInput(
-                          textHint: "Email",
+                          textHint: "Username",
                         ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                        child: CTextInput(textHint: "Email",),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
                         child: CTextInput(textHint: "Password", isPasswordType: true),
                       ),
-                      GestureDetector(
-                        onTap: () {
-
-                        },
-                        child: Container(
-                          alignment: Alignment.centerRight,
-                          padding: EdgeInsets.only(right: 5),
-                          child: Text(
-                            "FORGOT PASSWORD ?",
-                            style: themeData.textTheme.bodyText2.copyWith(fontWeight: FontWeight.w700,),
-                          ),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                        child: CTextInput(textHint: "Confirm Password ...", isPasswordType: true),
                       ),
+
                     ],
                   ),
 
@@ -86,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
                   child: CButton(
-                    text: "Sign In",
+                    text: "Create an account",
                     textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
                     colorBackground: COLOR_GREEN,
                     height: 56,
@@ -94,13 +90,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ConfigurationScreen()),
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
                       );
                     },
                   ),
                 ),
                 Text(
-                  "By signing in, you are agreeing to our Terms of Service and Privacy Policy",
+                  "By creating an account, you are agreeing to our Terms of Service and Privacy Policy",
                   textAlign: TextAlign.center,
                   style: themeData.textTheme.bodyText2,
                 ),

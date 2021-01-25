@@ -1,5 +1,5 @@
-import 'package:app/components/CCard.dart';
-import 'package:app/components/CColumnText.dart';
+import 'package:app/components/ccard.dart';
+import 'package:app/components/ccolumn_text.dart';
 import 'package:app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

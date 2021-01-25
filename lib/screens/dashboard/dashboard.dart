@@ -1,16 +1,15 @@
 import 'dart:developer';
 
-import 'package:app/components/CBottomNav.dart';
-import 'package:app/components/CButton.dart';
-import 'package:app/components/CCardMetric.dart';
-import 'package:app/components/CToggleWidget.dart';
-
+import 'package:app/components/cbottom_nav.dart';
+import 'package:app/components/cbutton.dart';
+import 'package:app/components/ccard_metric.dart';
+import 'package:app/components/ctoggle_widget.dart';
+import 'package:app/components/cline_chart.dart';
 import 'package:app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../CustomIcons.dart';
+import 'package:app/custom_icons.dart';
 
 class ToggleWidgetScreen extends StatelessWidget {
   @override
@@ -80,6 +79,7 @@ class ToggleWidgetScreen extends StatelessWidget {
                     log("button pressed " + index.toString());
                   },
                   defaultSelectedIndex: 0,
+                  spacePadding: 13,
                   children: [
                     CButton(
                       textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
@@ -110,6 +110,9 @@ class ToggleWidgetScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                CLineChart(),
+
+
                 // CToggleWidget(children: [
                 //   CCardMetric(
                 //     title: "Air Co² Sensor",

@@ -1,4 +1,4 @@
-import 'package:app/components/IToggleable.dart';
+import 'package:app/components/ctoggle_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

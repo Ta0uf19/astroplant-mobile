@@ -1,7 +1,7 @@
 import 'package:app/constants.dart';
-import 'package:app/screens/HomeScreen.dart';
-import 'package:app/screens/ToggleWidgetScreen.dart';
-import 'package:app/screens/WelcomeScreen.dart';
+import 'package:app/screens/home_screen.dart';
+import 'file:///C:/Users/Taoufik/Desktop/Android%20TP/Flutter/app/lib/screens/dashboard/dashboard.dart';
+import 'package:app/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 

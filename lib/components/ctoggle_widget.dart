@@ -1,10 +1,28 @@
 // Copyright (c) 2021 Taoufik Tribki. All rights reserved.
 import 'dart:developer';
 
-import 'package:app/components/IToggleable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+
+
+/// Interface
+abstract class IToggleable<T extends Widget> {
+  /// This methods clone immutable widget and add the possibility to specify
+  /// active/inactive state for toggle widget when pressed
+  T copyWith({bool activeToggle});
+}
+
+// Custom Gesture Recognizer.
+// rejectGesture() is overridden. When a gesture is rejected, this is the function that is called. By default, it disposes of the
+// Recognizer and runs clean up. However we modified it so that instead the Recognizer is disposed of, it is actually manually added.
+// The result is instead you have one Recognizer winning the Arena, you have two. It is a win-win.
+class AllowMultipleGestureRecognizer extends TapGestureRecognizer {
+  @override
+  void rejectGesture(int pointer) {
+    acceptGesture(pointer);
+  }
+}
 
 /// CToggleButton manage state itself
 /// A mix-and-match approach
@@ -95,16 +113,5 @@ class _CToggleWidgetState extends State<CToggleWidget> {
         );
       }).toList(),
     );
-  }
-}
-
-// Custom Gesture Recognizer.
-// rejectGesture() is overridden. When a gesture is rejected, this is the function that is called. By default, it disposes of the
-// Recognizer and runs clean up. However we modified it so that instead the Recognizer is disposed of, it is actually manually added.
-// The result is instead you have one Recognizer winning the Arena, you have two. It is a win-win.
-class AllowMultipleGestureRecognizer extends TapGestureRecognizer {
-  @override
-  void rejectGesture(int pointer) {
-    acceptGesture(pointer);
   }
 }

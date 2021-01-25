@@ -1,16 +1,16 @@
-import 'package:app/components/CBottomNav.dart';
-import 'package:app/components/CCard.dart';
-import 'package:app/components/CColumnText.dart';
-import 'package:app/components/CHeader.dart';
-import 'package:app/components/CToggleSwitch.dart';
+import 'package:app/components/cbottom_nav.dart';
+import 'package:app/components/ccard.dart';
+import 'package:app/components/ccolumn_text.dart';
+import 'package:app/components/cheader.dart';
+import 'package:app/components/ctoggle_switch.dart';
 import 'package:app/constants.dart';
-import 'package:app/screens/EditConfigurationScreen.dart';
-import 'package:app/screens/ToggleWidgetScreen.dart';
+import 'package:app/screens/configuration/edit_configuration.dart';
+import 'package:app/screens/dashboard/dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../CustomIcons.dart';
+import '../../custom_icons.dart';
 
 
 class ConfigurationScreen extends StatefulWidget {

@@ -1,9 +1,9 @@
-import 'package:app/components/CButton.dart';
-import 'package:app/components/CCard.dart';
-import 'package:app/components/CColumnText.dart';
-import 'package:app/components/CToggleSwitch.dart';
+import 'package:app/components/cbutton.dart';
+import 'package:app/components/ccard.dart';
+import 'package:app/components/ccolumn_text.dart';
+import 'package:app/components/ctoggle_switch.dart';
 import 'package:app/constants.dart';
-import 'package:app/screens/WelcomeScreen.dart';
+import 'package:app/screens/welcome_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,8 +36,7 @@ class CHeader {
     );
   }
 
-  static AppBar buildAppBarWithCButton(
-      {BuildContext context, String title = ""}) {
+  static AppBar buildAppBarWithCButton({BuildContext context, String title = ""}) {
     return AppBar(
       title: Text(title),
       actions: <Widget>[
