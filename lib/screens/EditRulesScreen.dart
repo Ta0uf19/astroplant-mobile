@@ -38,6 +38,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
       ),
       appBar: CHeader.buildAppBarWithCButton(context: context, title: "Config1 Rules"),
       body: ListView.builder(
+          physics: ClampingScrollPhysics(),
           itemCount: 1,
           itemBuilder: (BuildContext context, int block) {
             return Container(

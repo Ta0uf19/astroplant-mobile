@@ -6,6 +6,8 @@ import 'package:app/screens/HomeScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'CommandScreen.dart';
+
 
 
 class LoginScreen extends StatefulWidget {
@@ -94,6 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
+                         // MaterialPageRoute(builder: (context) => CommandScreen()),
                         MaterialPageRoute(builder: (context) => ConfigurationScreen()),
                       );
                     },
