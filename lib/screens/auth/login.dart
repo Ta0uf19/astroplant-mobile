@@ -1,11 +1,10 @@
 import 'package:app/components/cbutton.dart';
 import 'package:app/components/ctext_input.dart';
 import 'package:app/constants.dart';
+import 'package:app/screens/command/command.dart';
 import 'package:app/screens/configuration/configuration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'CommandScreen.dart';
 
 
 
@@ -95,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                         // MaterialPageRoute(builder: (context) => CommandScreen()),
+                         //MaterialPageRoute(builder: (context) => CommandScreen()),
                         MaterialPageRoute(builder: (context) => ConfigurationScreen()),
                       );
                     },

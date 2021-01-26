@@ -1,14 +1,11 @@
-import 'package:app/components/CBottomNav.dart';
-import 'package:app/components/CButton.dart';
-import 'package:app/components/CCard.dart';
-import 'package:app/components/CColumnText.dart';
+import 'package:app/components/cbottom_nav.dart';
+import 'package:app/components/ccard.dart';
+import 'package:app/components/ccolumn_text.dart';
 import 'package:app/components/CHeader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../CustomIcons.dart';
-import '../constants.dart';
+import 'package:app/custom_icons.dart';
+import 'package:app/constants.dart';
 
 class CommandScreen extends StatefulWidget {
   @override
