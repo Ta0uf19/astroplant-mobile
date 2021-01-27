@@ -15,12 +15,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
     final ThemeData themeData = Theme.of(context);
 
-    final textDescription = "Educational citizen science project with the European Space Agency to engage a new generation of space farmers, collect data and ideas for agriculture on Mars";
+    final textDescription =
+        "Educational citizen science project with the European Space Agency to engage a new generation of space farmers, collect data and ideas for agriculture on Mars";
     final appName = "ASTROPLANT";
     final logIn = "I already have an account";
     return Scaffold(
@@ -34,8 +33,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             left: DEFAULT_PADDING_SIDES,
             right: DEFAULT_PADDING_SIDES,
             top: DEFAULT_PADDING,
-            bottom: DEFAULT_PADDING
-        ),
+            bottom: DEFAULT_PADDING),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -47,13 +45,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       width: 100,
                       height: 100,
                       margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
-                      child: Image.asset('assets/icons/logo.png',)
-                  ),
+                      child: Image.asset(
+                        'assets/icons/logo.png',
+                      )),
                   Container(
-                    margin: EdgeInsets.only(bottom: DEFAULT_PADDING*2),
+                    margin: EdgeInsets.only(bottom: DEFAULT_PADDING * 2),
                     child: Text(
-                        appName,
-                        style: themeData.textTheme.headline1,
+                      appName,
+                      style: themeData.textTheme.headline1,
                     ),
                   ),
                   Text(
@@ -65,20 +64,22 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
             ),
             Column(
-              mainAxisAlignment: MainAxisAlignment.end ,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
                   margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
                   child: CButton(
                     text: "Hi, Astroplant",
-                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
+                    textStyle: themeData.textTheme.headline3
+                        .copyWith(color: COLOR_BLACK),
                     colorBackground: COLOR_GREEN,
                     height: 56,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => RegistrationScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => RegistrationScreen()),
                       );
                     },
                   ),
@@ -89,10 +90,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       context,
                       MaterialPageRoute(builder: (context) => LoginScreen()),
                     );
-                    },
+                  },
                   child: Text(
                     logIn,
-                    style: themeData.textTheme.headline3.copyWith(color: COLOR_GREY_MEDIUM),
+                    style: themeData.textTheme.headline3
+                        .copyWith(color: COLOR_GREY_MEDIUM),
                   ),
                 ),
               ],
@@ -102,4 +104,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
     );
   }
+
+
 }
+

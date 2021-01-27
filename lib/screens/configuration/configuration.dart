@@ -2,16 +2,15 @@ import 'package:app/components/cbottom_nav.dart';
 import 'package:app/components/ccard.dart';
 import 'package:app/components/ccolumn_text.dart';
 import 'package:app/components/cheader.dart';
+import 'package:app/components/ctext_input.dart';
 import 'package:app/components/ctoggle_switch.dart';
 import 'package:app/constants.dart';
 import 'package:app/screens/configuration/edit_configuration.dart';
-import 'package:app/screens/dashboard/dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../custom_icons.dart';
-
 
 class ConfigurationScreen extends StatefulWidget {
   @override
@@ -27,8 +26,8 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
     ThemeData themeData = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: CHeader.buildAppBarWithCButton(context: context,title: "Configuration"),
-
+      appBar: CHeader.buildAppBarWithCButton(
+          context: context, title: "Configuration"),
       bottomNavigationBar: CBottomNav(
         items: [
           CBottomNavItem(CustomIcons.dashboard),
@@ -40,21 +39,18 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ToggleWidgetScreen()),
-          );
+          showAddConfigurationDialog(context, themeData);
         },
         child: Icon(Icons.add),
-      ) ,
+      ),
       body: Container(
         width: size.width,
         padding: EdgeInsets.only(
-            left: DEFAULT_PADDING_SIDES_SMALL,
-            right: DEFAULT_PADDING_SIDES_SMALL,
-            top: DEFAULT_PADDING_SMALL,
+          left: DEFAULT_PADDING_SIDES_SMALL,
+          right: DEFAULT_PADDING_SIDES_SMALL,
+          top: DEFAULT_PADDING_SMALL,
         ),
-        child:  ListView.builder(
+        child: ListView.builder(
           itemCount: 4,
           itemBuilder: (context, index) {
             return Container(
@@ -64,8 +60,12 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                 height: 100,
                 body: Row(
                   children: [
-                    SvgPicture.asset('assets/icons/configuration.svg',),
-                    SizedBox(width: 20,),
+                    SvgPicture.asset(
+                      'assets/icons/configuration.svg',
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
                     CColumnText(
                       title: "Configuration",
                       subTitle: "Identifier : #127",
@@ -77,9 +77,11 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                 colorBackground: Color.fromRGBO(29, 29, 29, 1),
                 onPressed: () {
                   Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => EditConfigurationScreen()),
-                );},
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditConfigurationScreen()),
+                  );
+                },
                 suffixWidget: Container(
                   padding: EdgeInsets.all(DEFAULT_PADDING_SMALL),
                   alignment: Alignment.center,
@@ -93,13 +95,49 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                           status = val;
                         });
                       }),
-
-                  ),
                 ),
+              ),
             );
           },
         ),
       ),
+    );
+  }
+
+  showAddConfigurationDialog(BuildContext context, ThemeData themeData) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("Create"),
+      onPressed: () {},
+    );
+
+    //set up text field
+    Widget descriptionText = CTextInput(
+      textHint: "Description",
+      backgroundColor: COLOR_GREY_LIGHT,
+      textColor: COLOR_BLACK,
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(
+        "My title",
+        style: themeData.textTheme.headline3.copyWith(
+          color: COLOR_BLACK,
+        ),
+      ),
+      content: descriptionText,
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 

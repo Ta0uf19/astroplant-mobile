@@ -4,6 +4,7 @@ import 'package:app/components/ccard.dart';
 import 'package:app/components/ccolumn_text.dart';
 import 'package:app/components/cheader.dart';
 import 'package:app/constants.dart';
+import 'package:app/screens/configuration/configuration.dart';
 import 'package:app/screens/configuration/edit_rules.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -133,16 +134,13 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                               child: Container(
                                 alignment: Alignment.topRight,
                                 margin: EdgeInsets.only(top: 10, right: 5),
-                                child: SvgPicture.asset(
-                                  "assets/icons/menu.svg",
-                                  width: 20,
-                                  height: 20,
-                                ),
+                                child: btnMenu
                               ),
                               onTap: () {
                                 print("onTap called.");
                               },
-                            )),
+                            )
+                        ),
                       );
                     },
                   ),
@@ -186,7 +184,9 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                       borderColor: Colors.red,
                       borderWidth: 1,
                       borderRadius: BorderRadius.circular(28),
-                      onPressed: () {},
+                      onPressed: () {
+                        showDeleteConfigurationDialog(context,themeData);
+                      },
                     ),
                   ),
                 ],
@@ -195,4 +195,92 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
           }),
     );
   }
+
+  showDeleteConfigurationDialog(BuildContext context, ThemeData themeData) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("Yes, I'm sure"),
+      onPressed: () {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ConfigurationScreen()),
+                (Route<dynamic> route) => false
+        );
+      },
+    );
+
+    Widget cancelButton = FlatButton(
+      child: Text("Cancel"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text(
+        "Delete",
+        style: themeData.textTheme.headline3.copyWith(
+          color: COLOR_BLACK,
+        ),
+      ),
+      content: Text(
+        "Are you sure you want to permanently remove this configuration ?",
+        style: themeData.textTheme.subtitle1.copyWith(
+          color: COLOR_BLACK,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actions: [
+        cancelButton,
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+
+  Widget btnMenu = PopupMenuButton<String>(
+    onSelected: (value) {
+      choiceAction(value);
+    },
+    child: SvgPicture.asset(
+      "assets/icons/menu.svg",
+      width: 20,
+      height: 20,
+    ),
+    itemBuilder: (BuildContext context) {
+      return Choices.choices.map((String choice) {
+        return PopupMenuItem<String>(
+          value: choice,
+          child: Text(choice),
+        );
+      }).toList();
+    },
+  );
+
+  static void choiceAction(String choice) {
+    if (choice == Choices.Settings) {
+      print('Settings');
+    } else if (choice == Choices.Subscribe) {
+      print('Subscribe');
+    } else if (choice == Choices.SignOut) {
+      print('SignOut');
+    }
+  }
+}
+class Choices {
+  static const String Subscribe = 'Subscribe';
+  static const String Settings = 'Settings';
+  static const String SignOut = 'Sign out';
+
+  static const List<String> choices = <String>[Subscribe, Settings, SignOut];
 }

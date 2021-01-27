@@ -35,7 +35,8 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
         iconStyle: IconStyle(size: 23),
         index: 2,
       ),
-      appBar: CHeader.buildAppBarWithCButton(context: context, title: "Config1 Rules"),
+      appBar: CHeader.buildAppBarWithCButton(
+          context: context, title: "Config1 Rules"),
       body: ListView.builder(
           physics: ClampingScrollPhysics(),
           itemCount: 1,
@@ -72,7 +73,8 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           ),
                           borderRadius: BorderRadius.circular(8),
                           onPressed: () {
-                            showBottomSheetSelectPeripherals(title: "List of inputs");
+                            showBottomSheetSelectPeripherals(
+                                title: "List of inputs");
                           },
                         ),
                       ],
@@ -86,34 +88,30 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                       return Container(
                         margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
                         child: CCard(
-                          height: 100,
-                          borderRadius: 7,
-                          body: Row(
-                            children: [
-                              CColumnText(
-                                title: "Temp",
-                                subTitle: "Identifier : #127",
-                                description: "Virtual temperature sensor",
-                                colorText: Colors.white,
-                              ),
-                            ],
-                          ),
-                          colorBackground: Color.fromRGBO(29, 29, 29, 1),
-                          onPressed: () {},
-                          suffixWidget:  GestureDetector(
-                            child: Container(
-                                alignment: Alignment.topRight,
-                                margin: EdgeInsets.only(top: 10,right: 5),
-                                child: SvgPicture.asset(
-                                  "assets/icons/menu.svg",
-                                  width: 20,
-                                  height: 20,
+                            height: 100,
+                            borderRadius: 7,
+                            body: Row(
+                              children: [
+                                CColumnText(
+                                  title: "Temp",
+                                  subTitle: "Identifier : #127",
+                                  description: "Virtual temperature sensor",
+                                  colorText: Colors.white,
                                 ),
+                              ],
                             ),
-                            onTap: () {
-                              print("onTap called.");
-                            },
-                          ),
+                            colorBackground: Color.fromRGBO(29, 29, 29, 1),
+                            onPressed: () {},
+                            suffixWidget: GestureDetector(
+                              child: Container(
+                                  alignment: Alignment.topRight,
+                                  margin: EdgeInsets.only(top: 10, right: 5),
+                                  child: btnMenu
+                              ),
+                              onTap: () {
+                                print("onTap called.");
+                              },
+                            )
                         ),
                       );
                     },
@@ -141,7 +139,8 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           ),
                           borderRadius: BorderRadius.circular(8),
                           onPressed: () {
-                            showBottomSheetSelectPeripherals(title: "List of outputs");
+                            showBottomSheetSelectPeripherals(
+                                title: "List of outputs");
                           },
                         ),
                       ],
@@ -169,15 +168,11 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},
-                          suffixWidget:  GestureDetector(
+                          suffixWidget: GestureDetector(
                             child: Container(
-                              alignment: Alignment.topRight,
-                              margin: EdgeInsets.only(top: 10,right: 5),
-                              child: SvgPicture.asset(
-                                "assets/icons/menu.svg",
-                                width: 20,
-                                height: 20,
-                              ),
+                                alignment: Alignment.topRight,
+                                margin: EdgeInsets.only(top: 10, right: 5),
+                                child: btnMenu
                             ),
                             onTap: () {
                               print("onTap called.");
@@ -236,15 +231,11 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},
-                          suffixWidget:  GestureDetector(
+                          suffixWidget: GestureDetector(
                             child: Container(
-                              alignment: Alignment.topRight,
-                              margin: EdgeInsets.only(top: 10,right: 5),
-                              child: SvgPicture.asset(
-                                "assets/icons/menu.svg",
-                                width: 20,
-                                height: 20,
-                              ),
+                                alignment: Alignment.topRight,
+                                margin: EdgeInsets.only(top: 10, right: 5),
+                                child: btnMenu
                             ),
                             onTap: () {
                               print("onTap called.");
@@ -328,4 +319,40 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
     );
   }
 
+  Widget btnMenu = PopupMenuButton<String>(
+    onSelected: (value) {
+      choiceAction(value);
+    },
+    child: SvgPicture.asset(
+      "assets/icons/menu.svg",
+      width: 20,
+      height: 20,
+    ),
+    itemBuilder: (BuildContext context) {
+      return Choices.choices.map((String choice) {
+        return PopupMenuItem<String>(
+          value: choice,
+          child: Text(choice),
+        );
+      }).toList();
+    },
+  );
+
+  static void choiceAction(String choice) {
+    if (choice == Choices.Settings) {
+      print('Settings');
+    } else if (choice == Choices.Subscribe) {
+      print('Subscribe');
+    } else if (choice == Choices.SignOut) {
+      print('SignOut');
+    }
+  }
+}
+
+class Choices {
+  static const String Subscribe = 'Subscribe';
+  static const String Settings = 'Settings';
+  static const String SignOut = 'Sign out';
+
+  static const List<String> choices = <String>[Subscribe, Settings, SignOut];
 }
