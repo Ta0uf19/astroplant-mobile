@@ -1,4 +1,4 @@
-import 'file:///C:/Users/Taoufik/Desktop/Android%20TP/Flutter/app/lib/util/constants.dart';
+import 'package:app/util/constants.dart';
 import 'package:flutter/material.dart';
 
 const Color defaultColorBackground = Colors.white;
