@@ -21,7 +21,7 @@ class _CLineChartState extends State<CLineChart> {
           aspectRatio: 1.2,
           child: Container(
             child: Padding(
-              padding: const EdgeInsets.only(right: 10, left: 0, top: 24, bottom: 12),
+              padding: const EdgeInsets.only(right: 10, left: 0, top: 0, bottom: 15),
               child: LineChart(
                   mainData()
               ),

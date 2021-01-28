@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:app/components/cbottom_nav.dart';
 import 'package:app/components/cbutton.dart';
 import 'package:app/components/ccard_metric.dart';
+import 'package:app/components/cheader.dart';
 import 'package:app/components/ctoggle_widget.dart';
 import 'package:app/components/cline_chart.dart';
 import 'package:app/util/constants.dart';
@@ -18,13 +19,7 @@ class DashboardScreen extends StatelessWidget {
     ThemeData themeData = Theme.of(context);
     return Scaffold(
         backgroundColor: Colors.black,
-        appBar: AppBar(
-          elevation: 0,
-          leading: IconButton(
-            icon: SvgPicture.asset('assets/icons/menu.svg'),
-            onPressed: () {},
-          ),
-        ),
+        appBar: CHeader.buildAppBarWithCButton(context: context, title: "Dashboard"),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[
           Container(
@@ -34,6 +29,13 @@ class DashboardScreen extends StatelessWidget {
                   right: kDefaultPadding,
                   top: kDefaultPadding),
               child: Column(children: [
+                Container(
+                  child: Text(
+                      "Realtime", style: themeData.textTheme.headline3
+                  ),
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                ),
                 SizedBox(
                   height: 260,
                   child: ListView(
@@ -66,44 +68,49 @@ class DashboardScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                CToggleWidget(
-                  onPressed: (index) {
-                    log("button pressed " + index.toString());
-                  },
-                  defaultSelectedIndex: 0,
-                  spacePadding: 13,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    CButton(
-                      textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
-                      borderRadius: BorderRadius.circular(5),
-                      text: "Month",
-                      onPressed: () {
-                        log("pressed 0");
-                      },
-                      disabled: true,
+                    Container(
+                      child: Text(
+                          "Air Co²",
+                          style: themeData.textTheme.headline3,
+                          textAlign: TextAlign.end,
+                      ),
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
                     ),
-                    CButton(
-                      textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
-                      text: "Year",
-                      onPressed: () {
-                        log("pressed 1");
+                    CToggleWidget(
+                      onPressed: (index) {
+                        log("button pressed " + index.toString());
                       },
-                      borderRadius: BorderRadius.circular(5),
-                      disabled: true,
-                    ),
-                    CButton(
-                      textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
-                      text: "Hi, Astroplant",
-                      onPressed: () {
-                        log("pressed 3.");
-                      },
-                      borderRadius: BorderRadius.circular(5),
-                      disabled: true,
+                      defaultSelectedIndex: 0,
+                      spacePadding: 13,
+                      children: [
+                        CButton(
+                          textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
+                          borderRadius: BorderRadius.circular(5),
+                          text: "Month",
+                          onPressed: () {
+                            log("pressed 0");
+                          },
+                          disabled: true,
+                        ),
+                        CButton(
+                          textStyle: themeData.textTheme.headline3.copyWith(fontSize: 14),
+                          text: "Year",
+                          onPressed: () {
+                            log("pressed 1");
+                          },
+                          borderRadius: BorderRadius.circular(5),
+                          disabled: true,
+                        ),
+                      ],
                     ),
                   ],
                 ),
                 CLineChart(),
-
 
                 // CToggleWidget(children: [
                 //   CCardMetric(

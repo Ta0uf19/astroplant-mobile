@@ -26,8 +26,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
     ThemeData themeData = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: CHeader.buildAppBarWithCButton(
-          context: context, title: "Configuration"),
+      appBar: CHeader.buildAppBarWithCButton(context: context, title: "Configuration"),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showAddConfigurationDialog(context, themeData);
