@@ -3,7 +3,7 @@ import 'package:app/components/cbutton.dart';
 import 'package:app/components/ccard.dart';
 import 'package:app/components/ccolumn_text.dart';
 import 'package:app/components/cheader.dart';
-import 'package:app/constants.dart';
+import 'package:app/util/constants.dart';
 import 'package:app/screens/configuration/configuration.dart';
 import 'package:app/screens/configuration/edit_rules.dart';
 import 'package:flutter/cupertino.dart';

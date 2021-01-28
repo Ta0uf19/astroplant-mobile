@@ -4,7 +4,7 @@ import 'package:app/components/ccolumn_text.dart';
 import 'package:app/components/cheader.dart';
 import 'package:app/components/ctext_input.dart';
 import 'package:app/components/ctoggle_switch.dart';
-import 'package:app/constants.dart';
+import 'package:app/util/constants.dart';
 import 'package:app/screens/configuration/edit_configuration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,15 +28,6 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
       backgroundColor: Colors.black,
       appBar: CHeader.buildAppBarWithCButton(
           context: context, title: "Configuration"),
-      bottomNavigationBar: CBottomNav(
-        items: [
-          CBottomNavItem(CustomIcons.dashboard),
-          CBottomNavItem(CustomIcons.commands),
-          CBottomNavItem(CustomIcons.settings),
-        ],
-        iconStyle: IconStyle(size: 23),
-        index: 2,
-      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showAddConfigurationDialog(context, themeData);

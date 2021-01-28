@@ -1,7 +1,7 @@
 
 import 'package:app/components/ctoggle_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:app/constants.dart';
+import 'file:///C:/Users/Taoufik/Desktop/Android%20TP/Flutter/app/lib/util/constants.dart';
 
 const defaultTextColor = COLOR_BLACK;
 const defaultBackgroundColor = COLOR_GREEN;

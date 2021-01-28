@@ -1,5 +1,5 @@
-import 'package:app/constants.dart';
-import 'package:app/screens/welcome_screen.dart';
+import 'package:app/util/constants.dart';
+import 'package:app/screens/splash/welcome.dart';
 import 'package:flutter/material.dart';
 
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello',
+      title: 'Astroplant',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: COLOR_BLACK,

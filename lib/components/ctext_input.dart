@@ -66,6 +66,9 @@ class _CTextInputState extends State<CTextInput> {
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 20, horizontal: 2),
           hintText: widget.textHint,
+          labelStyle: TextStyle(
+            color: widget.textColor,
+          ),
           hintStyle: TextStyle(
             color: widget.textColor
           ),

@@ -5,19 +5,19 @@ import 'package:app/components/ccolumn_text.dart';
 import 'package:app/components/cheader.dart';
 import 'package:app/components/ctext_input.dart';
 import 'package:app/components/ctoggle_switch.dart';
-import 'package:app/constants.dart';
-import 'package:app/screens/ccard_implementation.dart';
+import 'package:app/util/constants.dart';
+import 'package:app/screens/test/ccard_implementation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:app/custom_icons.dart';
 
 
-class HomeScreen extends StatefulWidget {
+class HomeScreenTest extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeScreenTestState createState() => _HomeScreenTestState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenTestState extends State<HomeScreenTest> {
   bool status = false;
 
   @override
