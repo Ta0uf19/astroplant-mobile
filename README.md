@@ -53,7 +53,7 @@
 CButton(
 	text: "Kit1 : AFC58",
 	colorText: Colors.black,
-	colorBackground: COLOR_GREEN,
+	colorBackground: CColors.COLOR_GREEN,
 	fontSize: 16,
 	height: 40,
 	borderRadius: BorderRadius.only(

@@ -30,10 +30,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Container(
         width: size.width,
         padding: EdgeInsets.only(
-            left: DEFAULT_PADDING_SIDES,
-            right: DEFAULT_PADDING_SIDES,
-            top: DEFAULT_PADDING,
-            bottom: DEFAULT_PADDING),
+            left: CPadding.DEFAULT_PADDING_SIDES,
+            right: CPadding.DEFAULT_PADDING_SIDES,
+            top: CPadding.DEFAULT_PADDING,
+            bottom: CPadding.DEFAULT_PADDING),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -44,12 +44,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Container(
                       width: 100,
                       height: 100,
-                      margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
+                      margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING),
                       child: Image.asset(
                         'assets/icons/logo.png',
                       )),
                   Container(
-                    margin: EdgeInsets.only(bottom: DEFAULT_PADDING * 2),
+                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING * 2),
                     child: Text(
                       appName,
                       style: themeData.textTheme.headline1,
@@ -67,12 +67,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
+                  margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING),
                   child: CButton(
                     text: "Hi, Astroplant",
                     textStyle: themeData.textTheme.headline3
-                        .copyWith(color: COLOR_BLACK),
-                    colorBackground: COLOR_GREEN,
+                        .copyWith(color: CColors.COLOR_BLACK),
+                    colorBackground: CColors.COLOR_GREEN,
                     height: 56,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {
@@ -94,7 +94,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Text(
                     logIn,
                     style: themeData.textTheme.headline3
-                        .copyWith(color: COLOR_GREY_MEDIUM),
+                        .copyWith(color: CColors.COLOR_GREY_MEDIUM),
                   ),
                 ),
               ],

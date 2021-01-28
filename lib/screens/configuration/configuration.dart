@@ -36,15 +36,15 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
       body: Container(
         width: size.width,
         padding: EdgeInsets.only(
-          left: DEFAULT_PADDING_SIDES_SMALL,
-          right: DEFAULT_PADDING_SIDES_SMALL,
-          top: DEFAULT_PADDING_SMALL,
+          left: CPadding.DEFAULT_PADDING_SIDES_SMALL,
+          right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
+          top: CPadding.DEFAULT_PADDING_SMALL,
         ),
         child: ListView.builder(
           itemCount: 4,
           itemBuilder: (context, index) {
             return Container(
-              margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+              margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
               child: CCard(
                 borderRadius: 7,
                 height: 100,
@@ -73,7 +73,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                   );
                 },
                 suffixWidget: Container(
-                  padding: EdgeInsets.all(DEFAULT_PADDING_SMALL),
+                  padding: EdgeInsets.all(CPadding.DEFAULT_PADDING_SMALL),
                   alignment: Alignment.center,
                   child: CToggleSwitch(
                       value: status,
@@ -104,8 +104,8 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
     //set up text field
     Widget descriptionText = CTextInput(
       textHint: "Description",
-      backgroundColor: COLOR_GREY_LIGHT,
-      textColor: COLOR_BLACK,
+      backgroundColor: CColors.COLOR_GREY_LIGHT,
+      textColor: CColors.COLOR_BLACK,
     );
 
     // set up the AlertDialog
@@ -113,7 +113,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
       title: Text(
         "My title",
         style: themeData.textTheme.headline3.copyWith(
-          color: COLOR_BLACK,
+          color: CColors.COLOR_BLACK,
         ),
       ),
       content: descriptionText,

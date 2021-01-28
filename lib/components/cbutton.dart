@@ -3,8 +3,8 @@ import 'package:app/components/ctoggle_widget.dart';
 import 'package:app/util/constants.dart';
 import 'package:flutter/material.dart';
 
-const defaultTextColor = COLOR_BLACK;
-const defaultBackgroundColor = COLOR_GREEN;
+const defaultTextColor = CColors.COLOR_BLACK;
+const defaultBackgroundColor = CColors.COLOR_GREEN;
 const double defaultHeight = 30;
 const double defaultFontSize = 14.0;
 const double defaultBorderRadius = 5.0;

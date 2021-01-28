@@ -30,14 +30,14 @@ class _CommandScreen extends State<CommandScreen> {
             return Container(
               width: size.width,
               padding: EdgeInsets.only(
-                left: DEFAULT_PADDING_SIDES_SMALL,
-                right: DEFAULT_PADDING_SIDES_SMALL,
-                top: DEFAULT_PADDING_SMALL,
+                left: CPadding.DEFAULT_PADDING_SIDES_SMALL,
+                right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
+                top: CPadding.DEFAULT_PADDING_SMALL,
               ),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: DEFAULT_PADDING),
+                    padding: const EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING),
                     child: CCard(
                       //height: 100,
                       body: Column(
@@ -55,7 +55,7 @@ class _CommandScreen extends State<CommandScreen> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: DEFAULT_PADDING_SMALL),
+                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -64,7 +64,7 @@ class _CommandScreen extends State<CommandScreen> {
                           style: themeData.textTheme.headline3,
                         ),
                         SizedBox(
-                          height: DEFAULT_PADDING_SMALL,
+                          height: CPadding.DEFAULT_PADDING_SMALL,
                         ),
                         Text(
                           "Please choose the peripheral to send a command to.",
@@ -85,7 +85,7 @@ class _CommandScreen extends State<CommandScreen> {
                       crossAxisCount: 2,
                       children: <Widget>[
                         CCard(
-                          width: size.width / 2 - 3 * kDefaultPadding,
+                          width: size.width / 2 - 3 * CPadding.DEFAULT_PADDING_SMALL,
                           body: CColumnText(
                             title: "Temp",
                             subTitle: "Identifier : #127",
@@ -96,7 +96,7 @@ class _CommandScreen extends State<CommandScreen> {
                           onPressed: () {},
                         ),
                         CCard(
-                          width: size.width / 2 - 3 * kDefaultPadding,
+                          width: size.width / 2 - 3 * CPadding.DEFAULT_PADDING_SMALL,
                           body: CColumnText(
                             title: "Temp",
                             subTitle: "Identifier : #127",
@@ -107,7 +107,7 @@ class _CommandScreen extends State<CommandScreen> {
                           onPressed: () {},
                         ),
                         CCard(
-                          width: size.width / 2 - 3 * kDefaultPadding,
+                          width: size.width / 2 - 3 * CPadding.DEFAULT_PADDING_SMALL,
                           body: CColumnText(
                             title: "Temp",
                             subTitle: "Identifier : #127",
@@ -118,7 +118,7 @@ class _CommandScreen extends State<CommandScreen> {
                           onPressed: () {},
                         ),
                         CCard(
-                          width: size.width / 2 - 3 * kDefaultPadding,
+                          width: size.width / 2 - 3 * CPadding.DEFAULT_PADDING_SMALL,
                           body: CColumnText(
                             title: "Temp",
                             subTitle: "Identifier : #127",

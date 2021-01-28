@@ -23,7 +23,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: COLOR_BLACK,
+      backgroundColor: CColors.COLOR_BLACK,
       appBar: AppBar(
         elevation: 0,
       ),
@@ -31,10 +31,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         width: double.infinity,
         height: double.infinity,
         padding: EdgeInsets.only(
-            left: DEFAULT_PADDING_SIDES,
-            right: DEFAULT_PADDING_SIDES,
-            top: DEFAULT_PADDING,
-            bottom: DEFAULT_PADDING
+            left: CPadding.DEFAULT_PADDING_SIDES,
+            right: CPadding.DEFAULT_PADDING_SIDES,
+            top: CPadding.DEFAULT_PADDING,
+            bottom: CPadding.DEFAULT_PADDING
         ),
         child: Stack(
           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +42,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ListView(
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: DEFAULT_PADDING * 3),
+                  margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING * 3),
                   child: Text(
                     "Join the community",
                     textAlign: TextAlign.center,
@@ -53,25 +53,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
-                          bottom: DEFAULT_PADDING_SMALL),
+                          bottom: CPadding.DEFAULT_PADDING_SMALL),
                       child: CTextInput(
                         textHint: "Username",
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          bottom: DEFAULT_PADDING_SMALL),
+                          bottom: CPadding.DEFAULT_PADDING_SMALL),
                       child: CTextInput(textHint: "Email",),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          bottom: DEFAULT_PADDING_SMALL),
+                          bottom: CPadding.DEFAULT_PADDING_SMALL),
                       child: CTextInput(
                           textHint: "Password", isPasswordType: true),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          bottom: DEFAULT_PADDING_SMALL),
+                          bottom: CPadding.DEFAULT_PADDING_SMALL),
                       child: CTextInput(textHint: "Confirm Password ...",
                           isPasswordType: true),
                     ),
@@ -87,12 +87,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: DEFAULT_PADDING),
+                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING),
                     child: CButton(
                       text: "Create an account",
                       textStyle: themeData.textTheme.headline3.copyWith(
-                          color: COLOR_BLACK),
-                      colorBackground: COLOR_GREEN,
+                          color: CColors.COLOR_BLACK),
+                      colorBackground: CColors.COLOR_GREEN,
                       height: 56,
                       borderRadius: BorderRadius.circular(28),
                       onPressed: () {

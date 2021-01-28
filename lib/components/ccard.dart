@@ -32,7 +32,7 @@ class CCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      shadowColor: COLOR_BLACK,
+      shadowColor: CColors.COLOR_BLACK,
       elevation: 1,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),

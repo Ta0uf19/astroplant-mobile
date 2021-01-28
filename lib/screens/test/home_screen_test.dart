@@ -51,9 +51,9 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
           Container(
             width: size.width,
             padding: EdgeInsets.only(
-                left: kDefaultPadding,
-                right: kDefaultPadding,
-                top: kDefaultPadding),
+                left: CPadding.DEFAULT_PADDING_SIDES_SMALL,
+                right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
+                top: CPadding.DEFAULT_PADDING_SIDES_SMALL),
             child: Column(
               children: [
                 Padding(
@@ -95,8 +95,8 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
                     text: "Hi, Astroplant",
                     suffixIcon: Icon(Icons.ac_unit),
                     prefixIcon: Icon(Icons.access_time),
-                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
-                    colorBackground: COLOR_GREEN,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: CColors.COLOR_BLACK),
+                    colorBackground: CColors.COLOR_GREEN,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {
                       Navigator.push(
@@ -146,7 +146,7 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
                   padding: const EdgeInsets.all(8.0),
                   child: CButton(
                     text: "Edit rules",
-                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
+                    textStyle: themeData.textTheme.headline3.copyWith(color: CColors.COLOR_BLACK),
                     borderColor: Colors.black,
                     colorBackground: Colors.transparent,
                     borderRadius: BorderRadius.circular(28),
@@ -158,7 +158,7 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
                   padding: const EdgeInsets.all(8.0),
                   child: CButton(
                     text: "Add",
-                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
+                    textStyle: themeData.textTheme.headline3.copyWith(color: CColors.COLOR_BLACK),
                     suffixIcon: Icon(Icons.add),
                     borderRadius: BorderRadius.circular(8),
                     onPressed: () {},
@@ -169,8 +169,8 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
                   padding: const EdgeInsets.all(8.0),
                   child: CButton(
                     text: "Kit1 : AFC58",
-                    textStyle: themeData.textTheme.headline3.copyWith(color: COLOR_BLACK),
-                    colorBackground: COLOR_GREEN,
+                    textStyle: themeData.textTheme.headline3.copyWith(color: CColors.COLOR_BLACK),
+                    colorBackground: CColors.COLOR_GREEN,
                     height: 40,
                     borderRadius: BorderRadius.only(
                         bottomLeft: const Radius.circular(40.0),
