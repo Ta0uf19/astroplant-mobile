@@ -7,7 +7,7 @@
   - [Bottom Navigation Bar (CBottomNav)](#bottom-navigation-bar)
   - [Card (CCard)](#ccard)
   - [Card (CColumnText)](#ccolumntext)
-  - [Card Metric (CCardMetric)](#card-metric-ccardmetric)
+  - [Peripheral Card (CCardPeripheral)](#peripheral-card-ccardperipheral)
   - [Widget Toggle (*CToggleWidget*)](#widget-toggle---ctogglewidget)
   
 ## Input Form
