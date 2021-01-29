@@ -1,15 +1,14 @@
-import 'package:app/components/cbottom_nav.dart';
-import 'package:app/components/cbutton.dart';
-import 'package:app/components/ccard.dart';
-import 'package:app/components/ccolumn_text.dart';
-import 'package:app/components/cheader.dart';
-import 'package:app/constants.dart';
+import 'package:app/ui/components/cbottom_nav.dart';
+import 'package:app/ui/components/cbutton.dart';
+import 'package:app/ui/components/ccard.dart';
+import 'package:app/ui/components/ccolumn_text.dart';
+import 'package:app/ui/components/cheader.dart';
+import 'package:app/ui/constants.dart';
+import 'package:app/ui/custom_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-
-import '../../custom_icons.dart';
 
 class EditRulesScreen extends StatefulWidget {
   @override

@@ -1,4 +1,4 @@
-import 'package:app/constants.dart';
+import 'package:app/ui/constants.dart';
 import 'package:flutter/material.dart';
 
 const Color defaultColorBackground = Colors.white;
@@ -49,9 +49,9 @@ class CCard extends StatelessWidget {
           child: Row(children: [
             Expanded(child: Padding(
               padding: EdgeInsets.all(padding),
-              child: body != null ? body : Container(),
+              child: body ?? Container(),
             )),
-            suffixWidget != null ? suffixWidget : Container(),
+            suffixWidget ?? Container(),
           ]),
         ),
       ),

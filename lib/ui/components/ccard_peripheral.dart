@@ -1,4 +1,4 @@
-import 'package:app/components/ctoggle_widget.dart';
+import 'package:app/ui/components/ctoggle_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +23,7 @@ class CCardPeripheral extends StatelessWidget implements IToggleable<CCardPeriph
     this.activeToggle = false,
   }) : super(key: key);
 
+  @override
   CCardPeripheral copyWith({
     String title,
     String subtitle,
@@ -40,7 +41,7 @@ class CCardPeripheral extends StatelessWidget implements IToggleable<CCardPeriph
       return this;
     }
 
-    return new CCardPeripheral(
+    return CCardPeripheral(
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
       measure: measure ?? this.measure,
@@ -53,7 +54,7 @@ class CCardPeripheral extends StatelessWidget implements IToggleable<CCardPeriph
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: this.onPressed,
+      onTap: onPressed,
       child: Ink(
         width: 155,
         height: 250,
@@ -86,13 +87,13 @@ class CCardPeripheral extends StatelessWidget implements IToggleable<CCardPeriph
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(this.measure,
+                      Text(measure,
                           style: TextStyle(
                               fontWeight: FontWeight.w800,
                               fontSize: 48,
                               color:
                                   activeToggle ? Colors.black : Colors.white)),
-                      Text(this.unit,
+                      Text(unit,
                           style: TextStyle(
                               fontWeight: FontWeight.w800,
                               fontSize: 15,
@@ -110,13 +111,13 @@ class CCardPeripheral extends StatelessWidget implements IToggleable<CCardPeriph
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(this.title,
+                      Text(title,
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 19,
                               color:
                                   activeToggle ? Colors.black : Colors.white)),
-                      Text(this.subtitle,
+                      Text(subtitle,
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 13,

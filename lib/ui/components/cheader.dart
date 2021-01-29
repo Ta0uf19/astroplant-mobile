@@ -1,9 +1,9 @@
-import 'package:app/components/cbutton.dart';
-import 'package:app/components/ccard.dart';
-import 'package:app/components/ccolumn_text.dart';
-import 'package:app/components/ctoggle_switch.dart';
+import 'package:app/ui/components/cbutton.dart';
+import 'package:app/ui/components/ccard.dart';
+import 'package:app/ui/components/ccolumn_text.dart';
+import 'package:app/ui/components/ctoggle_switch.dart';
 import 'package:app/ui/screens/splash/welcome.dart';
-import 'package:app/constants.dart';
+import 'package:app/ui/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,7 +43,7 @@ class CHeader {
         Container(
           padding: EdgeInsets.only(top: 6, bottom: 6),
           child: CButton(
-            text: "Kit1 : AFC58",
+            text: 'Kit1 : AFC58',
             textStyle: TextStyle(
                 color: CColors.black, fontWeight: FontWeight.w700, fontSize: 15),
             colorBackground: CColors.primary,
@@ -66,8 +66,8 @@ class CHeader {
   }
 
   static void showBottomSheetSelectKit({BuildContext context}) {
-    ThemeData themeData = Theme.of(context);
-    Size size = MediaQuery.of(context).size;
+    var themeData = Theme.of(context);
+    var size = MediaQuery.of(context).size;
     showBarModalBottomSheet(
       bounce: true,
       context: context,
@@ -86,7 +86,7 @@ class CHeader {
                   margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "List of kits",
+                    'List of kits',
                     style: themeData.textTheme.headline3
                         .copyWith(color: CColors.black),
                   ),
@@ -110,8 +110,8 @@ class CHeader {
                               width: 20,
                             ),
                             CColumnText(
-                              title: "Kit #251",
-                              subTitle: "Rabat, Morocco",
+                              title: 'Kit #251',
+                              subTitle: 'Rabat, Morocco',
                               description: "Some text for the description",
                               colorText: CColors.black,
                             ),
@@ -128,7 +128,7 @@ class CHeader {
                   child: CButton(
                     height: 100,
                     padding: EdgeInsets.all(7),
-                    text: "Create new Kit",
+                    text: 'Create new Kit',
                     textStyle: themeData.textTheme.headline3
                         .copyWith(color: CColors.greyMedium),
                     colorBackground: Colors.transparent,
@@ -138,7 +138,7 @@ class CHeader {
                       color: CColors.greyMedium,
                     ),
                     prefixIcon: SvgPicture.asset(
-                      "assets/icons/kit_empty.svg",
+                      'assets/icons/kit_empty.svg',
                       width: 50,
                       height: 50,
                     ),
@@ -150,7 +150,7 @@ class CHeader {
                 ),
                 CButton(
                   height: 56,
-                  text: "Sign Out",
+                  text: 'Sign Out',
                   colorBackground: CColors.greyDark,
                   textStyle: themeData.textTheme.headline3
                       .copyWith(color: CColors.white),

@@ -1,6 +1,6 @@
 
-import 'package:app/components/ctoggle_widget.dart';
-import 'package:app/constants.dart';
+import 'package:app/ui/components/ctoggle_widget.dart';
+import 'package:app/ui/constants.dart';
 import 'package:flutter/material.dart';
 
 const defaultTextColor = CColors.black;
@@ -90,7 +90,7 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
       return this;
     }
 
-    return new CButton(
+    return CButton(
       text: text ?? this.text,
       colorBackground: colorBackground ?? this.colorBackground,
       height: height ?? this.height,
@@ -109,34 +109,34 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData themeData = Theme.of(context);
-    final Color colorText = (activeToggle ? defaultTextColor : (disabled ? disabledColorText : this.textStyle.color));
+    // final ThemeData themeData = Theme.of(context);
+    // final Color colorText = (activeToggle ? defaultTextColor : (disabled ? disabledColorText : textStyle.color));
 
     return Container(
       child: FlatButton(
-        splashColor: this.splashColor,
-        color: activeToggle ? defaultBackgroundColor : (disabled ? disabledColorBackground : this.colorBackground),
-        height: this.height,
-        minWidth: this.width,
-        onPressed: this.onPressed,
+        splashColor: splashColor,
+        color: activeToggle ? defaultBackgroundColor : (disabled ? disabledColorBackground : colorBackground),
+        height: height,
+        minWidth: width,
+        onPressed: onPressed,
         shape: RoundedRectangleBorder(
-          borderRadius: this.borderRadius,
+          borderRadius: borderRadius,
           side: BorderSide(
-              color: activeToggle ? defaultBorderColor : (disabled ? disabledBorderColor : this.borderColor),
-              width: activeToggle ? defaultBorderWidth : (disabled ? disabledBorderWidth : this.borderWidth),
+              color: activeToggle ? defaultBorderColor : (disabled ? disabledBorderColor : borderColor),
+              width: activeToggle ? defaultBorderWidth : (disabled ? disabledBorderWidth : borderWidth),
               style: BorderStyle.solid
           ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            this.prefixIcon!= null ? prefixIcon : Container(),
+            prefixIcon ?? Container(),
             Text(
-              this.text,
+              text,
               style: textStyle,
               textAlign: TextAlign.center,
             ),
-            this.suffixIcon!= null ? suffixIcon : Container(),
+            suffixIcon ?? Container(),
 
           ],
         ),

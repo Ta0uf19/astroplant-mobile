@@ -1,15 +1,16 @@
-import 'package:app/components/cbottom_nav.dart';
-import 'package:app/components/cbutton.dart';
-import 'package:app/components/ccard.dart';
-import 'package:app/components/ccolumn_text.dart';
-import 'package:app/components/cheader.dart';
-import 'package:app/components/ctext_input.dart';
-import 'package:app/components/ctoggle_switch.dart';
-import 'package:app/constants.dart';
-import 'package:app/screens/test/ccard_implementation.dart';
+import 'package:app/ui/components/cbottom_nav.dart';
+import 'package:app/ui/components/cbutton.dart';
+import 'package:app/ui/components/ccard.dart';
+import 'package:app/ui/components/ccolumn_text.dart';
+import 'package:app/ui/components/cheader.dart';
+import 'package:app/ui/components/ctext_input.dart';
+import 'package:app/ui/components/ctoggle_switch.dart';
+import 'package:app/ui/constants.dart';
+import 'package:app/ui/custom_icons.dart';
+import 'package:app/ui/screens/test/ccard_implementation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:app/custom_icons.dart';
+
 
 
 class HomeScreenTest extends StatefulWidget {

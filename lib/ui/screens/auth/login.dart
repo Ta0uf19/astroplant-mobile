@@ -1,8 +1,8 @@
-import 'package:app/components/cbutton.dart';
-import 'package:app/components/ctext_input.dart';
-import 'package:app/screens/home.dart';
-import 'package:app/constants.dart';
-import 'package:app/screens/configuration/configuration.dart';
+import 'package:app/ui/components/cbutton.dart';
+import 'package:app/ui/components/ctext_input.dart';
+import 'package:app/ui/screens/home.dart';
+import 'package:app/ui/constants.dart';
+import 'package:app/ui/screens/configuration/configuration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

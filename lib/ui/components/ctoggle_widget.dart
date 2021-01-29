@@ -67,7 +67,7 @@ class _CToggleWidgetState extends State<CToggleWidget> {
   @override
   void initState() {
     super.initState();
-    _isSelected = new List<bool>.filled(widget.children.length, false, growable: true);
+    _isSelected = List<bool>.filled(widget.children.length, false, growable: true);
     _currentIndex = widget.defaultSelectedIndex ?? 0;
     _isSelected[_currentIndex] = true;
 
@@ -81,7 +81,7 @@ class _CToggleWidgetState extends State<CToggleWidget> {
     }
     setState(() {
       _currentIndex = index;
-      for (int i = 0; i < _isSelected.length; i++) {
+      for (var i = 0; i < _isSelected.length; i++) {
         _isSelected[i] = (i == index);
       }
     });
@@ -92,7 +92,7 @@ class _CToggleWidgetState extends State<CToggleWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: widget.children.map((element) {
-        final int index = widget.children.indexOf(element);
+        final index = widget.children.indexOf(element);
 
         return Container(
           padding: EdgeInsets.only(right: widget.spacePadding),

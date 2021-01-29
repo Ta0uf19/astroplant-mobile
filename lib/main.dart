@@ -1,7 +1,7 @@
-import 'package:app/util/constants.dart';
-import 'package:app/screens/splash/welcome.dart';
-import 'package:flutter/material.dart';
 
+import 'package:app/ui/constants.dart';
+import 'package:app/ui/screens/splash/welcome.dart';
+import 'package:flutter/material.dart';
 
 
 void main() {

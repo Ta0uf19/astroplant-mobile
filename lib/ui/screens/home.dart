@@ -1,9 +1,9 @@
-import 'package:app/components/cbottom_nav.dart';
-import 'package:app/custom_icons.dart';
-import 'package:app/screens/command/command.dart';
-import 'package:app/screens/configuration/configuration.dart';
-import 'package:app/screens/dashboard/dashboard.dart';
-import 'package:app/constants.dart';
+import 'package:app/ui/components/cbottom_nav.dart';
+import 'package:app/ui/constants.dart';
+import 'package:app/ui/custom_icons.dart';
+import 'package:app/ui/screens/command/command.dart';
+import 'package:app/ui/screens/configuration/configuration.dart';
+import 'package:app/ui/screens/dashboard/dashboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

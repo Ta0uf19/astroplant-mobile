@@ -59,7 +59,7 @@ class _CTextInputState extends State<CTextInput> {
         obscureText: widget.isPasswordType && _obscureText,
         style: TextStyle(
             fontSize: widget.fontSize,
-            fontFamily: "Larsseit",
+            fontFamily: 'Larsseit',
             color: widget.textColor,
             fontWeight: FontWeight.w600
         ),

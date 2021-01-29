@@ -126,19 +126,19 @@ class IconStyle {
 
   IconStyle({this.size, this.onSelectSize, this.color, this.onSelectColor});
 
-  getSize() {
+  double getSize() {
     return size ?? defaultSizeIcon;
   }
 
-  getSelectedSize() {
+  double getSelectedSize() {
     return onSelectSize ?? size ?? defaultSizeIcon;
   }
 
-  getColor() {
+  Color getColor() {
     return color ?? defaultColor;
   }
 
-  getSelectedColor() {
+  Color getSelectedColor() {
     return onSelectColor ?? defaultOnSelectColor;
   }
 }

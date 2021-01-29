@@ -1,16 +1,15 @@
-import 'package:app/components/cbottom_nav.dart';
-import 'package:app/components/cbutton.dart';
-import 'package:app/components/ccard.dart';
-import 'package:app/components/ccolumn_text.dart';
-import 'package:app/components/cheader.dart';
-import 'package:app/constants.dart';
-import 'package:app/screens/configuration/configuration.dart';
-import 'package:app/screens/configuration/edit_rules.dart';
+import 'package:app/ui/components/cbottom_nav.dart';
+import 'package:app/ui/components/cbutton.dart';
+import 'package:app/ui/components/ccard.dart';
+import 'package:app/ui/components/ccolumn_text.dart';
+import 'package:app/ui/components/cheader.dart';
+import 'package:app/ui/constants.dart';
+import 'package:app/ui/custom_icons.dart';
+import 'package:app/ui/screens/configuration/configuration.dart';
+import 'package:app/ui/screens/configuration/edit_rules.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../custom_icons.dart';
 
 class EditConfigurationScreen extends StatefulWidget {
   @override
@@ -23,8 +22,8 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    ThemeData themeData = Theme.of(context);
+    var size = MediaQuery.of(context).size;
+    var themeData = Theme.of(context);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -37,7 +36,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
         iconStyle: IconStyle(size: 23),
         index: 2,
       ),
-      appBar: CHeader.buildAppBarWithCButton(context: context,title: "Edit Configuration"),
+      appBar: CHeader.buildAppBarWithCButton(context: context,title: 'Edit Configuration'),
       body: ListView.builder(
           itemCount: 1,
           itemBuilder: (BuildContext context, int block) {
@@ -59,7 +58,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Description",
+                            'Description',
                             style: themeData.textTheme.subtitle1
                                 .copyWith(color: CColors.white),
                           ),
@@ -68,7 +67,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              "Beta testing phase, it is important to regularly check you are running the late, kit software. Please check you are running the latest version",
+                              'Beta testing phase, it is important to regularly check you are running the late, kit software. Please check you are running the latest version',
                               style: themeData.textTheme.subtitle2,
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
@@ -87,14 +86,14 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Peripherals",
+                          'Peripherals',
                           style: themeData.textTheme.headline3,
                         ),
                         CButton(
                           width: 55,
                           height: 25,
                           padding: EdgeInsets.all(5),
-                          text: "Add",
+                          text: 'Add',
                           textStyle: themeData.textTheme.headline5
                               .copyWith(color: CColors.black),
                           colorBackground: CColors.primary,
@@ -121,9 +120,9 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                             body: Row(
                               children: [
                                 CColumnText(
-                                  title: "Temp",
-                                  subTitle: "Identifier : #127",
-                                  description: "Virtual temperature sensor",
+                                  title: 'Temp',
+                                  subTitle: 'Identifier : #127',
+                                  description: 'Virtual temperature sensor',
                                   colorText: Colors.white,
                                 ),
                               ],
@@ -137,7 +136,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                                 child: btnMenu
                               ),
                               onTap: () {
-                                print("onTap called.");
+                                print('onTap called.');
                               },
                             )
                         ),
@@ -148,7 +147,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     child: Text(
-                      "More",
+                      'More',
                       textAlign: TextAlign.start,
                       style: themeData.textTheme.headline3,
                     ),
@@ -158,7 +157,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                     child: CButton(
                       height: 56,
                       padding: EdgeInsets.all(5),
-                      text: "Edit rules",
+                      text: 'Edit rules',
                       colorBackground: CColors.black,
                       borderColor: CColors.white,
                       textStyle: themeData.textTheme.headline3.copyWith(color: CColors.white),
@@ -178,7 +177,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                     child: CButton(
                       height: 56,
                       padding: EdgeInsets.all(5),
-                      text: "Delete Configuration",
+                      text: 'Delete Configuration',
                       colorBackground: CColors.black,
                       textStyle: themeData.textTheme.headline3.copyWith(color: CColors.white),
                       borderColor: Colors.red,
@@ -218,15 +217,15 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
     );
 
     // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
+    var alert = AlertDialog(
       title: Text(
-        "Delete",
+        'Delete',
         style: themeData.textTheme.headline3.copyWith(
           color: CColors.black,
         ),
       ),
       content: Text(
-        "Are you sure you want to permanently remove this configuration ?",
+        'Are you sure you want to permanently remove this configuration ?',
         style: themeData.textTheme.subtitle1.copyWith(
           color: CColors.black,
         ),
@@ -253,7 +252,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
       choiceAction(value);
     },
     child: SvgPicture.asset(
-      "assets/icons/menu.svg",
+      'assets/icons/menu.svg',
       width: 20,
       height: 20,
     ),
