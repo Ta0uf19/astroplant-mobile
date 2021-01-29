@@ -3,7 +3,7 @@ import 'package:app/custom_icons.dart';
 import 'package:app/screens/command/command.dart';
 import 'package:app/screens/configuration/configuration.dart';
 import 'package:app/screens/dashboard/dashboard.dart';
-import 'package:app/util/constants.dart';
+import 'package:app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

@@ -5,7 +5,7 @@ import 'package:app/components/ccard_peripheral.dart';
 import 'package:app/components/cheader.dart';
 import 'package:app/components/ctoggle_widget.dart';
 import 'package:app/components/cline_chart.dart';
-import 'package:app/util/constants.dart';
+import 'package:app/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

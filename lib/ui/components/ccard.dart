@@ -1,4 +1,4 @@
-import 'package:app/util/constants.dart';
+import 'package:app/constants.dart';
 import 'package:flutter/material.dart';
 
 const Color defaultColorBackground = Colors.white;

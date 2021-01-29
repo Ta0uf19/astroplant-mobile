@@ -5,7 +5,7 @@ import 'package:app/components/cheader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:app/custom_icons.dart';
-import 'package:app/util/constants.dart';
+import 'package:app/constants.dart';
 
 class CommandScreen extends StatefulWidget {
   @override

@@ -4,7 +4,7 @@ import 'package:app/components/ccolumn_text.dart';
 import 'package:app/components/cheader.dart';
 import 'package:app/components/ctext_input.dart';
 import 'package:app/components/ctoggle_switch.dart';
-import 'package:app/util/constants.dart';
+import 'package:app/constants.dart';
 import 'package:app/screens/configuration/edit_configuration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

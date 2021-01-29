@@ -1,5 +1,5 @@
 import 'package:app/components/cbutton.dart';
-import 'package:app/util/constants.dart';
+import 'package:app/constants.dart';
 import 'package:app/screens/auth/login.dart';
 import 'package:app/screens/auth/register.dart';
 import 'package:flutter/cupertino.dart';
