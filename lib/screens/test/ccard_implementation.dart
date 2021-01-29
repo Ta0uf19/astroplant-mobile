@@ -23,9 +23,9 @@ class _CCardImplementationState extends State<CCardImplementation> {
       body: Container(
         width: size.width,
         padding: EdgeInsets.only(
-            left: CPadding.DEFAULT_PADDING_SMALL,
-            right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-            top: CPadding.DEFAULT_PADDING_SMALL),
+            left: CPadding.defaultSmall,
+            right: CPadding.defaultSidesSmall,
+            top: CPadding.defaultSmall),
         child: ListView(
           children: <Widget>[
             //HeaderWithSearch(size: size),
@@ -37,12 +37,12 @@ class _CCardImplementationState extends State<CCardImplementation> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       CCard(
-                        width: size.width / 2 - 3 * CPadding.DEFAULT_PADDING_SMALL,
+                        width: size.width / 2 - 3 * CPadding.defaultSmall,
                         body: Container(color: Colors.blue,),
                         onPressed: () {},
                       ),
                       CCard(
-                        width: size.width / 2 - 3 * CPadding.DEFAULT_PADDING_SMALL,
+                        width: size.width / 2 - 3 * CPadding.defaultSmall,
                         body: CColumnText(
                           title: "Temp",
                           subTitle: "Identifier : #127",
@@ -62,7 +62,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
-                          width: size.width / 2 - 3 * CPadding.DEFAULT_PADDING_SMALL,
+                          width: size.width / 2 - 3 * CPadding.defaultSmall,
                           child: CCard(
                             body: Container(
                               color: Colors.blue,
@@ -77,7 +77,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                           ),
                         ),
                         Container(
-                          width: size.width / 2 - 3 * CPadding.DEFAULT_PADDING_SMALL,
+                          width: size.width / 2 - 3 * CPadding.defaultSmall,
                           child: CCard(
                             body: Container(
                               color: Colors.blue,

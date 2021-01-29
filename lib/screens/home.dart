@@ -29,7 +29,7 @@ class _HomeState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CColors.COLOR_BLACK,
+      backgroundColor: CColors.black,
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

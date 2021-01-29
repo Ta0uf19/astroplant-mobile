@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: CColors.COLOR_BLACK,
+      backgroundColor: CColors.black,
       appBar: AppBar(
         elevation: 0,
       ),
@@ -29,17 +29,17 @@ class _LoginScreenState extends State<LoginScreen> {
         width: double.infinity,
         height: double.infinity,
         padding: EdgeInsets.only(
-            left: CPadding.DEFAULT_PADDING_SIDES,
-            right: CPadding.DEFAULT_PADDING_SIDES,
-            top: CPadding.DEFAULT_PADDING,
-            bottom: CPadding.DEFAULT_PADDING),
+            left: CPadding.defaultSides,
+            right: CPadding.defaultSides,
+            top: CPadding.defaultPadding,
+            bottom: CPadding.defaultPadding),
         child: Stack(
           children: [
             Column(
               children: [
                 Container(
                   alignment: Alignment.topCenter,
-                  margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING * 3),
+                  margin: EdgeInsets.only(bottom: CPadding.defaultPadding * 3),
                   child: Text(
                     "Log In",
                     style: themeData.textTheme.headline1,
@@ -47,14 +47,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                      const EdgeInsets.only(bottom: CPadding.defaultSmall),
                   child: CTextInput(
                     textHint: "Email",
                   ),
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                      const EdgeInsets.only(bottom: CPadding.defaultSmall),
                   child: CTextInput(
                       textHint: "Password", isPasswordType: true),
                 ),
@@ -81,12 +81,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultPadding),
                     child: CButton(
                       text: "Sign In",
                       textStyle: themeData.textTheme.headline3
-                          .copyWith(color: CColors.COLOR_BLACK),
-                      colorBackground: CColors.COLOR_GREEN,
+                          .copyWith(color: CColors.black),
+                      colorBackground: CColors.primary,
                       height: 56,
                       borderRadius: BorderRadius.circular(28),
                       onPressed: () {

@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
       title: 'Astroplant',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: CColors.COLOR_BLACK,
-        backgroundColor: CColors.COLOR_BLACK,
-        accentColor: CColors.COLOR_GREEN,
+        primaryColor: CColors.black,
+        backgroundColor: CColors.black,
+        accentColor: CColors.primary,
         textTheme: TEXT_THEME_DEFAULT,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Larsseit'

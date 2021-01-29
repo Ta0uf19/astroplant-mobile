@@ -45,8 +45,8 @@ class CHeader {
           child: CButton(
             text: "Kit1 : AFC58",
             textStyle: TextStyle(
-                color: CColors.COLOR_BLACK, fontWeight: FontWeight.w700, fontSize: 15),
-            colorBackground: CColors.COLOR_GREEN,
+                color: CColors.black, fontWeight: FontWeight.w700, fontSize: 15),
+            colorBackground: CColors.primary,
             borderRadius: BorderRadius.only(
                 bottomLeft: const Radius.circular(40.0),
                 topLeft: const Radius.circular(40.0)),
@@ -76,19 +76,19 @@ class CHeader {
           child: Container(
             width: size.width,
             padding: EdgeInsets.only(
-                left: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                top: CPadding.DEFAULT_PADDING,
-                bottom: CPadding.DEFAULT_PADDING),
+                left: CPadding.defaultSidesSmall,
+                right: CPadding.defaultSidesSmall,
+                top: CPadding.defaultPadding,
+                bottom: CPadding.defaultPadding),
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                  margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                   alignment: Alignment.centerLeft,
                   child: Text(
                     "List of kits",
                     style: themeData.textTheme.headline3
-                        .copyWith(color: CColors.COLOR_BLACK),
+                        .copyWith(color: CColors.black),
                   ),
                 ),
                 ListView.builder(
@@ -97,7 +97,7 @@ class CHeader {
                   itemCount: 2,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                      margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                       child: CCard(
                         height: 100,
                         borderRadius: 7,
@@ -113,29 +113,29 @@ class CHeader {
                               title: "Kit #251",
                               subTitle: "Rabat, Morocco",
                               description: "Some text for the description",
-                              colorText: CColors.COLOR_BLACK,
+                              colorText: CColors.black,
                             ),
                           ],
                         ),
-                        colorBackground: CColors.COLOR_WHITE,
+                        colorBackground: CColors.white,
                         onPressed: () {},
                       ),
                     );
                   },
                 ),
                 Container(
-                  margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                  margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                   child: CButton(
                     height: 100,
                     padding: EdgeInsets.all(7),
                     text: "Create new Kit",
                     textStyle: themeData.textTheme.headline3
-                        .copyWith(color: CColors.COLOR_GREY_MEDIUM),
+                        .copyWith(color: CColors.greyMedium),
                     colorBackground: Colors.transparent,
                     suffixIcon: Icon(
                       Icons.add,
                       size: 36,
-                      color: CColors.COLOR_GREY_MEDIUM,
+                      color: CColors.greyMedium,
                     ),
                     prefixIcon: SvgPicture.asset(
                       "assets/icons/kit_empty.svg",
@@ -143,7 +143,7 @@ class CHeader {
                       height: 50,
                     ),
                     borderWidth: 1,
-                    borderColor: CColors.COLOR_GREY_LIGHT,
+                    borderColor: CColors.greyLight,
                     borderRadius: BorderRadius.circular(8),
                     onPressed: () {},
                   ),
@@ -151,9 +151,9 @@ class CHeader {
                 CButton(
                   height: 56,
                   text: "Sign Out",
-                  colorBackground: CColors.COLOR_GREY_DARK,
+                  colorBackground: CColors.greyDark,
                   textStyle: themeData.textTheme.headline3
-                      .copyWith(color: CColors.COLOR_WHITE),
+                      .copyWith(color: CColors.white),
                   borderRadius: BorderRadius.circular(28),
                   onPressed: () {
                     Navigator.push(

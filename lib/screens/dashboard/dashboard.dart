@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:app/components/cbutton.dart';
-import 'package:app/components/ccard_metric.dart';
+import 'package:app/components/ccard_peripheral.dart';
 import 'package:app/components/cheader.dart';
 import 'package:app/components/ctoggle_widget.dart';
 import 'package:app/components/cline_chart.dart';
@@ -22,40 +22,40 @@ class DashboardScreen extends StatelessWidget {
           Container(
               width: size.width,
               padding: EdgeInsets.only(
-                  left: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                  right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                  top: CPadding.DEFAULT_PADDING_SMALL),
+                  left: CPadding.defaultSidesSmall,
+                  right: CPadding.defaultSidesSmall,
+                  top: CPadding.defaultSmall),
               child: Column(children: [
                 Container(
                   child: Text(
                       "Realtime", style: themeData.textTheme.headline3
                   ),
                   alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                  padding: EdgeInsets.only(bottom: CPadding.defaultSmall),
                 ),
                 Container(
                   height: 260,
-                  margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING),
+                  margin: EdgeInsets.only(bottom: CPadding.defaultPadding),
                   child: ListView(
                     // This next line does the trick.
                     scrollDirection: Axis.horizontal,
                     children: <Widget>[
                       CToggleWidget(onPressed: (index) { log("card pressed $index "); }, children: [
-                        CCardMetric(
+                        CCardPeripheral(
                           title: "Air Co² Sensor",
                           subtitle: "Carbon concentration",
                           measure: "550",
                           unit: "ppm",
                           onPressed: () {},
                         ),
-                        CCardMetric(
+                        CCardPeripheral(
                           title: "Temperature",
                           subtitle: "Temperature",
                           measure: "18",
                           unit: "°C",
                           onPressed: () {},
                         ),
-                        CCardMetric(
+                        CCardPeripheral(
                           title: "Air Co² Sensor",
                           subtitle: "Carbon concentration",
                           measure: "550",
@@ -77,7 +77,7 @@ class DashboardScreen extends StatelessWidget {
                           textAlign: TextAlign.end,
                       ),
                       alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                      padding: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     ),
                     CToggleWidget(
                       onPressed: (index) {

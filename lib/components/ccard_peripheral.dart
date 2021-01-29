@@ -2,7 +2,7 @@ import 'package:app/components/ctoggle_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CCardMetric extends StatelessWidget implements IToggleable<CCardMetric> {
+class CCardPeripheral extends StatelessWidget implements IToggleable<CCardPeripheral> {
   final String title;
   final String subtitle;
   final String measure;
@@ -13,7 +13,7 @@ class CCardMetric extends StatelessWidget implements IToggleable<CCardMetric> {
 
   final bool activeToggle;
 
-  const CCardMetric({
+  const CCardPeripheral({
     Key key,
     @required this.title,
     @required this.measure,
@@ -23,7 +23,7 @@ class CCardMetric extends StatelessWidget implements IToggleable<CCardMetric> {
     this.activeToggle = false,
   }) : super(key: key);
 
-  CCardMetric copyWith({
+  CCardPeripheral copyWith({
     String title,
     String subtitle,
     String measure,
@@ -40,7 +40,7 @@ class CCardMetric extends StatelessWidget implements IToggleable<CCardMetric> {
       return this;
     }
 
-    return new CCardMetric(
+    return new CCardPeripheral(
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
       measure: measure ?? this.measure,

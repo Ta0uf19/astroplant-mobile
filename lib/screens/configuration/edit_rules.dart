@@ -44,14 +44,14 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
             return Container(
               width: size.width,
               padding: EdgeInsets.only(
-                left: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                top: CPadding.DEFAULT_PADDING_SMALL,
+                left: CPadding.defaultSidesSmall,
+                right: CPadding.defaultSidesSmall,
+                top: CPadding.defaultSmall,
               ),
               child: Column(
                 children: [
                   Container(
-                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -65,8 +65,8 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           padding: EdgeInsets.all(5),
                           text: "Add",
                           textStyle: themeData.textTheme.headline5
-                              .copyWith(color: CColors.COLOR_BLACK),
-                          colorBackground: CColors.COLOR_GREEN,
+                              .copyWith(color: CColors.black),
+                          colorBackground: CColors.primary,
                           suffixIcon: Icon(
                             Icons.add,
                             size: 16,
@@ -86,7 +86,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                     itemCount: 2,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                        margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                         child: CCard(
                             height: 100,
                             borderRadius: 7,
@@ -117,7 +117,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                     },
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -131,8 +131,8 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           padding: EdgeInsets.all(5),
                           text: "Add",
                           textStyle: themeData.textTheme.headline5
-                              .copyWith(color: CColors.COLOR_BLACK),
-                          colorBackground: CColors.COLOR_GREEN,
+                              .copyWith(color: CColors.black),
+                          colorBackground: CColors.primary,
                           suffixIcon: Icon(
                             Icons.add,
                             size: 16,
@@ -152,7 +152,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                     itemCount: 1,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                        margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                         child: CCard(
                           height: 100,
                           borderRadius: 7,
@@ -183,7 +183,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                     },
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -197,8 +197,8 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           padding: EdgeInsets.all(5),
                           text: "Add",
                           textStyle: themeData.textTheme.headline5
-                              .copyWith(color: CColors.COLOR_BLACK),
-                          colorBackground: CColors.COLOR_GREEN,
+                              .copyWith(color: CColors.black),
+                          colorBackground: CColors.primary,
                           suffixIcon: Icon(
                             Icons.add,
                             size: 16,
@@ -215,7 +215,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                     itemCount: 3,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                        margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                         child: CCard(
                           borderRadius: 7,
                           height: 100,
@@ -263,28 +263,28 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
           child: Container(
             width: size.width,
             padding: EdgeInsets.only(
-                left: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                top: CPadding.DEFAULT_PADDING,
-                bottom: CPadding.DEFAULT_PADDING),
+                left: CPadding.defaultSidesSmall,
+                right: CPadding.defaultSidesSmall,
+                top: CPadding.defaultPadding,
+                bottom: CPadding.defaultPadding),
             child: Column(
               children: [
                 Container(
                   alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                  margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                   child: Text(
                     title,
                     style: themeData.textTheme.headline3
-                        .copyWith(color: CColors.COLOR_BLACK),
+                        .copyWith(color: CColors.black),
                   ),
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                  margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                   child: Text(
                     "Choose a peripheral to add",
                     style: themeData.textTheme.subtitle2
-                        .copyWith(color: CColors.COLOR_BLACK),
+                        .copyWith(color: CColors.black),
                   ),
                 ),
                 ListView.builder(
@@ -293,7 +293,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                   itemCount: 2,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                      margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                       child: CCard(
                         height: 100,
                         borderRadius: 7,
@@ -303,11 +303,11 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                               title: "Temp",
                               subTitle: "Identifier : #127",
                               description: "Virtual temperature sensor",
-                              colorText: CColors.COLOR_BLACK,
+                              colorText: CColors.black,
                             ),
                           ],
                         ),
-                        colorBackground: CColors.COLOR_WHITE,
+                        colorBackground: CColors.white,
                         onPressed: () {},
                       ),
                     );

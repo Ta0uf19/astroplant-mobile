@@ -179,10 +179,10 @@ Show three texts in column (title, subtitle and description)
 
 
 
- ## Card Metric (CCardMetric)
+ ## Peripheral Card (CCardPeripheral)
  ![]( https://i.ibb.co/8xVKPzL/image.png)
 ```dart
-CCardMetric(  
+CCardPeripheral(  
   title: "Air Co² Sensor",  
   subtitle: "Carbon concentration",  
   measure: "550",  
@@ -199,26 +199,26 @@ A horizontal set of toggle buttons that can be used with any Widget.
 ![](https://i.ibb.co/qrjZ76B/U8ux5-Nxdx-Q.gif)
 
 #### Sample Usage
-  With **CCardMetric** as children
+  With **CCardPeripheral** as children
 ```dart
 CToggleWidget(
    onPressed: (index) { log("card pressed $index "); }, 
    children: [  
-      CCardMetric(  
+      CCardPeripheral(  
          title: "Air Co² Sensor",  
          subtitle: "Carbon concentration",  
          measure: "550",  
          unit: "ppm",  
          onPressed: () {},  
       ),  
-      CCardMetric(  
+      CCardPeripheral(  
          title: "Temperature",  
          subtitle: "Temperature",  
          measure: "18",  
          unit: "°C",  
          onPressed: () {},  
       ),  
-      CCardMetric(  
+      CCardPeripheral(  
          title: "Air Co² Sensor",  
          subtitle: "Carbon concentration",  
          measure: "550",  

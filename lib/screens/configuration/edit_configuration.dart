@@ -44,14 +44,14 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
             return Container(
               width: size.width,
               padding: EdgeInsets.only(
-                left: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                right: CPadding.DEFAULT_PADDING_SIDES_SMALL,
-                top: CPadding.DEFAULT_PADDING_SMALL,
+                left: CPadding.defaultSidesSmall,
+                right: CPadding.defaultSidesSmall,
+                top: CPadding.defaultSmall,
               ),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING),
+                    padding: const EdgeInsets.only(bottom: CPadding.defaultPadding),
                     child: CCard(
                       //height: 100,
                       body: Column(
@@ -61,10 +61,10 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                           Text(
                             "Description",
                             style: themeData.textTheme.subtitle1
-                                .copyWith(color: CColors.COLOR_WHITE),
+                                .copyWith(color: CColors.white),
                           ),
                           SizedBox(
-                            height: CPadding.DEFAULT_PADDING_SMALL,
+                            height: CPadding.defaultSmall,
                           ),
                           Expanded(
                             child: Text(
@@ -82,7 +82,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -96,8 +96,8 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                           padding: EdgeInsets.all(5),
                           text: "Add",
                           textStyle: themeData.textTheme.headline5
-                              .copyWith(color: CColors.COLOR_BLACK),
-                          colorBackground: CColors.COLOR_GREEN,
+                              .copyWith(color: CColors.black),
+                          colorBackground: CColors.primary,
                           suffixIcon: Icon(
                             Icons.add,
                             size: 16,
@@ -114,7 +114,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                     itemCount: 4,
                     itemBuilder: (context, index) {
                       return Container(
-                        margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                        margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                         child: CCard(
                             height: 100,
                             borderRadius: 7,
@@ -146,7 +146,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                   ),
                   Container(
                     alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     child: Text(
                       "More",
                       textAlign: TextAlign.start,
@@ -154,14 +154,14 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     child: CButton(
                       height: 56,
                       padding: EdgeInsets.all(5),
                       text: "Edit rules",
-                      colorBackground: CColors.COLOR_BLACK,
-                      borderColor: CColors.COLOR_WHITE,
-                      textStyle: themeData.textTheme.headline3.copyWith(color: CColors.COLOR_WHITE),
+                      colorBackground: CColors.black,
+                      borderColor: CColors.white,
+                      textStyle: themeData.textTheme.headline3.copyWith(color: CColors.white),
                       borderWidth: 1,
                       borderRadius: BorderRadius.circular(28),
                       onPressed: () {
@@ -174,13 +174,13 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(bottom: CPadding.DEFAULT_PADDING_SMALL),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                     child: CButton(
                       height: 56,
                       padding: EdgeInsets.all(5),
                       text: "Delete Configuration",
-                      colorBackground: CColors.COLOR_BLACK,
-                      textStyle: themeData.textTheme.headline3.copyWith(color: CColors.COLOR_WHITE),
+                      colorBackground: CColors.black,
+                      textStyle: themeData.textTheme.headline3.copyWith(color: CColors.white),
                       borderColor: Colors.red,
                       borderWidth: 1,
                       borderRadius: BorderRadius.circular(28),
@@ -222,13 +222,13 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
       title: Text(
         "Delete",
         style: themeData.textTheme.headline3.copyWith(
-          color: CColors.COLOR_BLACK,
+          color: CColors.black,
         ),
       ),
       content: Text(
         "Are you sure you want to permanently remove this configuration ?",
         style: themeData.textTheme.subtitle1.copyWith(
-          color: CColors.COLOR_BLACK,
+          color: CColors.black,
         ),
         textAlign: TextAlign.center,
       ),
