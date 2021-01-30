@@ -15,4 +15,9 @@ class Endpoints {
 
   /// List all quantity types.
   static const String quantityTypesUrl = baseUrl + '/quantity-types';
+
+  // Authenticate by username and password.
+  static const String authenticateUrl = baseUrl + '/me/auth';
+
+
 }
