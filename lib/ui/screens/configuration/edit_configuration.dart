@@ -1,8 +1,8 @@
-import 'package:app/ui/components/cbottom_nav.dart';
-import 'package:app/ui/components/cbutton.dart';
-import 'package:app/ui/components/ccard.dart';
-import 'package:app/ui/components/ccolumn_text.dart';
-import 'package:app/ui/components/cheader.dart';
+import 'package:app/ui/widgets/cbottom_nav.dart';
+import 'package:app/ui/widgets/cbutton.dart';
+import 'package:app/ui/widgets/ccard.dart';
+import 'package:app/ui/widgets/ccolumn_text.dart';
+import 'package:app/ui/widgets/cheader.dart';
 import 'package:app/ui/constants.dart';
 import 'package:app/ui/custom_icons.dart';
 import 'package:app/ui/screens/configuration/configuration.dart';
@@ -210,7 +210,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
     );
 
     Widget cancelButton = FlatButton(
-      child: Text("Cancel"),
+      child: Text('Cancel'),
       onPressed: () {
         Navigator.of(context).pop();
       },

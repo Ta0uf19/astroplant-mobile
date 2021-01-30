@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CColors {
+  // make class non-instantiable
+  CColors._();
+
   static const primary = Color.fromRGBO(53, 232, 124, 1.0);
   static const white = Colors.white;
   static const black = Colors.black;
@@ -10,6 +13,9 @@ class CColors {
 }
 
 class CPadding {
+  // make class non-instantiable
+  CPadding._();
+
   static const double defaultSides = 36.0;
   static const double defaultSidesSmall = 24.0;
   static const double defaultPadding = 27.0;

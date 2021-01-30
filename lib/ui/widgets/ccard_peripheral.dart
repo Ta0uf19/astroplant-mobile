@@ -1,4 +1,4 @@
-import 'package:app/ui/components/ctoggle_widget.dart';
+import 'package:app/ui/widgets/ctoggle_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

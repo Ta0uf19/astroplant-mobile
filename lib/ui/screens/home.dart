@@ -1,4 +1,4 @@
-import 'package:app/ui/components/cbottom_nav.dart';
+import 'package:app/ui/widgets/cbottom_nav.dart';
 import 'package:app/ui/constants.dart';
 import 'package:app/ui/custom_icons.dart';
 import 'package:app/ui/screens/command/command.dart';
@@ -19,7 +19,7 @@ class _HomeState extends State<HomeScreen> {
 
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[DashboardScreen(), CommandScreen(), ConfigurationScreen()];
+  static final List<Widget> _widgetOptions = <Widget>[DashboardScreen(), CommandScreen(), ConfigurationScreen()];
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

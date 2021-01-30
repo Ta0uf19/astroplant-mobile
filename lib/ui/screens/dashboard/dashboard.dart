@@ -1,9 +1,9 @@
 import 'dart:developer';
-import 'package:app/ui/components/cbutton.dart';
-import 'package:app/ui/components/ccard_peripheral.dart';
-import 'package:app/ui/components/cheader.dart';
-import 'package:app/ui/components/ctoggle_widget.dart';
-import 'package:app/ui/components/cline_chart.dart';
+import 'package:app/ui/widgets/cbutton.dart';
+import 'package:app/ui/widgets/ccard_peripheral.dart';
+import 'package:app/ui/widgets/cheader.dart';
+import 'package:app/ui/widgets/ctoggle_widget.dart';
+import 'package:app/ui/widgets/cline_chart.dart';
 import 'package:app/ui/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

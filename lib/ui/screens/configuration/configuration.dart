@@ -1,8 +1,8 @@
-import 'package:app/ui/components/ccard.dart';
-import 'package:app/ui/components/ccolumn_text.dart';
-import 'package:app/ui/components/cheader.dart';
-import 'package:app/ui/components/ctext_input.dart';
-import 'package:app/ui/components/ctoggle_switch.dart';
+import 'package:app/ui/widgets/ccard.dart';
+import 'package:app/ui/widgets/ccolumn_text.dart';
+import 'package:app/ui/widgets/cheader.dart';
+import 'package:app/ui/widgets/ctext_input.dart';
+import 'package:app/ui/widgets/ctoggle_switch.dart';
 import 'package:app/ui/constants.dart';
 import 'package:app/ui/screens/configuration/edit_configuration.dart';
 import 'package:flutter/cupertino.dart';

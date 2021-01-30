@@ -1,4 +1,5 @@
 
+import 'package:app/models/peripheral.dart';
 import 'package:flutter/cupertino.dart';
 
 class KitConfiguration {
@@ -10,6 +11,7 @@ class KitConfiguration {
   String controllerSymbol;
   bool active;
   bool neverUsed;
+  List<Peripheral> peripherals;
 
   KitConfiguration({
     @required this.id,
@@ -19,6 +21,7 @@ class KitConfiguration {
     @required this.controllerSymbol,
     @required this.active,
     @required this.neverUsed,
+    @required this.peripherals
   });
 
   factory KitConfiguration.fromJson(Map<String, dynamic> map) {
@@ -30,19 +33,21 @@ class KitConfiguration {
       controllerSymbol: map['controllerSymbol'] as String,
       active: map['active'] as bool,
       neverUsed: map['neverUsed'] as bool,
+      peripherals: map['peripherals'] as List<Peripheral>
     );
   }
 
   Map<String, dynamic> toJson() {
     // ignore: unnecessary_cast
     return {
-      'id': this.id,
-      'kitId': this.kitId,
-      'description': this.description,
-      'controllerSymbolLocation': this.controllerSymbolLocation,
-      'controllerSymbol': this.controllerSymbol,
-      'active': this.active,
-      'neverUsed': this.neverUsed,
+      'id': id,
+      'kitId': kitId,
+      'description': description,
+      'controllerSymbolLocation':controllerSymbolLocation,
+      'controllerSymbol': controllerSymbol,
+      'active': active,
+      'neverUsed': neverUsed,
+      'peripherals': peripherals
     } as Map<String, dynamic>;
   }
 }

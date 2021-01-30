@@ -1,10 +1,12 @@
 
+import 'package:app/di/injector_provider.dart';
 import 'package:app/ui/constants.dart';
 import 'package:app/ui/screens/splash/welcome.dart';
 import 'package:flutter/material.dart';
 
 
 void main() {
+  setupInjection();
   runApp(MyApp());
 }
 

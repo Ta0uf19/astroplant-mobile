@@ -27,6 +27,17 @@ dependencies:
   modal_bottom_sheet: ^1.0.0+1
   fl_chart: ^0.12.2
 
+  # A powerful Http client for Dart
+  dio: ^3.0.10
+
+  # Utilities for working with URIs in Dart
+  uri: ^0.11.4
+
+  # The following adds the shared pref as a dependency in your application
+  shared_preferences: ^0.5.12+4
+
+  # Dependency injection
+  get_it: ^5.0.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -37,7 +48,6 @@ dev_dependencies:
     sdk: flutter
   effective_dart: ^1.0.0
   pedantic: ^1.0.0
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
