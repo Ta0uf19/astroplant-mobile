@@ -1,4 +1,45 @@
-# Astroplant UI Flutter Widgets
+# Astroplant mobile application
+
+### Libraries & Tools Used
+* [Dio](https://github.com/flutterchina/dio)
+* [Dependency Injection](https://github.com/fluttercommunity/get_it)
+* [URI](https://github.com/google/uri.dart)
+* [FL Chart](https://github.com/imaNNeoFighT/fl_chart)
+
+### Project structure
+Here is the folder structure we have been using in this project
+
+```
+lib/
+|- di/
+|- models/
+|- repositories/
+	|- api/
+|- ui/
+	|- widgets/
+	|- components/
+	|- screens/
+|- utils/
+|- main.dart
+|- routes.dart
+```
+
+Now, lets dive into the lib folder which has the main code for the application.
+
+```
+1- di - Dependency injection
+2- models - Contains the data layer of your project
+3- repositories - Contains network/api, local/persistence
+4- ui  —  Contains all the ui of your project
+	- widgets  —  Contains the common widgets for your applications. For example, Button, TextField etc.
+	- components - Specific components to the application build with custom widgets
+	- screens - Pages of the application, each screen is located in a separate folder making it easy to combine group of files related to that particular screen. 
+5- util  —  Contains the utilities/common functions of your application.
+7- routes.dart  —  This file contains all the routes for your application.
+8- main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
+```
+
+# Astroplant Custom Widgets
 
 ## Documentation
   - [Input Form (CTextInput)](#input-form)
