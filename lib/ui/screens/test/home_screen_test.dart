@@ -26,7 +26,7 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
     var size = MediaQuery.of(context).size;
     var themeData = Theme.of(context);
 
-  return Scaffold(      backgroundColor: Colors.black,
+  return Scaffold(      backgroundColor: CColors.black,
       appBar: CHeader.buildAppBarWithCButton(context: context, title: "Configuration"),
 
       bottomNavigationBar: CBottomNav(
@@ -117,7 +117,7 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
                         title: "Temp",
                         subTitle: "Identifier : #127",
                         description: "Virtual temperature sensor",
-                        colorText: Colors.white,
+                        colorText: CColors.white,
                         spaceBetween: 8,
                       ),
                     ],
@@ -147,8 +147,8 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
                   padding: const EdgeInsets.all(8.0),
                   child: CButton(
                     text: "Edit rules",
-                    textStyle: themeData.textTheme.headline3.copyWith(color: CColors.black),
-                    borderColor: Colors.black,
+                      textStyle: themeData.textTheme.headline3.copyWith(color: CColors.black),
+                    borderColor: CColors.black,
                     colorBackground: Colors.transparent,
                     borderRadius: BorderRadius.circular(28),
                     onPressed: () {},
@@ -176,7 +176,7 @@ class _HomeScreenTestState extends State<HomeScreenTest> {
                     borderRadius: BorderRadius.only(
                         bottomLeft: const Radius.circular(40.0),
                         topLeft: const Radius.circular(40.0)),
-                    prefixIcon: Icon(Icons.autorenew, color: Colors.black),
+                    prefixIcon: Icon(Icons.autorenew, color: CColors.black),
                     onPressed: () {},
                   ),
                 ),

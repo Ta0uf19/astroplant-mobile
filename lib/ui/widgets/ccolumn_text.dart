@@ -1,9 +1,11 @@
+import 'package:app/ui/constants.dart';
 import 'package:flutter/material.dart';
 
-const Color defaultColorText = Colors.black;
-const String defaultTitle = 'Title';
-const String defaultsSubTitle = 'SubTitle';
-const String defaultDescription = 'Description';
+
+const Color defaultColorText = CColors.black;
+const String defaultTitle = "Title";
+const String defaultsSubTitle = "SubTitle";
+const String defaultDescription = "Description";
 const double defaultSpaceBetween = 0.0;
 const double defaultFontSize = 15.0;
 

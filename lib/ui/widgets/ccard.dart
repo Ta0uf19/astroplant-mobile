@@ -1,7 +1,7 @@
 import 'package:app/ui/constants.dart';
 import 'package:flutter/material.dart';
 
-const Color defaultColorBackground = Colors.white;
+const Color defaultColorBackground = CColors.white;
 const double defaultWidth = null;
 const double defaultHeight = 120;
 const double defaultBorderRadius = 20;

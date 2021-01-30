@@ -94,8 +94,8 @@ Now, lets dive into the lib folder which has the main code for the application.
 ```dart
 CButton(
 	text: "Kit1 : AFC58",
-	colorText: Colors.black,
-	colorBackground: CColors.COLOR_GREEN,
+	colorText: CColors.black,
+	colorBackground: CColors.primary,
 	fontSize: 16,
 	height: 40,
 	borderRadius: BorderRadius.only(
@@ -103,7 +103,7 @@ CButton(
 	    topLeft: const Radius.circular(40.0)),
 	prefixIcon: Icon(
 	    Icons.autorenew,
-	    color: Colors.black
+	    color: CColors.black
 	),
 	onPressed: () { },
       ),
@@ -124,7 +124,7 @@ CButton(
 			],  
 		    iconStyle: IconStyle(size: 23),
 		    color: Colors.green,
-		    backgroundColor: Colors.black
+		    backgroundColor: CColors.black
 		),
 	)
 ```
@@ -152,7 +152,7 @@ CButton(
                       title: "Temp",
                       subTitle: "Identifier : #127",
                       description: "Virtual temperature sensor",
-                      colorText: Colors.white,
+                      colorText: CColors.white,
 
                     ),
                     colorBackground: Color.fromRGBO(29, 29, 29, 1),
@@ -165,7 +165,7 @@ CButton(
                       alignment: Alignment.topRight,
                       child: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
-                        color: Colors.white,
+                        color: CColors.white,
                         onPressed: () {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: const Text('onPressed suffixWidget'),
@@ -203,7 +203,7 @@ Show three texts in column (title, subtitle and description)
                       title: "Temp",
                       subTitle: "Identifier : #127",
                       description: "Virtual temperature sensor",
-                      colorText: Colors.white,
+                      colorText: CColors.white,
 
                     ),
 ```

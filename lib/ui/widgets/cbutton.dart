@@ -13,9 +13,9 @@ const Color defaultBorderColor = Colors.transparent;
 
 /// disabled (not selected) toggle style
 const Color disabledColorBackground = Colors.transparent;
-const Color disabledBorderColor = Colors.white;
+const Color disabledBorderColor = CColors.white;
 const double disabledBorderWidth = 3.0;
-const Color disabledColorText = Colors.white;
+const Color disabledColorText = CColors.white;
 
 class CButton extends StatelessWidget implements IToggleable<CButton> {
 
@@ -49,7 +49,7 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
     this.borderColor = defaultBorderColor,
     this.prefixIcon,
     this.suffixIcon,
-    this.splashColor = Colors.white70,
+    this.splashColor = CColors.white,
     this.activeToggle = false,
     this.disabled = false
   }) : super(key: key);

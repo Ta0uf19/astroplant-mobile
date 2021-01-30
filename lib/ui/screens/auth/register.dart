@@ -96,11 +96,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       height: 56,
                       borderRadius: BorderRadius.circular(28),
                       onPressed: () {
-                        Navigator.pushAndRemoveUntil(
+                        Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(builder: (context) =>
-                                LoginScreen()),
-                                (Route<dynamic> route) => false
+                                LoginScreen())
                         );
                       },
                     ),

@@ -19,7 +19,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
         .size;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: CColors.black,
       body: Container(
         width: size.width,
         padding: EdgeInsets.only(
@@ -47,7 +47,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                           title: "Temp",
                           subTitle: "Identifier : #127",
                           description: "Virtual temperature sensor",
-                          colorText: Colors.white,
+                          colorText: CColors.white,
 
                         ),
                         colorBackground: Color.fromRGBO(29, 29, 29, 1),
@@ -109,7 +109,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       title: "Temp",
                       subTitle: "Identifier : #127",
                       description: "Virtual temperature sensor",
-                      colorText: Colors.white,
+                      colorText: CColors.white,
 
                     ),
                     colorBackground: Color.fromRGBO(29, 29, 29, 1),
@@ -123,7 +123,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       alignment: Alignment.topRight,
                       child: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
-                        color: Colors.white,
+                        color: CColors.white,
 
                         onPressed: () {
                           Scaffold.of(context).showSnackBar(SnackBar(
@@ -150,7 +150,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                         ],
                       ),
                     ),
-                    colorBackground: Colors.white,
+                    colorBackground: CColors.white,
 
                     onPressed: () {
                       Scaffold.of(context).showSnackBar(SnackBar(
@@ -178,7 +178,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                           title: "Temp",
                           subTitle: "Identifier : #127",
                           description: "Virtual temperature sensorsensorsensor sensorsensor sensor ",
-                          colorText: Colors.white,
+                          colorText: CColors.white,
 
                         ),
                       ],
@@ -193,7 +193,7 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       alignment: Alignment.topRight,
                       child: IconButton(
                         icon: Icon(Icons.arrow_forward_ios),
-                        color: Colors.white,
+                        color: CColors.white,
                         onPressed: () {
                           Scaffold.of(context).showSnackBar(SnackBar(
                             content: const Text('onPressed suffixWidget'),

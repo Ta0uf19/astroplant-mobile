@@ -156,9 +156,10 @@ class CHeader {
                       .copyWith(color: CColors.white),
                   borderRadius: BorderRadius.circular(28),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => WelcomeScreen()),
+                            (Route<dynamic> route) => false
                     );
                   },
                 ),

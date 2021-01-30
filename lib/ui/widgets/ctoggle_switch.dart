@@ -1,3 +1,4 @@
+import 'package:app/ui/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,8 @@ class CToggleSwitch extends StatefulWidget {
     @required this.onToggle,
     this.activeColor = primaryColor,
     this.inactiveColor = Colors.grey,
-    this.activeTextColor = Colors.white70,
-    this.inactiveTextColor = Colors.white70,
+    this.activeTextColor = CColors.white,
+    this.inactiveTextColor = CColors.white,
     this.toggleColor,
     this.activeToggleColor,
     this.inactiveToggleColor,
@@ -121,13 +122,13 @@ class CToggleSwitch extends StatefulWidget {
   /// The color to use on the text value when the switch is on.
   /// This parameter is only necessary when [showOnOff] property is true.
   ///
-  /// Defaults to [Colors.white70].
+  /// Defaults to [CColors.white70].
   final Color activeTextColor;
 
   /// The color to use on the text value when the switch is off.
   /// This parameter is only necessary when [showOnOff] property is true.
   ///
-  /// Defaults to [Colors.white70].
+  /// Defaults to [CColors.white70].
   final Color inactiveTextColor;
 
   /// The font weight to use on the text value when the switch is on.
@@ -144,7 +145,7 @@ class CToggleSwitch extends StatefulWidget {
 
   /// The color to use on the toggle of the switch.
   ///
-  /// Defaults to [Colors.white].
+  /// Defaults to [CColors.white].
   ///
   /// If the [activeSwitchBorder] or [inactiveSwitchBorder] is used, this property must be null.
   final Color toggleColor;
@@ -152,13 +153,13 @@ class CToggleSwitch extends StatefulWidget {
   /// The color to use on the toggle of the switch when the given value is true.
   ///
   /// If [inactiveToggleColor] is used and this property is null. the value of
-  /// [Colors.white] will be used.
+  /// [CColors.white] will be used.
   final Color activeToggleColor;
 
   /// The color to use on the toggle of the switch when the given value is false.
   ///
   /// If [activeToggleColor] is used and this property is null. the value of
-  /// [Colors.white] will be used.
+  /// [CColors.white] will be used.
   final Color inactiveToggleColor;
 
   /// The given width of the switch.
@@ -281,8 +282,8 @@ class _CToggleSwitchState extends State<CToggleSwitch>
 
   @override
   Widget build(BuildContext context) {
-    Color _toggleColor = Colors.white;
-    Color _switchColor = Colors.white;
+    Color _toggleColor = CColors.white;
+    Color _switchColor = CColors.white;
     Border _switchBorder;
     Border _toggleBorder;
     Widget _icon;
@@ -340,7 +341,7 @@ class _CToggleSwitchState extends State<CToggleSwitch>
                     height: widget.toggleSize,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: _toggleColor ?? Colors.white,
+                      color: _toggleColor ?? CColors.white,
                       border: _toggleBorder,
                     ),
                     child: _icon,

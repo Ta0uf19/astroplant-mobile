@@ -23,7 +23,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     final appName = "ASTROPLANT";
     final logIn = "I already have an account";
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: CColors.black,
       appBar: AppBar(
         elevation: 0,
       ),

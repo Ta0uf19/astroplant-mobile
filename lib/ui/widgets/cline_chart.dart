@@ -1,4 +1,5 @@
 
+import 'package:app/ui/constants.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -130,7 +131,7 @@ class _CLineChartState extends State<CLineChart> {
             getDotPainter: (FlSpot spot, double xPercentage, LineChartBarData bar, int index) {
                 return FlDotCirclePainter(
                   radius: 5,
-                  color: Colors.white,
+                  color: CColors.white,
                 );
             }
           ),

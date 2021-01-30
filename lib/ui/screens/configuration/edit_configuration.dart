@@ -26,7 +26,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
     var themeData = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: CColors.black,
       bottomNavigationBar: CBottomNav(
         items: [
           CBottomNavItem(CustomIcons.dashboard),
@@ -120,10 +120,10 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                             body: Row(
                               children: [
                                 CColumnText(
-                                  title: 'Temp',
-                                  subTitle: 'Identifier : #127',
-                                  description: 'Virtual temperature sensor',
-                                  colorText: Colors.white,
+                                  title: "Temp",
+                                  subTitle: "Identifier : #127",
+                                  description: "Virtual temperature sensor",
+                                  colorText: CColors.white,
                                 ),
                               ],
                             ),

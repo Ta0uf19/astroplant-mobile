@@ -1,3 +1,4 @@
+
 import 'package:app/ui/widgets/ccard.dart';
 import 'package:app/ui/widgets/ccolumn_text.dart';
 import 'package:app/ui/widgets/cheader.dart';
@@ -19,7 +20,7 @@ class _CommandScreen extends State<CommandScreen> {
     ThemeData themeData = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: CColors.black,
       appBar:
           CHeader.buildAppBarWithCButton(context: context, title: "Commands"),
       body: ListView.builder(
@@ -44,7 +45,7 @@ class _CommandScreen extends State<CommandScreen> {
                             title: "Kit1",
                             subTitle: "version : 4.2.1",
                             description: "Kit uptime 2 hours",
-                            colorText: Colors.white,
+                            colorText: CColors.white,
                           ),
                         ],
                       ),
@@ -88,7 +89,7 @@ class _CommandScreen extends State<CommandScreen> {
                             title: "Temp",
                             subTitle: "Identifier : #127",
                             description: "Virtual temperature sensor",
-                            colorText: Colors.white,
+                            colorText: CColors.white,
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},
@@ -99,7 +100,7 @@ class _CommandScreen extends State<CommandScreen> {
                             title: "Temp",
                             subTitle: "Identifier : #127",
                             description: "Virtual temperature sensor",
-                            colorText: Colors.white,
+                            colorText: CColors.white,
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},
@@ -110,7 +111,7 @@ class _CommandScreen extends State<CommandScreen> {
                             title: "Temp",
                             subTitle: "Identifier : #127",
                             description: "Virtual temperature sensor",
-                            colorText: Colors.white,
+                            colorText: CColors.white,
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},
@@ -121,7 +122,7 @@ class _CommandScreen extends State<CommandScreen> {
                             title: "Temp",
                             subTitle: "Identifier : #127",
                             description: "Virtual temperature sensor",
-                            colorText: Colors.white,
+                            colorText: CColors.white,
                           ),
                           colorBackground: Color.fromRGBO(29, 29, 29, 1),
                           onPressed: () {},

@@ -1,3 +1,4 @@
+import 'package:app/ui/constants.dart';
 import 'package:app/ui/widgets/ctoggle_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -92,13 +93,13 @@ class CCardPeripheral extends StatelessWidget implements IToggleable<CCardPeriph
                               fontWeight: FontWeight.w800,
                               fontSize: 48,
                               color:
-                                  activeToggle ? Colors.black : Colors.white)),
-                      Text(unit,
+                                  activeToggle ? CColors.black : CColors.white)),
+                      Text(this.unit,
                           style: TextStyle(
                               fontWeight: FontWeight.w800,
                               fontSize: 15,
                               color:
-                                  activeToggle ? Colors.black : Colors.white)),
+                                  activeToggle ? CColors.black : CColors.white)),
                     ],
                   ),
                 ),
@@ -116,13 +117,13 @@ class CCardPeripheral extends StatelessWidget implements IToggleable<CCardPeriph
                               fontWeight: FontWeight.w700,
                               fontSize: 19,
                               color:
-                                  activeToggle ? Colors.black : Colors.white)),
-                      Text(subtitle,
+                                  activeToggle ? CColors.black : CColors.white)),
+                      Text(this.subtitle,
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 13,
                               color:
-                                  activeToggle ? Colors.black : Colors.white)),
+                                  activeToggle ? CColors.black : CColors.white)),
                     ],
                   ),
                 ),

@@ -24,7 +24,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
     ThemeData themeData = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: CColors.black,
       bottomNavigationBar: CBottomNav(
         items: [
           CBottomNavItem(CustomIcons.dashboard),
@@ -95,7 +95,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                                   title: "Temp",
                                   subTitle: "Identifier : #127",
                                   description: "Virtual temperature sensor",
-                                  colorText: Colors.white,
+                                  colorText: CColors.white,
                                 ),
                               ],
                             ),
@@ -161,7 +161,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                                 title: "Temp",
                                 subTitle: "Identifier : #127",
                                 description: "Virtual temperature sensor",
-                                colorText: Colors.white,
+                                colorText: CColors.white,
                               ),
                             ],
                           ),
@@ -224,7 +224,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                                 title: "Temp",
                                 subTitle: "Identifier : #127",
                                 description: "Virtual temperature sensor",
-                                colorText: Colors.white,
+                                colorText: CColors.white,
                               ),
                             ],
                           ),

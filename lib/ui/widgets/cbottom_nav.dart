@@ -1,10 +1,11 @@
 // Copyright (c) 2021 Taoufik Tribki. All rights reserved.
 
+import 'package:app/ui/constants.dart';
 import 'package:flutter/material.dart';
 
-const Color primaryColor = Color(0xFF35E87C);
-const Color defaultColor = Color(0xFF6F717C);
-const Color defaultOnSelectColor = Colors.white;
+const Color primaryColor = CColors.primary;
+const Color defaultColor = CColors.greyMedium;
+const Color defaultOnSelectColor = CColors.white;
 const Color defaultBackground = Color(0xFF1B1E2F);
 const double defaultSizeIcon = 30.0;
 

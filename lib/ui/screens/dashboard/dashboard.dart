@@ -14,7 +14,7 @@ class DashboardScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     ThemeData themeData = Theme.of(context);
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: CColors.black,
         appBar: CHeader.buildAppBarWithCButton(context: context, title: "Dashboard"),
         body: SingleChildScrollView(
             child: Column(children: <Widget>[
