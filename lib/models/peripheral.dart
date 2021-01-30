@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'peripheral.g.dart';
 
+@JsonSerializable()
 class Peripheral {
   int id;
   int kitId;
@@ -7,32 +9,14 @@ class Peripheral {
   int peripheralDefinitionId;
   String name;
 
-  Peripheral({
-    @required this.id,
-    @required this.kitId,
-    @required this.configurationId,
-    @required this.peripheralDefinitionId,
-    @required this.name,
-  });
+  Peripheral(
+    this.id,
+    this.kitId,
+    this.configurationId,
+    this.peripheralDefinitionId,
+    this.name,
+  );
 
-  factory Peripheral.fromJson(Map<String, dynamic> map) {
-    return Peripheral(
-      id: map['id'] as int,
-      kitId: map['kitId'] as int,
-      configurationId: map['configurationId'] as int,
-      peripheralDefinitionId: map['peripheralDefinitionId'] as int,
-      name: map['name'] as String,
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    // ignore: unnecessary_cast
-    return {
-      'id': id,
-      'kitId': kitId,
-      'configurationId': configurationId,
-      'peripheralDefinitionId': peripheralDefinitionId,
-      'name': name,
-    } as Map<String, dynamic>;
-  }
+  factory Peripheral.fromJson(Map<String, dynamic> json) => _$PeripheralFromJson(json);
+  Map<String, dynamic> toJson() => _$PeripheralToJson(this);
 }
