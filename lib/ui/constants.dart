@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Custom color palettes
 class CColors {
   // make class non-instantiable
   CColors._();
@@ -12,6 +13,7 @@ class CColors {
   static const greyLight = Color.fromRGBO(220, 220, 220, 1.0);
 }
 
+// Custom dimensions
 class CPadding {
   // make class non-instantiable
   CPadding._();
@@ -22,7 +24,28 @@ class CPadding {
   static const double defaultSmall = 13.0;
 }
 
-const TextTheme TEXT_THEME_DEFAULT = TextTheme(
+class CFontFamily {
+  CFontFamily._();
+
+  static const String larsseit = 'Larsseit';
+  // static const String productSans = 'ProductSans';
+  // static const String roboto = 'Roboto';
+}
+
+// Dark theme
+final ThemeData themeData =  ThemeData(
+  primaryColor: CColors.black,
+  backgroundColor: CColors.black,
+  accentColor: CColors.primary,
+  textTheme: textTheme,
+  visualDensity: VisualDensity.adaptivePlatformDensity,
+  fontFamily: CFontFamily.larsseit
+);
+
+// Light theme
+// Not implemented
+
+final TextTheme textTheme = TextTheme(
     headline1: TextStyle(
         color: CColors.white, fontWeight: FontWeight.w700, fontSize: 36),
     headline2: TextStyle(

@@ -120,9 +120,9 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                             body: Row(
                               children: [
                                 CColumnText(
-                                  title: "Temp",
-                                  subTitle: "Identifier : #127",
-                                  description: "Virtual temperature sensor",
+                                  title: 'Temp',
+                                  subTitle: 'Identifier : #127',
+                                  description: 'Virtual temperature sensor',
                                   colorText: CColors.white,
                                 ),
                               ],

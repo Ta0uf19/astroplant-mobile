@@ -18,7 +18,7 @@ class CHeader {
         Container(
           margin: EdgeInsets.only(right: 18),
           child: Text(
-            "Activate",
+            'Activate',
             style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
           ),
           alignment: Alignment.center,
@@ -36,7 +36,7 @@ class CHeader {
     );
   }
 
-  static AppBar buildAppBarWithCButton({BuildContext context, String title = ""}) {
+  static AppBar buildAppBarWithCButton({BuildContext context, String title = ''}) {
     return AppBar(
       title: Text(title),
       actions: <Widget>[
@@ -112,7 +112,7 @@ class CHeader {
                             CColumnText(
                               title: 'Kit #251',
                               subTitle: 'Rabat, Morocco',
-                              description: "Some text for the description",
+                              description: 'Some text for the description',
                               colorText: CColors.black,
                             ),
                           ],

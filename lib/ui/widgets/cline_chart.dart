@@ -57,7 +57,7 @@ class _CLineChartState extends State<CLineChart> {
           showTitles: true,
           reservedSize: 22,
           getTextStyles: (value) =>
-          const TextStyle(color: Color(0xff68737d), fontWeight: FontWeight.bold, fontSize: 15, fontFamily: 'Larsseit'),
+          const TextStyle(color: Color(0xff68737d), fontWeight: FontWeight.bold, fontSize: 15, fontFamily: CFontFamily.larsseit),
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:

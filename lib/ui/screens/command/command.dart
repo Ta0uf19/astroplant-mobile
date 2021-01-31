@@ -22,7 +22,7 @@ class _CommandScreen extends State<CommandScreen> {
     return Scaffold(
       backgroundColor: CColors.black,
       appBar:
-          CHeader.buildAppBarWithCButton(context: context, title: "Commands"),
+          CHeader.buildAppBarWithCButton(context: context, title: 'Commands'),
       body: ListView.builder(
           itemCount: 1,
           itemBuilder: (BuildContext context, int block) {
@@ -42,9 +42,9 @@ class _CommandScreen extends State<CommandScreen> {
                       body: Column(
                         children: [
                           CColumnText(
-                            title: "Kit1",
-                            subTitle: "version : 4.2.1",
-                            description: "Kit uptime 2 hours",
+                            title: 'Kit1',
+                            subTitle: 'version : 4.2.1',
+                            description: 'Kit uptime 2 hours',
                             colorText: CColors.white,
                           ),
                         ],

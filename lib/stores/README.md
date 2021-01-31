@@ -1,0 +1,1 @@
+### This directory contains stores for state-management of our application, to connect the reactive data with the UI.

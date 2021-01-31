@@ -16,10 +16,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
-    ThemeData themeData = Theme.of(context);
+    var themeData = Theme.of(context);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -61,18 +58,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     Padding(
                       padding: const EdgeInsets.only(
                           bottom: CPadding.defaultSmall),
-                      child: CTextInput(textHint: "Email",),
+                      child: CTextInput(textHint: 'Email',),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                           bottom: CPadding.defaultSmall),
                       child: CTextInput(
-                          textHint: "Password", isPasswordType: true),
+                          textHint: 'Password', isPasswordType: true),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                           bottom: CPadding.defaultSmall),
-                      child: CTextInput(textHint: "Confirm Password ...",
+                      child: CTextInput(textHint: 'Confirm Password ...',
                           isPasswordType: true),
                     ),
 
@@ -89,7 +86,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   Container(
                     margin: EdgeInsets.only(bottom: CPadding.defaultPadding),
                     child: CButton(
-                      text: "Create an account",
+                      text: 'Create an account',
                       textStyle: themeData.textTheme.headline3.copyWith(
                           color: CColors.black),
                       colorBackground: CColors.primary,
@@ -105,7 +102,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     ),
                   ),
                   Text(
-                    "By creating an account, you are agreeing to our Terms of Service and Privacy Policy",
+                    'By creating an account, you are agreeing to our Terms of Service and Privacy Policy',
                     textAlign: TextAlign.center,
                     style: themeData.textTheme.bodyText2,
                   ),

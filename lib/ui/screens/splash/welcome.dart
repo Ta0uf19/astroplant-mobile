@@ -15,13 +15,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    final ThemeData themeData = Theme.of(context);
+    var size = MediaQuery.of(context).size;
+    final themeData = Theme.of(context);
 
     final textDescription =
-        "Educational citizen science project with the European Space Agency to engage a new generation of space farmers, collect data and ideas for agriculture on Mars";
-    final appName = "ASTROPLANT";
-    final logIn = "I already have an account";
+        'Educational citizen science project with the European Space Agency to engage a new generation of space farmers, collect data and ideas for agriculture on Mars';
+    final appName = 'Astroplant';
+    final logIn = 'I already have an account';
     return Scaffold(
       backgroundColor: CColors.black,
       appBar: AppBar(
@@ -51,7 +51,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Container(
                     margin: EdgeInsets.only(bottom: CPadding.defaultPadding * 2),
                     child: Text(
-                      appName,
+                      appName.toUpperCase(),
                       style: themeData.textTheme.headline1,
                     ),
                   ),
@@ -69,7 +69,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 Container(
                   margin: EdgeInsets.only(bottom: CPadding.defaultPadding),
                   child: CButton(
-                    text: "Hi, Astroplant",
+                    text: 'Hi, Astroplant',
                     textStyle: themeData.textTheme.headline3
                         .copyWith(color: CColors.black),
                     colorBackground: CColors.primary,

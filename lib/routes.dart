@@ -5,10 +5,10 @@ import 'package:flutter/cupertino.dart';
 
 class Routes {
 
-  // make class non-instantiable
+  /// make class non-instantiable
   Routes._();
 
-  //static variables
+  /// static variables
   static const String splash = '/splash';
   static const String login = '/login';
   static const String home = '/home';

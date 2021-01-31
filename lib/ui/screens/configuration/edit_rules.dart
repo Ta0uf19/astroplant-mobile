@@ -20,8 +20,8 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    ThemeData themeData = Theme.of(context);
+    var size = MediaQuery.of(context).size;
+    var themeData = Theme.of(context);
 
     return Scaffold(
       backgroundColor: CColors.black,
@@ -35,7 +35,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
         index: 2,
       ),
       appBar: CHeader.buildAppBarWithCButton(
-          context: context, title: "Config1 Rules"),
+          context: context, title: 'Config1 Rules'),
       body: ListView.builder(
           physics: ClampingScrollPhysics(),
           itemCount: 1,
@@ -55,14 +55,14 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Inputs",
+                          'Inputs',
                           style: themeData.textTheme.headline3,
                         ),
                         CButton(
                           width: 55,
                           height: 25,
                           padding: EdgeInsets.all(5),
-                          text: "Add",
+                          text: 'Add',
                           textStyle: themeData.textTheme.headline5
                               .copyWith(color: CColors.black),
                           colorBackground: CColors.primary,
@@ -73,7 +73,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           borderRadius: BorderRadius.circular(8),
                           onPressed: () {
                             showBottomSheetSelectPeripherals(
-                                title: "List of inputs");
+                                title: 'List of inputs');
                           },
                         ),
                       ],
@@ -92,9 +92,9 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                             body: Row(
                               children: [
                                 CColumnText(
-                                  title: "Temp",
-                                  subTitle: "Identifier : #127",
-                                  description: "Virtual temperature sensor",
+                                  title: 'Temp',
+                                  subTitle: 'Identifier : #127',
+                                  description: 'Virtual temperature sensor',
                                   colorText: CColors.white,
                                 ),
                               ],
@@ -108,7 +108,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                                   child: btnMenu
                               ),
                               onTap: () {
-                                print("onTap called.");
+                                print('onTap called.');
                               },
                             )
                         ),
@@ -121,14 +121,14 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Outputs",
+                          'Outputs',
                           style: themeData.textTheme.headline3,
                         ),
                         CButton(
                           width: 55,
                           height: 25,
                           padding: EdgeInsets.all(5),
-                          text: "Add",
+                          text: 'Add',
                           textStyle: themeData.textTheme.headline5
                               .copyWith(color: CColors.black),
                           colorBackground: CColors.primary,
@@ -139,7 +139,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           borderRadius: BorderRadius.circular(8),
                           onPressed: () {
                             showBottomSheetSelectPeripherals(
-                                title: "List of outputs");
+                                title: 'List of outputs');
                           },
                         ),
                       ],
@@ -158,9 +158,9 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           body: Row(
                             children: [
                               CColumnText(
-                                title: "Temp",
-                                subTitle: "Identifier : #127",
-                                description: "Virtual temperature sensor",
+                                title: 'Temp',
+                                subTitle: 'Identifier : #127',
+                                description: 'Virtual temperature sensor',
                                 colorText: CColors.white,
                               ),
                             ],
@@ -174,7 +174,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                                 child: btnMenu
                             ),
                             onTap: () {
-                              print("onTap called.");
+                              print('onTap called.');
                             },
                           ),
                         ),
@@ -187,14 +187,14 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Rules",
+                          'Rules',
                           style: themeData.textTheme.headline3,
                         ),
                         CButton(
                           width: 55,
                           height: 25,
                           padding: EdgeInsets.all(5),
-                          text: "Add",
+                          text: 'Add',
                           textStyle: themeData.textTheme.headline5
                               .copyWith(color: CColors.black),
                           colorBackground: CColors.primary,
@@ -221,9 +221,9 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                           body: Row(
                             children: [
                               CColumnText(
-                                title: "Temp",
-                                subTitle: "Identifier : #127",
-                                description: "Virtual temperature sensor",
+                                title: 'Temp',
+                                subTitle: 'Identifier : #127',
+                                description: 'Virtual temperature sensor',
                                 colorText: CColors.white,
                               ),
                             ],
@@ -237,7 +237,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                                 child: btnMenu
                             ),
                             onTap: () {
-                              print("onTap called.");
+                              print('onTap called.');
                             },
                           ),
                         ),
@@ -251,9 +251,9 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
     );
   }
 
-  void showBottomSheetSelectPeripherals({title = "List of peripherals"}) {
-    Size size = MediaQuery.of(context).size;
-    ThemeData themeData = Theme.of(context);
+  void showBottomSheetSelectPeripherals({title = 'List of peripherals'}) {
+    var size = MediaQuery.of(context).size;
+    var themeData = Theme.of(context);
     showBarModalBottomSheet(
       bounce: true,
       context: context,
@@ -281,7 +281,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                   alignment: Alignment.centerLeft,
                   margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
                   child: Text(
-                    "Choose a peripheral to add",
+                    'Choose a peripheral to add',
                     style: themeData.textTheme.subtitle2
                         .copyWith(color: CColors.black),
                   ),
@@ -299,9 +299,9 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
                         body: Row(
                           children: [
                             CColumnText(
-                              title: "Temp",
-                              subTitle: "Identifier : #127",
-                              description: "Virtual temperature sensor",
+                              title: 'Temp',
+                              subTitle: 'Identifier : #127',
+                              description: 'Virtual temperature sensor',
                               colorText: CColors.black,
                             ),
                           ],
@@ -323,7 +323,7 @@ class _EditRulesScreenState extends State<EditRulesScreen> {
       choiceAction(value);
     },
     child: SvgPicture.asset(
-      "assets/icons/menu.svg",
+      'assets/icons/menu.svg',
       width: 20,
       height: 20,
     ),
