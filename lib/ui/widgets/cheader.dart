@@ -11,7 +11,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 // StatelessWidget
 class CHeader {
-  static AppBar buildAppBarWithCToggle({String title = ""}) {
+  static AppBar buildAppBarWithCToggle({String title = ''}) {
     return AppBar(
       title: Text(title),
       actions: <Widget>[
@@ -39,6 +39,7 @@ class CHeader {
   static AppBar buildAppBarWithCButton({BuildContext context, String title = ''}) {
     return AppBar(
       title: Text(title),
+      titleSpacing: CPadding.defaultSidesSmall,
       actions: <Widget>[
         Container(
           padding: EdgeInsets.only(top: 6, bottom: 6),

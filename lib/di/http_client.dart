@@ -13,11 +13,8 @@ class HttpClient {
 
     _client
       ..options.baseUrl = Endpoints.baseUrl
-    // ..options.connectTimeout = Endpoints.connectionTimeout
-    // ..options.receiveTimeout = Endpoints.receiveTimeout
-      ..options.headers = {'Content-Type': 'application/json; charset=utf-8'}
-      ..interceptors.add(LogInterceptor(
-        request: true,
+      ..options.headers = {'Content-Type': 'application/json; charset=utf-8', 'Accept': 'application/json'}
+      ..interceptors.add(LogInterceptor(request: true,
         responseBody: true,
         requestBody: true,
         requestHeader: true,
@@ -27,16 +24,25 @@ class HttpClient {
           onRequest: (Options options) async {
             // getting shared pref instance
             var prefs = await SharedPreferences.getInstance();
-
-            // getting token
             var token = prefs.getString('auth_token');
-
-            if (token != null) {
-              options.headers.putIfAbsent('Authorization', () => token);
-            } else {
-              print('Auth token is null');
-            }
+            options.headers['Authorization'] = 'Bearer ' + token;
           },
+          onError: (DioError error) async {
+            if (error.response?.statusCode == 403) {
+              _client.interceptors.requestLock.lock();
+              _client.interceptors.responseLock.lock();
+              var options = error.response.request;
+
+              /// send request to api to refresh token you can use repository auth.
+              ///
+              var token = '';
+              options.headers['Authorization'] = 'Bearer ' + token;
+
+              _client.interceptors.requestLock.unlock();
+              _client.interceptors.responseLock.unlock();
+              return _client.request(options.path, options: options);
+            }
+          }
         ),
       );
   }
