@@ -7,7 +7,8 @@ class UserAuthenticationApi {
 
   /// injecting dio instance
   final HttpClient _http = inject<HttpClient>();
-  final UserAuthenticationApi userAuthenticationApi = inject<UserAuthenticationApi>(param1: 5);
+
+  ///final UserAuthenticationApi userAuthenticationApi = inject<UserAuthenticationApi>(param1: 5);
 
   String _endpoint;
   String username;

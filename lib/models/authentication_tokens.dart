@@ -1,7 +1,8 @@
-
-import 'package:app/models/peripheral.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'authentication_tokens.g.dart';
 
+@JsonSerializable()
 class AuthenticationTokens {
 
   String refreshToken;
@@ -12,18 +13,11 @@ class AuthenticationTokens {
     @required this.accessToken,
   });
 
-  factory AuthenticationTokens.fromJson(Map<String, dynamic> map) {
-    return AuthenticationTokens(
-        refreshToken: map['refreshToken'] as String,
-        accessToken: map['accessToken'] as String,
-    );
-  }
+  factory AuthenticationTokens.fromJson(Map<String, dynamic> json) => _$AuthenticationTokensFromJson(json);
+  Map<String, dynamic> toJson() => _$AuthenticationTokensToJson(this);
 
-  Map<String, dynamic> toJson() {
-    // ignore: unnecessary_cast
-    return {
-      'refreshToken': refreshToken,
-      'accessToken':accessToken,
-    } as Map<String, dynamic>;
+  @override
+  String toString() {
+    return 'AuthenticationTokens{refreshToken: $refreshToken, accessToken: $accessToken}';
   }
 }

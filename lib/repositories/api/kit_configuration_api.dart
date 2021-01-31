@@ -7,7 +7,7 @@ class KitConfigurationApi {
 
   /// injecting dio instance
   final HttpClient _http = inject<HttpClient>();
-  final KitConfigurationApi kitConfigurationApi = inject<KitConfigurationApi>(param1: 5);
+  ///final KitConfigurationApi kitConfigurationApi = inject<KitConfigurationApi>(param1: 5);
 
   String _endpoint;
   String kitSerial;

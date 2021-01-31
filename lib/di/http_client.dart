@@ -15,7 +15,8 @@ class HttpClient {
       ..options.baseUrl = Endpoints.baseUrl
     // ..options.connectTimeout = Endpoints.connectionTimeout
     // ..options.receiveTimeout = Endpoints.receiveTimeout
-      ..options.headers = {'Content-Type': 'application/json; charset=utf-8'}
+      ..options.headers = {'Content-Type': 'application/json; charset=utf-8',
+        'Accept': 'application/json'}
       ..interceptors.add(LogInterceptor(
         request: true,
         responseBody: true,
@@ -40,6 +41,28 @@ class HttpClient {
         ),
       );
   }
+
+  void refreshToken() async {
+    _client.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (Options options) async {
+          // getting shared pref instance
+          var prefs = await SharedPreferences.getInstance();
+
+          // getting token
+          var token = prefs.getString('auth_token');
+
+          if (token != null) {
+            options.headers.putIfAbsent('Authorization', () => token);
+          } else {
+            print('Auth token is null');
+          }
+        },
+      ),
+    );
+  }
+
+
 
   Future<Response> get(String url) => _client.get(url);
   Future<Response> post(String url, { dynamic body }) => _client.post(url, data: body);
