@@ -16,8 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    final ThemeData themeData = Theme.of(context);
+    final themeData = Theme.of(context);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -41,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: Alignment.topCenter,
                   margin: EdgeInsets.only(bottom: CPadding.defaultPadding * 3),
                   child: Text(
-                    "Log In",
+                    'Log In',
                     style: themeData.textTheme.headline1,
                   ),
                 ),
@@ -49,14 +48,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding:
                       const EdgeInsets.only(bottom: CPadding.defaultSmall),
                   child: CTextInput(
-                    textHint: "Email",
+                    textHint: 'Email',
                   ),
                 ),
                 Padding(
                   padding:
                       const EdgeInsets.only(bottom: CPadding.defaultSmall),
                   child: CTextInput(
-                      textHint: "Password", isPasswordType: true),
+                      textHint: 'Password', isPasswordType: true),
                 ),
                 /*GestureDetector(
                   onTap: () {
@@ -83,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     margin: EdgeInsets.only(bottom: CPadding.defaultPadding),
                     child: CButton(
-                      text: "Sign In",
+                      text: 'Sign In',
                       textStyle: themeData.textTheme.headline3
                           .copyWith(color: CColors.black),
                       colorBackground: CColors.primary,
@@ -100,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Text(
-                    "By signing in, you are agreeing to our Terms of Service and Privacy Policy",
+                    'By signing in, you are agreeing to our Terms of Service and Privacy Policy',
                     textAlign: TextAlign.center,
                     style: themeData.textTheme.bodyText2,
                   ),

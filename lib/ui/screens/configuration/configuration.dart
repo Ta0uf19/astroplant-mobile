@@ -19,8 +19,8 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    ThemeData themeData = Theme.of(context);
+    var size = MediaQuery.of(context).size;
+    var themeData = Theme.of(context);
     return Scaffold(
       backgroundColor: CColors.black,
       appBar: CHeader.buildAppBarWithCButton(context: context, title: "Configuration"),
@@ -54,9 +54,9 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                       width: 20,
                     ),
                     CColumnText(
-                      title: "Configuration",
-                      subTitle: "Identifier : #127",
-                      description: "Never used",
+                      title: 'Configuration',
+                      subTitle: 'Identifier : #127',
+                      description: 'Never used',
                       colorText: CColors.white,
                     ),
                   ],
@@ -94,13 +94,13 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
   showAddConfigurationDialog(BuildContext context, ThemeData themeData) {
     // set up the button
     Widget okButton = FlatButton(
-      child: Text("Create"),
+      child: Text('Create'),
       onPressed: () {},
     );
 
     //set up text field
     Widget descriptionText = CTextInput(
-      textHint: "Description",
+      textHint: 'Description',
       backgroundColor: CColors.greyLight,
       textColor: CColors.black,
     );
