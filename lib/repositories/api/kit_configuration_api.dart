@@ -1,13 +1,12 @@
 import 'package:app/di/http_client.dart';
 import 'package:app/di/injector_provider.dart';
-import 'package:app/models/kit_configuration.dart';
+import 'package:app/models/kit/kit_configuration.dart';
 import 'package:app/repositories/api/endpoints.dart';
 
 class KitConfigurationApi {
 
   /// injecting dio instance
   final HttpClient _http = inject<HttpClient>();
-  final KitConfigurationApi kitConfigurationApi = inject<KitConfigurationApi>(param1: 5);
 
   String _endpoint;
   String kitSerial;

@@ -1,5 +1,5 @@
 
-import 'package:app/models/peripheral.dart';
+import 'file:///C:/Users/Taoufik/Desktop/Android%20TP/Flutter/app/lib/models/kit/peripheral.dart';
 import 'package:flutter/cupertino.dart';
 
 class KitConfiguration {

@@ -1,4 +1,4 @@
-import 'package:app/models/kit_configuration.dart';
+import 'package:app/models/kit/kit_configuration.dart';
 import 'package:app/repositories/api/kit_configuration_api.dart';
 
 class KitConfigurationRepository {
