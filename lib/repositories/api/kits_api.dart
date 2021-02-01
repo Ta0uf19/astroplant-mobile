@@ -3,7 +3,7 @@ import 'package:app/di/injector_provider.dart';
 import 'package:app/models/kit/kit_configuration.dart';
 import 'package:app/repositories/api/endpoints.dart';
 
-class KitApi {
+class KitsApi {
 
   /// injecting dio instance
   final HttpClient _http = inject<HttpClient>();

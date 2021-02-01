@@ -14,7 +14,22 @@ class AuthRepository {
     // set auth token
     var pref = await SharedPreferences.getInstance();
     await pref.setString('auth_token', result.accessToken);
+    await pref.setString('refresh_token', result.refreshToken);
     return result;
+  }
+
+  /// Obtain an access token from a refresh token.
+  Future<String> refreshToken() async {
+    // getting shared pref instance
+    var pref = await SharedPreferences.getInstance();
+    var refreshToken = pref.getString('refresh_token');
+    if(refreshToken == null) {
+      throw Exception('Failed to refresh access token, you need to login again');
+    }
+    var newToken = await _api.refreshToken(refreshToken);
+    // set new token
+    await pref.setString('auth_token', newToken);
+    return newToken;
   }
 
   /// Your user information.
@@ -22,12 +37,11 @@ class AuthRepository {
     return await _api.me();
   }
 
-
-  // Logout
+  /// Logout
   void logout() async {
-    // set auth token
     var pref = await SharedPreferences.getInstance();
     await pref.remove('auth_token');
+    await pref.remove('refresh_token');
   }
 
 }
