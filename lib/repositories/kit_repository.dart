@@ -1,21 +1,15 @@
 
+import 'package:app/di/injector_provider.dart';
+import 'package:app/models/kit/kit_configuration.dart';
+
+import 'api/kit_api.dart';
+
 class KitRepository {
 
+    final KitApi _api = inject<KitApi>();
 
-    /// Create a new kit
-    save() {
-        /// To implement
+    /// Returns list of configuration of a kit in response
+    Future<KitConfiguration> getConfiguration(String kitSerial) async {
+        return await _api.getConfiguration(kitSerial);
     }
-
-    /// Get info for a specific kit
-    findById(String kitSerial) {
-      /// To implement
-    }
-
-    /// Delete a kit
-    delete(String kitSerial) {
-      /// To implement
-
-    }
-
 }
