@@ -1,8 +1,8 @@
-import 'package:app/di/http_client.dart';
+import 'package:app/data/http_client.dart';
 import 'package:app/di/injector_provider.dart';
 import 'package:app/models/kit/aggregate_measurement.dart';
 import 'package:app/models/kit/kit_configuration.dart';
-import 'package:app/repositories/api/endpoints.dart';
+import 'package:app/data/endpoints.dart';
 
 class KitsApi {
 

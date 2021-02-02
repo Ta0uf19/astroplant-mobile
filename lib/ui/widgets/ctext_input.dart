@@ -39,6 +39,7 @@ class CTextInput extends StatefulWidget {
     this.fontSize = 18
   }) : super(key: key);
 
+  @override
   _CTextInputState createState() => _CTextInputState();
 
 }

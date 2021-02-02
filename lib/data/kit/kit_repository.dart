@@ -3,7 +3,7 @@ import 'package:app/di/injector_provider.dart';
 import 'package:app/models/kit/aggregate_measurement.dart';
 import 'package:app/models/kit/kit_configuration.dart';
 
-import 'api/kits_api.dart';
+import 'kits_api.dart';
 
 class KitRepository {
 

@@ -41,7 +41,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 Container(
                   margin: EdgeInsets.only(bottom: CPadding.defaultPadding * 3),
                   child: Text(
-                    "Join the community",
+                    'Join the community',
                     textAlign: TextAlign.center,
                     style: themeData.textTheme.headline1,
                   ),
@@ -52,7 +52,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       padding: const EdgeInsets.only(
                           bottom: CPadding.defaultSmall),
                       child: CTextInput(
-                        textHint: "Username",
+                        textHint: 'Username',
                       ),
                     ),
                     Padding(

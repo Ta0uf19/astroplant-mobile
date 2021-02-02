@@ -1,7 +1,7 @@
 import 'package:app/di/injector_provider.dart';
 import 'package:app/models/definitions/peripheral_definition.dart';
 import 'package:app/models/definitions/quantity_type.dart';
-import 'package:app/repositories/api/definitions_api.dart';
+import 'package:app/data/definitions/definitions_api.dart';
 
 class DefinitionRepository {
 

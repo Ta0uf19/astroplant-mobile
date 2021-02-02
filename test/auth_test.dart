@@ -1,5 +1,5 @@
 import 'package:app/di/injector_provider.dart';
-import 'package:app/repositories/auth_repository.dart';
+import 'package:app/data/auth/auth_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

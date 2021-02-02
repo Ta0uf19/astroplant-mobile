@@ -56,6 +56,7 @@ class CButton extends StatelessWidget implements IToggleable<CButton> {
 
   /// Used for toggle active/disable state
 
+  @override
   CButton copyWith({
     String text,
     Color colorText,

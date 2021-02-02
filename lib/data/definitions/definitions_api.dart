@@ -1,8 +1,8 @@
-import 'package:app/di/http_client.dart';
+import 'package:app/data/http_client.dart';
 import 'package:app/di/injector_provider.dart';
 import 'package:app/models/definitions/peripheral_definition.dart';
 import 'package:app/models/definitions/quantity_type.dart';
-import 'endpoints.dart';
+import 'package:app/data/endpoints.dart';
 
 class DefinitionsApi {
 

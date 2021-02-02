@@ -44,9 +44,9 @@ class _CCardImplementationState extends State<CCardImplementation> {
                       CCard(
                         width: size.width / 2 - 3 * CPadding.defaultSmall,
                         body: CColumnText(
-                          title: "Temp",
-                          subTitle: "Identifier : #127",
-                          description: "Virtual temperature sensor",
+                          title: 'Temp',
+                          subTitle: 'Identifier : #127',
+                          description: 'Virtual temperature sensor',
                           colorText: CColors.white,
 
                         ),
@@ -106,9 +106,9 @@ class _CCardImplementationState extends State<CCardImplementation> {
                   padding: const EdgeInsets.only(bottom : 8.0),
                   child: CCard(
                     body: CColumnText(
-                      title: "Temp",
-                      subTitle: "Identifier : #127",
-                      description: "Virtual temperature sensor",
+                      title: 'Temp',
+                      subTitle: 'Identifier : #127',
+                      description: 'Virtual temperature sensor',
                       colorText: CColors.white,
 
                     ),
@@ -175,9 +175,9 @@ class _CCardImplementationState extends State<CCardImplementation> {
                           size: 50,),
                         SizedBox(width: 20,),
                         CColumnText(
-                          title: "Temp",
-                          subTitle: "Identifier : #127",
-                          description: "Virtual temperature sensorsensorsensor sensorsensor sensor ",
+                          title: 'Temp',
+                          subTitle: 'Identifier : #127',
+                          description: 'Virtual temperature sensorsensorsensor sensorsensor sensor ',
                           colorText: CColors.white,
 
                         ),

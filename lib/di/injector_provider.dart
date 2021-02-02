@@ -1,10 +1,10 @@
-import 'package:app/di/http_client.dart';
-import 'package:app/repositories/api/auth_api.dart';
-import 'package:app/repositories/api/definitions_api.dart';
-import 'package:app/repositories/api/kits_api.dart';
-import 'package:app/repositories/auth_repository.dart';
-import 'package:app/repositories/definitions_repository.dart';
-import 'package:app/repositories/kit_repository.dart';
+import 'package:app/data/definitions/definitions_repository.dart';
+import 'package:app/data/http_client.dart';
+import 'package:app/data/kit/kit_repository.dart';
+import 'package:app/data/auth/auth_api.dart';
+import 'package:app/data/definitions/definitions_api.dart';
+import 'package:app/data/kit/kits_api.dart';
+import 'package:app/data/auth/auth_repository.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt inject = GetIt.I;

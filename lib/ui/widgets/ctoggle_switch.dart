@@ -375,7 +375,7 @@ class _CToggleSwitchState extends State<CToggleSwitch>
   Widget get _activeText {
     if (widget.showOnOff) {
       return Text(
-        (widget?.activeText != null) ? widget.activeText : "On",
+        (widget?.activeText != null) ? widget.activeText : 'On',
         style: TextStyle(
           color: widget.activeTextColor,
           fontWeight: _activeTextFontWeight,
@@ -384,13 +384,13 @@ class _CToggleSwitchState extends State<CToggleSwitch>
       );
     }
 
-    return Text("");
+    return Text('');
   }
 
   Widget get _inactiveText {
     if (widget.showOnOff) {
       return Text(
-        (widget?.inactiveText != null) ? widget.inactiveText : "Off",
+        (widget?.inactiveText != null) ? widget.inactiveText : 'Off',
         style: TextStyle(
           color: widget.inactiveTextColor,
           fontWeight: _inactiveTextFontWeight,
@@ -400,7 +400,7 @@ class _CToggleSwitchState extends State<CToggleSwitch>
       );
     }
 
-    return Text("");
+    return Text('');
   }
 
 }

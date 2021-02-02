@@ -23,7 +23,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
     var themeData = Theme.of(context);
     return Scaffold(
       backgroundColor: CColors.black,
-      appBar: CHeader.buildAppBarWithCButton(context: context, title: "Configuration"),
+      appBar: CHeader.buildAppBarWithCButton(context: context, title: 'Configuration'),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showAddConfigurationDialog(context, themeData);
@@ -108,7 +108,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
     // set up the AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text(
-        "My title",
+        'My title',
         style: themeData.textTheme.headline3.copyWith(
           color: CColors.black,
         ),

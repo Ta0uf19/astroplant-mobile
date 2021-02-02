@@ -1,6 +1,6 @@
 
-import 'package:app/repositories/api/endpoints.dart';
-import 'package:app/repositories/auth_repository.dart';
+import 'package:app/data/endpoints.dart';
+import 'package:app/data/auth/auth_repository.dart';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -1,7 +1,7 @@
 import 'package:app/di/injector_provider.dart';
 import 'package:app/models/auth/authentication_tokens.dart';
 import 'package:app/models/auth/user.dart';
-import 'package:app/repositories/api/auth_api.dart';
+import 'package:app/data/auth/auth_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepository {

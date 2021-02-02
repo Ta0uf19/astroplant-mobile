@@ -20,7 +20,7 @@ class CBottomNav extends StatefulWidget {
   CBottomNav({
     this.index,
     this.onTap,
-    this.items,
+    @required this.items,
     this.iconStyle,
     this.backgroundColor = defaultBackground,
     this.color = primaryColor
