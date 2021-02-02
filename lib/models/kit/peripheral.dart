@@ -19,4 +19,9 @@ class Peripheral {
 
   factory Peripheral.fromJson(Map<String, dynamic> json) => _$PeripheralFromJson(json);
   Map<String, dynamic> toJson() => _$PeripheralToJson(this);
+
+  @override
+  String toString() {
+    return 'Peripheral{id: $id, kitId: $kitId, configurationId: $configurationId, peripheralDefinitionId: $peripheralDefinitionId, name: $name}';
+  }
 }

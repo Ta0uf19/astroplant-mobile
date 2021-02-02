@@ -13,7 +13,7 @@ mixin _$PeripheralStore on _PeripheralStore, Store {
       ActionController(name: '_PeripheralStore');
 
   @override
-  void addPeripheral(PeripheralDefinitions peripheral) {
+  void addPeripheral(PeripheralDefinition peripheral) {
     final _$actionInfo = _$_PeripheralStoreActionController.startAction(
         name: '_PeripheralStore.addPeripheral');
     try {

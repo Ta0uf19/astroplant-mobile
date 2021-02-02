@@ -6,21 +6,6 @@ part of 'quantity_type.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-QuantityTypes _$QuantityTypesFromJson(Map<String, dynamic> json) {
-  return QuantityTypes(
-    (json['quantityTypes'] as List)
-        ?.map((e) =>
-            e == null ? null : QuantityType.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
-}
-
-Map<String, dynamic> _$QuantityTypesToJson(QuantityTypes instance) =>
-    <String, dynamic>{
-      'quantityTypes':
-          instance.quantityTypes?.map((e) => e?.toJson())?.toList(),
-    };
-
 QuantityType _$QuantityTypeFromJson(Map<String, dynamic> json) {
   return QuantityType(
     id: json['id'] as int,

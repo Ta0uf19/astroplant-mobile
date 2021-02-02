@@ -1,17 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'peripheral_definition.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class PeripheralDefinitions {
-  List<PeripheralDefinition> peripheralDefinitions;
-
-  PeripheralDefinitions(List<PeripheralDefinition> peripheralDefinitions):
-        peripheralDefinitions = peripheralDefinitions ?? <PeripheralDefinition>[];
-
-  factory PeripheralDefinitions.fromJson(Map<String, dynamic> json) => _$PeripheralDefinitionsFromJson(json);
-  Map<String, dynamic> toJson() => _$PeripheralDefinitionsToJson(this);
-}
-
 @JsonSerializable()
 class PeripheralDefinition {
   int id;
@@ -29,4 +18,8 @@ class PeripheralDefinition {
   factory PeripheralDefinition.fromJson(Map<String, dynamic> json) => _$PeripheralDefinitionFromJson(json);
   Map<String, dynamic> toJson() => _$PeripheralDefinitionToJson(this);
 
+  @override
+  String toString() {
+    return 'PeripheralDefinition{id: $id, name: $name, description: $description, brand: $brand, model: $model, symbolLocation: $symbolLocation, symbol: $symbol, expectedQuantityTypes: $expectedQuantityTypes}';
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:app/di/http_client.dart';
 import 'package:app/di/injector_provider.dart';
 import 'package:app/models/definitions/peripheral_definition.dart';
-
+import 'package:app/models/definitions/quantity_type.dart';
 import 'endpoints.dart';
 
 class DefinitionsApi {
@@ -10,18 +10,33 @@ class DefinitionsApi {
 
 
   /// List all peripheral device definitions.
-  Future<PeripheralDefinitions> getPeripheralDefinitions({bool withExpectedQuantityTypes}) async {
+  Future<List<PeripheralDefinition>> getPeripheralDefinitions({bool withExpectedQuantityType = true}) async {
     try {
-      final response = await _http.post(Endpoints.peripheralDefinitionsUrl);
-      return response.data;
+      final response = await _http.getParams(Endpoints.peripheralUrl,
+          {'withExpectedQuantityTypes': withExpectedQuantityType.toString() });
+      var list = <PeripheralDefinition>[];
+      response.data.forEach((model) =>
+          list.add(PeripheralDefinition.fromJson(model))
+      );
+      return list;
     } catch(e) {
       print(e.toString());
-      throw Exception('Failed to getPeripheralDefinitions');
+      throw Exception('Failed to get peripheral definitions');
     }
   }
 
   /// List all quantity types.
-  Future<PeripheralDefinitions> getQuantityTypes() {
-
+  Future<List<QuantityType>> getQuantityTypes() async {
+    try {
+      final response = await _http.get(Endpoints.quantityTypesUrl);
+      var list = <QuantityType>[];
+      response.data.forEach((model) =>
+          list.add(QuantityType.fromJson(model))
+      );
+      return list;
+    } catch(e) {
+      print(e.toString());
+      throw Exception('Failed to get quantity types');
+    }
   }
 }

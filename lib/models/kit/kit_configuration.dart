@@ -1,7 +1,10 @@
 
 import 'package:app/models/kit/peripheral.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'kit_configuration.g.dart';
 
+@JsonSerializable(explicitToJson: true)
 class KitConfiguration {
 
   int id;
@@ -24,30 +27,11 @@ class KitConfiguration {
     @required this.peripherals
   });
 
-  factory KitConfiguration.fromJson(Map<String, dynamic> map) {
-    return KitConfiguration(
-      id: map['id'] as int,
-      kitId: map['kitId'] as int,
-      description: map['description'] as String,
-      controllerSymbolLocation: map['controllerSymbolLocation'] as String,
-      controllerSymbol: map['controllerSymbol'] as String,
-      active: map['active'] as bool,
-      neverUsed: map['neverUsed'] as bool,
-      peripherals: map['peripherals'] as List<Peripheral>
-    );
-  }
+  factory KitConfiguration.fromJson(Map<String, dynamic> json) => _$KitConfigurationFromJson(json);
+  Map<String, dynamic> toJson() => _$KitConfigurationToJson(this);
 
-  Map<String, dynamic> toJson() {
-    // ignore: unnecessary_cast
-    return {
-      'id': id,
-      'kitId': kitId,
-      'description': description,
-      'controllerSymbolLocation':controllerSymbolLocation,
-      'controllerSymbol': controllerSymbol,
-      'active': active,
-      'neverUsed': neverUsed,
-      'peripherals': peripherals
-    } as Map<String, dynamic>;
+  @override
+  String toString() {
+    return 'KitConfiguration{id: $id, kitId: $kitId, description: $description, controllerSymbolLocation: $controllerSymbolLocation, controllerSymbol: $controllerSymbol, active: $active, neverUsed: $neverUsed, peripherals: $peripherals}';
   }
 }

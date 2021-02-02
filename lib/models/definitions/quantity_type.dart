@@ -3,17 +3,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'quantity_type.g.dart';
 
-@JsonSerializable(explicitToJson: true)
-class QuantityTypes {
-  List<QuantityType> quantityTypes;
-
-  QuantityTypes(List<QuantityType> quantityTypes):
-        quantityTypes = quantityTypes ?? <QuantityType>[];
-
-  factory QuantityTypes.fromJson(Map<String, dynamic> json) => _$QuantityTypesFromJson(json);
-  Map<String, dynamic> toJson() => _$QuantityTypesToJson(this);
-}
-
 @JsonSerializable()
 class QuantityType {
   int id;
@@ -30,4 +19,9 @@ class QuantityType {
 
   factory QuantityType.fromJson(Map<String, dynamic> json) => _$QuantityTypeFromJson(json);
   Map<String, dynamic> toJson() => _$QuantityTypeToJson(this);
+
+  @override
+  String toString() {
+    return 'QuantityType{id: $id, physicalQuantity: $physicalQuantity, physicalUnit: $physicalUnit, physicalUnitSymbol: $physicalUnitSymbol}';
+  }
 }

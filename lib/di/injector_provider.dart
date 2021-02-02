@@ -1,5 +1,6 @@
 import 'package:app/di/http_client.dart';
 import 'package:app/repositories/api/auth_api.dart';
+import 'package:app/repositories/api/definitions_api.dart';
 import 'package:app/repositories/api/kits_api.dart';
 import 'package:app/repositories/auth_repository.dart';
 import 'package:app/repositories/kit_repository.dart';
@@ -16,8 +17,10 @@ Future<void> setupInjection() async {
   /// Register api
   inject.registerFactory(() => AuthApi());
   inject.registerFactory(() => KitsApi());
+  inject.registerFactory(() => DefinitionsApi());
 
   // Repositories
   inject.registerFactory(() => AuthRepository());
   inject.registerFactory(() => KitRepository());
+  //inject.registerFactory(() => DefinitionsApi());
 }

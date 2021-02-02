@@ -9,11 +9,12 @@ class Endpoints {
 
   /// The configurations of the specified kit.
   static UriTemplate configurationUrl = UriTemplate(baseUrl + '/kits/{kitSerial}/configurations');
+  static UriTemplate aggregateUrl = UriTemplate(baseUrl + '/kits/{kitSerial}/aggregate-measurements');
 
 
   /// Endpoints to get information about definitions such as quantity types.
   /// List all peripheral device definitions.
-  static const String peripheralDefinitionsUrl = baseUrl + '​/peripheral-definitions';
+  static const String peripheralUrl = baseUrl + '/peripheral-definitions';
   /// List all quantity types.
   static const String quantityTypesUrl = baseUrl + '/quantity-types';
 

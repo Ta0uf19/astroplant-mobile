@@ -39,7 +39,6 @@ class HttpClient {
               // Ask new token
               var token = await AuthRepository()
                   .refreshToken();
-              print(token);
 
               if(token != null) {
                 options.headers['Authorization'] = 'Bearer ' + token;
@@ -53,6 +52,10 @@ class HttpClient {
       );
   }
 
+  Future<Response> getParams(String url, [Map<String, String> queryParams]) {
+    queryParams.removeWhere((key, value) => value == null || value.isEmpty || value == 'null');
+    return _client.get(url, queryParameters: queryParams);
+  }
   Future<Response> get(String url) => _client.get(url);
   Future<Response> post(String url, { dynamic body }) => _client.post(url, data: body);
   Future<Response> put(String url, { dynamic body }) => _client.put(url, data: body);

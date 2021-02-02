@@ -46,4 +46,9 @@ class AggregateMeasurement {
       'datetimeEnd': datetimeEnd,
     } as Map<String, dynamic>;
   }
+
+  @override
+  String toString() {
+    return 'AggregateMeasurement{id: $id, peripheralId: $peripheralId, kitId: $kitId, kitConfigurationId: $kitConfigurationId, quantityTypeId: $quantityTypeId, datetimeStart: $datetimeStart, datetimeEnd: $datetimeEnd}';
+  }
 }

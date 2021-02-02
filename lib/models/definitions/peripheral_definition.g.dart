@@ -6,24 +6,6 @@ part of 'peripheral_definition.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PeripheralDefinitions _$PeripheralDefinitionsFromJson(
-    Map<String, dynamic> json) {
-  return PeripheralDefinitions(
-    (json['peripheralDefinitions'] as List)
-        ?.map((e) => e == null
-            ? null
-            : PeripheralDefinition.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
-}
-
-Map<String, dynamic> _$PeripheralDefinitionsToJson(
-        PeripheralDefinitions instance) =>
-    <String, dynamic>{
-      'peripheralDefinitions':
-          instance.peripheralDefinitions?.map((e) => e?.toJson())?.toList(),
-    };
-
 PeripheralDefinition _$PeripheralDefinitionFromJson(Map<String, dynamic> json) {
   return PeripheralDefinition(
     json['id'] as int,

@@ -38,5 +38,4 @@ void main() {
     expect(user.username, username);
 
   });
-
 }
