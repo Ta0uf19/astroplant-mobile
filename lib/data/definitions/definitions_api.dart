@@ -34,6 +34,7 @@ class DefinitionsApi {
           list.add(QuantityType.fromJson(model))
       );
       return list;
+
     } catch(e) {
       print(e.toString());
       throw Exception('Failed to get quantity types');

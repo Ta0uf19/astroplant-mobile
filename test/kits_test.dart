@@ -1,3 +1,4 @@
+import 'package:app/data/kit/kit_ws.dart';
 import 'package:app/di/injector_provider.dart';
 import 'package:app/data/auth/auth_repository.dart';
 import 'package:app/data/kit/kit_repository.dart';
@@ -21,6 +22,27 @@ void main() {
 
     print(kitConfiguration);
     print(kitAggregate);
+  });
+
+  test('real time websocket', () async {
+      var ws = KitWebSocket();
+      /// Send message to ws
+      ws.subscribeMeasurements('k-hvcx-p3qg-7dfq');
+      var stream = ws.getStreamMeasurements();
+
+      // listen to events
+      stream.listen(expectAsync1((message) {
+          print(message);
+          expect(message, isNotNull);
+          ws.close();
+        }, count: 4)
+      );
+
+      // stream.listen((event) {
+      //   expect(event, equals('ping'));
+      //   print(event);
+      // });
+
   });
 
 }

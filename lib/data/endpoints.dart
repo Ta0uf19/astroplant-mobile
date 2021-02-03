@@ -5,6 +5,11 @@ class Endpoints {
   /// make class non-instantiable
   Endpoints._();
 
+
+  /// web socket url
+  static const String wsUrl = 'wss://api.astroplant.sda-projects.nl/ws';
+
+  /// api base url
   static const String baseUrl = 'https://api.astroplant.sda-projects.nl';
 
   /// The configurations of the specified kit.
