@@ -98,12 +98,12 @@ class _LoginScreenState extends State<LoginScreen> {
             right: CPadding.defaultSides,
             top: CPadding.defaultPadding,
             bottom: CPadding.defaultPadding),
-        child: buildInitialInput(),
+        child: buildForm(),
       ),
     );
   }
 
-  Widget buildInitialInput() {
+  Widget buildForm() {
     return Center(
       child: Stack(
         children: [
