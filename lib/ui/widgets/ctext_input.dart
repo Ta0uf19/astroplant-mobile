@@ -29,6 +29,9 @@ class CTextInput extends StatefulWidget {
   // Specify the font size
   final double fontSize;
 
+  // Specify the onChange of the input
+  final ValueChanged<String> onChanged;
+
   const CTextInput({
     Key key,
     this.textHint,
@@ -36,7 +39,8 @@ class CTextInput extends StatefulWidget {
     this.isPasswordType = false,
     this.icon,
     this.backgroundColor = defaultBackgroundColor,
-    this.fontSize = 18
+    this.fontSize = 18,
+    this.onChanged
   }) : super(key: key);
 
   _CTextInputState createState() => _CTextInputState();
@@ -89,6 +93,7 @@ class _CTextInputState extends State<CTextInput> {
             )
           ) : null,
         ),
+        onChanged: widget.onChanged,
       ),
     );
   }

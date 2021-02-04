@@ -48,7 +48,7 @@ abstract class _AuthFormStore with Store {
       errorMessage = null;
       isLogged = false;
       _futureAuthenticationTokens =
-          ObservableFuture(_authRepository.login(username, username));
+          ObservableFuture(_authRepository.login(username, password));
       authenticationTokens = await _futureAuthenticationTokens;
       isLogged = true;
       return authenticationTokens;

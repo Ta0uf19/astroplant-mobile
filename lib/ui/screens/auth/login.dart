@@ -42,6 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
         },
       ),
       reaction(
+            (_) => _authFormStore.password,
+            (String password) {
+          print(password);
+        },
+      ),
+      reaction(
         (_) => _authFormStore.isLogged,
         (bool isLogged) {
           if (isLogged) {
@@ -114,25 +120,29 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.only(bottom: CPadding.defaultSmall),
                 child: Observer(
-                  builder: (_) => TextField(
-                    onChanged: (value) {
-                      _authFormStore.username = value;
-                    },
-                    decoration: InputDecoration(
-                      labelText: 'Username',
-                      hintText: 'Pick a username',
-                      errorStyle: TextStyle(
-                          color: CColors.white, fontWeight: FontWeight.w600),
-                    ),
-                    style: TextStyle(
-                        color: CColors.white, fontWeight: FontWeight.w600),
-                  ),
+                  builder: (_) {
+                    return CTextInput(
+                      textHint: 'Username',
+                      onChanged: (value) {
+                        _authFormStore.username = value;
+                      },
+                    );
+                  },
+                ),              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: CPadding.defaultSmall),
+                child: Observer(
+                  builder: (_) {
+                    return CTextInput(
+                        textHint: 'Password',
+                        isPasswordType: true,
+                        onChanged: (value) {
+                          _authFormStore.password = value;
+                        },
+                    );
+                  },
                 ),
               ),
-              Padding(
-                  padding: const EdgeInsets.only(bottom: CPadding.defaultSmall),
-                  child:
-                      CTextInput(textHint: 'Password', isPasswordType: true)),
             ],
           ),
           Align(
