@@ -3,13 +3,13 @@ import 'package:app/models/auth/authentication_tokens.dart';
 import 'package:app/repositories/auth_repository.dart';
 import 'package:mobx/mobx.dart';
 
-part 'auth_form_store.g.dart';
+part 'login_store.g.dart';
 
-class AuthFormStore = _AuthFormStore with _$AuthFormStore;
+class LoginStore = _LoginStore with _$LoginStore;
 
 enum StoreState { initial, loading, loaded }
 
-abstract class _AuthFormStore with Store {
+abstract class _LoginStore with Store {
   final AuthRepository _authRepository = inject<AuthRepository>();
 
   /// Form fields

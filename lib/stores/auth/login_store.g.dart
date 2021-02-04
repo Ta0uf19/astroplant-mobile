@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_form_store.dart';
+part of 'login_store.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,15 +8,15 @@ part of 'auth_form_store.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$AuthFormStore on _AuthFormStore, Store {
+mixin _$LoginStore on _LoginStore, Store {
   Computed<StoreState> _$stateComputed;
 
   @override
   StoreState get state => (_$stateComputed ??=
-          Computed<StoreState>(() => super.state, name: '_AuthFormStore.state'))
+          Computed<StoreState>(() => super.state, name: '_LoginStore.state'))
       .value;
 
-  final _$usernameAtom = Atom(name: '_AuthFormStore.username');
+  final _$usernameAtom = Atom(name: '_LoginStore.username');
 
   @override
   String get username {
@@ -31,7 +31,7 @@ mixin _$AuthFormStore on _AuthFormStore, Store {
     });
   }
 
-  final _$passwordAtom = Atom(name: '_AuthFormStore.password');
+  final _$passwordAtom = Atom(name: '_LoginStore.password');
 
   @override
   String get password {
@@ -46,23 +46,8 @@ mixin _$AuthFormStore on _AuthFormStore, Store {
     });
   }
 
-  final _$isLoggedAtom = Atom(name: '_AuthFormStore.isLogged');
-
-  @override
-  bool get isLogged {
-    _$isLoggedAtom.reportRead();
-    return super.isLogged;
-  }
-
-  @override
-  set isLogged(bool value) {
-    _$isLoggedAtom.reportWrite(value, super.isLogged, () {
-      super.isLogged = value;
-    });
-  }
-
   final _$authenticationTokensAtom =
-      Atom(name: '_AuthFormStore.authenticationTokens');
+      Atom(name: '_LoginStore.authenticationTokens');
 
   @override
   AuthenticationTokens get authenticationTokens {
@@ -79,7 +64,7 @@ mixin _$AuthFormStore on _AuthFormStore, Store {
   }
 
   final _$_futureAuthenticationTokensAtom =
-      Atom(name: '_AuthFormStore._futureAuthenticationTokens');
+      Atom(name: '_LoginStore._futureAuthenticationTokens');
 
   @override
   ObservableFuture<AuthenticationTokens> get _futureAuthenticationTokens {
@@ -96,7 +81,22 @@ mixin _$AuthFormStore on _AuthFormStore, Store {
     });
   }
 
-  final _$errorMessageAtom = Atom(name: '_AuthFormStore.errorMessage');
+  final _$isLoggedAtom = Atom(name: '_LoginStore.isLogged');
+
+  @override
+  bool get isLogged {
+    _$isLoggedAtom.reportRead();
+    return super.isLogged;
+  }
+
+  @override
+  set isLogged(bool value) {
+    _$isLoggedAtom.reportWrite(value, super.isLogged, () {
+      super.isLogged = value;
+    });
+  }
+
+  final _$errorMessageAtom = Atom(name: '_LoginStore.errorMessage');
 
   @override
   String get errorMessage {
@@ -111,7 +111,7 @@ mixin _$AuthFormStore on _AuthFormStore, Store {
     });
   }
 
-  final _$doLoginAsyncAction = AsyncAction('_AuthFormStore.doLogin');
+  final _$doLoginAsyncAction = AsyncAction('_LoginStore.doLogin');
 
   @override
   Future<dynamic> doLogin() {
@@ -123,8 +123,8 @@ mixin _$AuthFormStore on _AuthFormStore, Store {
     return '''
 username: ${username},
 password: ${password},
-isLogged: ${isLogged},
 authenticationTokens: ${authenticationTokens},
+isLogged: ${isLogged},
 errorMessage: ${errorMessage},
 state: ${state}
     ''';

@@ -1,4 +1,4 @@
-import 'package:app/stores/users/auth_form_store.dart';
+import 'package:app/stores/auth/login_store.dart';
 import 'package:app/ui/constants.dart';
 import 'package:app/ui/widgets/cbutton.dart';
 import 'package:app/ui/widgets/ctext_input.dart';
@@ -17,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   // Store that contains all the data and the logic we will need in this page
-  AuthFormStore _authFormStore;
+  LoginStore _authFormStore;
 
   // To store reactions
   List<ReactionDisposer> _disposers;
@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _authFormStore ??= Provider.of<AuthFormStore>(context);
+    _authFormStore ??= Provider.of<LoginStore>(context);
     _disposers ??= [
       reactionOnErrorMessage(),
       reactionOnIsLogged(),
@@ -200,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void submitLoginForm(BuildContext context) {
-    final store = Provider.of<AuthFormStore>(context);
+    final store = Provider.of<LoginStore>(context);
     store.doLogin();
   }
 }

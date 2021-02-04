@@ -5,7 +5,7 @@ import 'package:app/repositories/api/users_api.dart';
 import 'package:app/repositories/auth_repository.dart';
 import 'package:app/repositories/kit_repository.dart';
 import 'package:app/repositories/users_repository.dart';
-import 'package:app/stores/users/auth_form_store.dart';
+import 'package:app/stores/auth/login_store.dart';
 import 'package:get_it/get_it.dart';
 
 final GetIt inject = GetIt.I;
@@ -27,6 +27,6 @@ Future<void> setupInjection() async {
   inject.registerFactory(() => UserRepository());
 
   //store
-  inject.registerSingleton(AuthFormStore());
+  inject.registerSingleton(LoginStore());
 
 }
