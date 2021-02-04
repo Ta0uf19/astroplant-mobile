@@ -12,20 +12,23 @@ enum StoreState { initial, loading, loaded }
 abstract class _AuthFormStore with Store {
   final AuthRepository _authRepository = inject<AuthRepository>();
 
+  /// Form fields
   @observable
   String username;
 
   @observable
   String password;
 
-  @observable
-  bool isLogged;
-
+  /// Response objects
   @observable
   AuthenticationTokens authenticationTokens;
 
   @observable
   ObservableFuture<AuthenticationTokens> _futureAuthenticationTokens;
+
+  /// State helper objects
+  @observable
+  bool isLogged;
 
   @observable
   String errorMessage;
@@ -59,7 +62,7 @@ abstract class _AuthFormStore with Store {
       return authenticationTokens;
     } on Exception catch (e) {
       isLogged = false;
-      errorMessage = e.toString();
+      errorMessage = e.toString().replaceFirst(RegExp(r'Exception: '), '');
     }
   }
 
