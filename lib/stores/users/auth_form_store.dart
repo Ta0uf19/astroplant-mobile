@@ -14,7 +14,10 @@ abstract class _AuthFormStore with Store {
   final AuthRepository _authRepository = inject<AuthRepository>();
 
   @observable
-  User user;
+  String username;
+
+  @observable
+  String password;
 
   @observable
   bool isLogged;
@@ -45,7 +48,7 @@ abstract class _AuthFormStore with Store {
       errorMessage = null;
       isLogged = false;
       _futureAuthenticationTokens =
-          ObservableFuture(_authRepository.login('dtestd', 'dtestd'));
+          ObservableFuture(_authRepository.login(username, username));
       authenticationTokens = await _futureAuthenticationTokens;
       isLogged = true;
       return authenticationTokens;

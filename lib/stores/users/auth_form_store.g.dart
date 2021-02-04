@@ -16,18 +16,33 @@ mixin _$AuthFormStore on _AuthFormStore, Store {
           Computed<StoreState>(() => super.state, name: '_AuthFormStore.state'))
       .value;
 
-  final _$userAtom = Atom(name: '_AuthFormStore.user');
+  final _$usernameAtom = Atom(name: '_AuthFormStore.username');
 
   @override
-  User get user {
-    _$userAtom.reportRead();
-    return super.user;
+  String get username {
+    _$usernameAtom.reportRead();
+    return super.username;
   }
 
   @override
-  set user(User value) {
-    _$userAtom.reportWrite(value, super.user, () {
-      super.user = value;
+  set username(String value) {
+    _$usernameAtom.reportWrite(value, super.username, () {
+      super.username = value;
+    });
+  }
+
+  final _$passwordAtom = Atom(name: '_AuthFormStore.password');
+
+  @override
+  String get password {
+    _$passwordAtom.reportRead();
+    return super.password;
+  }
+
+  @override
+  set password(String value) {
+    _$passwordAtom.reportWrite(value, super.password, () {
+      super.password = value;
     });
   }
 
@@ -106,7 +121,8 @@ mixin _$AuthFormStore on _AuthFormStore, Store {
   @override
   String toString() {
     return '''
-user: ${user},
+username: ${username},
+password: ${password},
 isLogged: ${isLogged},
 authenticationTokens: ${authenticationTokens},
 errorMessage: ${errorMessage},

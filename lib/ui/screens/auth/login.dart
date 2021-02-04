@@ -36,18 +36,24 @@ class _LoginScreenState extends State<LoginScreen> {
         },
       ),
       reaction(
+        (_) => _authFormStore.username,
+        (String username) {
+          print(username);
+        },
+      ),
+      reaction(
         (_) => _authFormStore.isLogged,
         (bool isLogged) {
-          if(isLogged){
-          print('is logged');
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
-              (Route<dynamic> route) => false);
-        }else{
-           print('fail logging');
+          if (isLogged) {
+            print('is logged');
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+                (Route<dynamic> route) => false);
+          } else {
+            print('fail logging');
           }
-          },
+        },
       ),
     ];
   }
@@ -77,20 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
             right: CPadding.defaultSides,
             top: CPadding.defaultPadding,
             bottom: CPadding.defaultPadding),
-        child: Observer(
-          builder: (_) {
-            switch (_authFormStore.state) {
-              case StoreState.initial:
-                return buildInitialInput();
-              case StoreState.loading:
-                return buildLoading();
-              case StoreState.loaded:
-                return buildInitialInput();
-              default:
-                return Container();
-            }
-          },
-        ),
+        child: buildInitialInput(),
       ),
     );
   }
@@ -99,6 +92,15 @@ class _LoginScreenState extends State<LoginScreen> {
     return Center(
       child: Stack(
         children: [
+          Observer(
+            builder: (_) {
+              if (_authFormStore.state == StoreState.loading) {
+                return Center(child: CircularProgressIndicator());
+              }
+              // here we can add on success, to show user that he's logging successfully
+              return Container();
+            },
+          ),
           Column(
             children: [
               Container(
@@ -111,21 +113,20 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: CPadding.defaultSmall),
-                child: TextField(
-                  onChanged: (value) {
-                    _authFormStore.user.username = value;
-                    _authFormStore.user.password = value;
-                    print('TextField test');
-                    //print(_authFormStore.user.username);
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Username',
-                    hintText: 'Pick a username',
-                    errorStyle: TextStyle(
+                child: Observer(
+                  builder: (_) => TextField(
+                    onChanged: (value) {
+                      _authFormStore.username = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'Username',
+                      hintText: 'Pick a username',
+                      errorStyle: TextStyle(
+                          color: CColors.white, fontWeight: FontWeight.w600),
+                    ),
+                    style: TextStyle(
                         color: CColors.white, fontWeight: FontWeight.w600),
                   ),
-                  style: TextStyle(
-                      color: CColors.white, fontWeight: FontWeight.w600),
                 ),
               ),
               Padding(
