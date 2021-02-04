@@ -16,54 +16,64 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // Store that contains all the data and the logic we will need in this page
   AuthFormStore _authFormStore;
+
+  // To store reactions
   List<ReactionDisposer> _disposers;
+
+  /// To use the same context as the main widget in an external widget,
+  /// in our case we will use the same cotext to shaw the external SnackBar
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
+  /// Reaction : A method that will be called whenever the subject change
+
+  // Load reactions and store them in _disposers
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _authFormStore ??= Provider.of<AuthFormStore>(context);
     _disposers ??= [
-      reaction(
-        (_) => _authFormStore.errorMessage,
-        (String message) {
+      reactionOnErrorMessage(),
+      reactionOnIsLogged(),
+    ];
+  }
+
+  // Navigate whenever the bool isLogged equal to true
+  ReactionDisposer reactionOnIsLogged() {
+    return reaction(
+      (_) => _authFormStore.isLogged,
+      (bool isLogged) {
+        if (isLogged) {
+          print('is logged');
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+              (Route<dynamic> route) => false);
+        } else {
+          print('fail logging');
+        }
+      },
+    );
+  }
+
+  // Show whenever an error is caught, SnackBar appear, showing the error message
+  ReactionDisposer reactionOnErrorMessage() {
+    return reaction(
+      (_) => _authFormStore.errorMessage,
+      (String message) {
+        if (message.isNotEmpty) {
           _scaffoldKey.currentState.showSnackBar(
             SnackBar(
               content: Text(message),
             ),
           );
-        },
-      ),
-      reaction(
-        (_) => _authFormStore.username,
-        (String username) {
-          print(username);
-        },
-      ),
-      reaction(
-            (_) => _authFormStore.password,
-            (String password) {
-          print(password);
-        },
-      ),
-      reaction(
-        (_) => _authFormStore.isLogged,
-        (bool isLogged) {
-          if (isLogged) {
-            print('is logged');
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen()),
-                (Route<dynamic> route) => false);
-          } else {
-            print('fail logging');
-          }
-        },
-      ),
-    ];
+        }
+      },
+    );
   }
 
+  // Destroy reactions when the page is removed from the tree permanently
   @override
   void dispose() {
     _disposers.forEach((d) => d());
@@ -72,8 +82,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeData = Theme.of(context);
-
     return Scaffold(
       key: _scaffoldKey,
       resizeToAvoidBottomInset: false,
@@ -98,15 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Center(
       child: Stack(
         children: [
-          Observer(
-            builder: (_) {
-              if (_authFormStore.state == StoreState.loading) {
-                return Center(child: CircularProgressIndicator());
-              }
-              // here we can add on success, to show user that he's logging successfully
-              return Container();
-            },
-          ),
+          buildLoading(),
           Column(
             children: [
               Container(
@@ -119,29 +119,11 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: CPadding.defaultSmall),
-                child: Observer(
-                  builder: (_) {
-                    return CTextInput(
-                      textHint: 'Username',
-                      onChanged: (value) {
-                        _authFormStore.username = value;
-                      },
-                    );
-                  },
-                ),              ),
+                child: buildUsernameInput(),
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: CPadding.defaultSmall),
-                child: Observer(
-                  builder: (_) {
-                    return CTextInput(
-                        textHint: 'Password',
-                        isPasswordType: true,
-                        onChanged: (value) {
-                          _authFormStore.password = value;
-                        },
-                    );
-                  },
-                ),
+                child: buildPasswordInput(),
               ),
             ],
           ),
@@ -151,32 +133,8 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                  margin: EdgeInsets.only(bottom: CPadding.defaultPadding),
-                  child: CButton(
-                      text: 'Sign In',
-                      textStyle: themeData.textTheme.headline3
-                          .copyWith(color: CColors.black),
-                      colorBackground: CColors.primary,
-                      height: 56,
-                      borderRadius: BorderRadius.circular(28),
-                      onPressed: () {
-                        submitLoginForm(context);
-                        //print(_authFormStore.toString());
-                      }
-                      /*async {
-
-                        var user = await authFormStore.login(
-                            loginController.text, loginController.text);
-                        if (user == null) return;
-
-                        await Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomeScreen()),
-                            (Route<dynamic> route) => false);
-                      },*/
-                      ),
-                ),
+                    margin: EdgeInsets.only(bottom: CPadding.defaultPadding),
+                    child: buildButtonSubmit()),
                 Text(
                   'By signing in, you are agreeing to our Terms of Service and Privacy Policy',
                   textAlign: TextAlign.center,
@@ -190,9 +148,54 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  Widget buildUsernameInput() {
+    return Observer(
+      builder: (_) {
+        return CTextInput(
+          textHint: 'Username',
+          onChanged: (value) {
+            _authFormStore.username = value;
+          },
+        );
+      },
+    );
+  }
+
+  Widget buildPasswordInput() {
+    return Observer(
+      builder: (_) {
+        return CTextInput(
+          textHint: 'Password',
+          isPasswordType: true,
+          onChanged: (value) {
+            _authFormStore.password = value;
+          },
+        );
+      },
+    );
+  }
+
+  Widget buildButtonSubmit() {
+    return CButton(
+        text: 'Sign In',
+        textStyle: themeData.textTheme.headline3.copyWith(color: CColors.black),
+        colorBackground: CColors.primary,
+        height: 56,
+        borderRadius: BorderRadius.circular(28),
+        onPressed: () {
+          submitLoginForm(context);
+        });
+  }
+
   Widget buildLoading() {
-    return Center(
-      child: CircularProgressIndicator(),
+    return Observer(
+      builder: (_) {
+        if (_authFormStore.state == StoreState.loading) {
+          return Center(child: CircularProgressIndicator());
+        }
+        // here we can add on success, to show user that he's logging successfully
+        return Container();
+      },
     );
   }
 

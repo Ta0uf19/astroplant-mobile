@@ -1,6 +1,5 @@
 import 'package:app/di/injector_provider.dart';
 import 'package:app/models/auth/authentication_tokens.dart';
-import 'package:app/models/auth/user.dart';
 import 'package:app/repositories/auth_repository.dart';
 import 'package:mobx/mobx.dart';
 
@@ -44,17 +43,43 @@ abstract class _AuthFormStore with Store {
 
   @action
   Future doLogin() async {
+    errorMessage = '';
+    isLogged = false;
+
+    // To validate inputs of the form
+    errorMessage = checkInputFormErrors();
+
+    if(errorMessage.isNotEmpty ) return;
+
     try {
-      errorMessage = null;
-      isLogged = false;
       _futureAuthenticationTokens =
           ObservableFuture(_authRepository.login(username, password));
       authenticationTokens = await _futureAuthenticationTokens;
       isLogged = true;
       return authenticationTokens;
-    } catch (e) {
+    } on Exception catch (e) {
       isLogged = false;
-      errorMessage = 'doLogin catch error';
+      errorMessage = e.toString();
     }
+  }
+
+  String checkInputFormErrors() {
+    var errors = '';
+
+    var usernameErrors = errorsOnUsername();
+    var passwordErrors = errorsOnPassword();
+
+    errors += usernameErrors.isNotEmpty ? usernameErrors+'\n' : '';
+    errors += passwordErrors.isNotEmpty ? passwordErrors+'\n' : '';
+
+    return errors;
+  }
+
+  String errorsOnPassword() {
+    return password == null || password.isEmpty ? 'Password cannot be blank' : '';
+  }
+
+  String errorsOnUsername() {
+    return username == null || username.isEmpty ? 'Username cannot be blank' : '';
   }
 }
