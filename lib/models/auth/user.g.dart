@@ -14,7 +14,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
     json['emailAddress'] as String,
     json['useEmailAddressForGravatar'] as bool,
     json['gravatarAlternative'] as String,
-  );
+  )..password = json['password'] as String;
 }
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -24,4 +24,5 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'emailAddress': instance.emailAddress,
       'useEmailAddressForGravatar': instance.useEmailAddressForGravatar,
       'gravatarAlternative': instance.gravatarAlternative,
+      'password': instance.password,
     };
