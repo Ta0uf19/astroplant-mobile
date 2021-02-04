@@ -47,13 +47,12 @@ abstract class _RegisterStore with Store {
   }
 
   @action
-  Future doLogin() async {
+  Future doCreateAccount() async {
     errorMessage = '';
     isCreated = false;
 
     // To validate inputs of the form
     errorMessage = checkInputFormErrors();
-
     if (errorMessage.isNotEmpty) return;
 
     try {
@@ -79,9 +78,9 @@ abstract class _RegisterStore with Store {
     errors += usernameErrors.isNotEmpty ? usernameErrors + '\n' : '';
     errors += emailErrors.isNotEmpty ? emailErrors + '\n' : '';
     errors += passwordErrors.isNotEmpty ? passwordErrors + '\n' : '';
-    if(passwordErrors.isEmpty) {
+    if (passwordErrors.isEmpty) {
       errors +=
-        confirmPasswordErrors.isNotEmpty ? confirmPasswordErrors + '\n' : '';
+          confirmPasswordErrors.isNotEmpty ? confirmPasswordErrors + '\n' : '';
     }
 
     return errors;
@@ -97,8 +96,7 @@ abstract class _RegisterStore with Store {
     if (email == null || email.isEmpty) {
       return 'Email cannot be blank';
     }
-    return isEmail(email) ? 'Email is not valid' : '';
-
+    return isEmail(email) ? '' : 'Email is not valid';
   }
 
   String errorsOnPassword() {

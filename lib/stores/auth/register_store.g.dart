@@ -123,11 +123,12 @@ mixin _$RegisterStore on _RegisterStore, Store {
     });
   }
 
-  final _$doLoginAsyncAction = AsyncAction('_RegisterStore.doLogin');
+  final _$doCreateAccountAsyncAction =
+      AsyncAction('_RegisterStore.doCreateAccount');
 
   @override
-  Future<dynamic> doLogin() {
-    return _$doLoginAsyncAction.run(() => super.doLogin());
+  Future<dynamic> doCreateAccount() {
+    return _$doCreateAccountAsyncAction.run(() => super.doCreateAccount());
   }
 
   @override

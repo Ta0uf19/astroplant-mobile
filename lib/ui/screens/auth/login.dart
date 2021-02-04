@@ -18,13 +18,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   // Store that contains all the data and the logic we will need in this page
-  LoginStore _authFormStore;
+  LoginStore _loginStore;
 
   // To store reactions
   List<ReactionDisposer> _disposers;
 
   /// To use the same context as the main widget in an external widget,
-  /// in our case we will use the same cotext to shaw the external SnackBar
+  /// in our case we will use the same context to shaw the external SnackBar
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   /// Reaction : A method that will be called whenever the subject change
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _authFormStore ??= Provider.of<LoginStore>(context);
+    _loginStore ??= Provider.of<LoginStore>(context);
     _disposers ??= [
       reactionOnErrorMessage(),
       reactionOnIsLogged(),
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
   // Navigate whenever the bool isLogged equal to true
   ReactionDisposer reactionOnIsLogged() {
     return reaction(
-      (_) => _authFormStore.isLogged,
+      (_) => _loginStore.isLogged,
       (bool isLogged) {
         if (isLogged) {
           print('is logged');
@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
   // Show whenever an error is caught, SnackBar appear, showing the error message
   ReactionDisposer reactionOnErrorMessage() {
     return reaction(
-      (_) => _authFormStore.errorMessage,
+      (_) => _loginStore.errorMessage,
       (String message) {
         if (message.isNotEmpty) {
           _scaffoldKey.currentState.showSnackBar(
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return CTextInput(
           textHint: 'Username',
           onChanged: (value) {
-            _authFormStore.username = value;
+            _loginStore.username = value;
           },
         );
       },
@@ -169,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
           textHint: 'Password',
           isPasswordType: true,
           onChanged: (value) {
-            _authFormStore.password = value;
+            _loginStore.password = value;
           },
         );
       },
@@ -191,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget buildLoading() {
     return Observer(
       builder: (_) {
-        if (_authFormStore.state == StoreState.loading) {
+        if (_loginStore.state == StoreState.loading) {
           return Center(child: CircularProgressIndicator());
         }
         // here we can add on success, to show user that he's logging successfully
@@ -202,6 +202,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void submitLoginForm(BuildContext context) {
     final store = Provider.of<LoginStore>(context);
+    store.errorMessage='';
     store.doLogin();
   }
 }
