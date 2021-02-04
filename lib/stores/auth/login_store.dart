@@ -1,13 +1,12 @@
 import 'package:app/di/injector_provider.dart';
 import 'package:app/models/auth/authentication_tokens.dart';
 import 'package:app/repositories/auth_repository.dart';
+import 'package:app/stores/store_state.dart';
 import 'package:mobx/mobx.dart';
 
 part 'login_store.g.dart';
 
 class LoginStore = _LoginStore with _$LoginStore;
-
-enum StoreState { initial, loading, loaded }
 
 abstract class _LoginStore with Store {
   final AuthRepository _authRepository = inject<AuthRepository>();
@@ -52,7 +51,7 @@ abstract class _LoginStore with Store {
     // To validate inputs of the form
     errorMessage = checkInputFormErrors();
 
-    if(errorMessage.isNotEmpty ) return;
+    if (errorMessage.isNotEmpty) return;
 
     try {
       _futureAuthenticationTokens =
@@ -72,17 +71,23 @@ abstract class _LoginStore with Store {
     var usernameErrors = errorsOnUsername();
     var passwordErrors = errorsOnPassword();
 
-    errors += usernameErrors.isNotEmpty ? usernameErrors+'\n' : '';
-    errors += passwordErrors.isNotEmpty ? passwordErrors+'\n' : '';
+    errors += usernameErrors.isNotEmpty ? usernameErrors + '\n' : '';
+    errors += passwordErrors.isNotEmpty ? passwordErrors + '\n' : '';
 
     return errors;
   }
 
-  String errorsOnPassword() {
-    return password == null || password.isEmpty ? 'Password cannot be blank' : '';
+  String errorsOnUsername() {
+    return username == null || username.isEmpty
+        ? 'Username cannot be blank'
+        : '';
   }
 
-  String errorsOnUsername() {
-    return username == null || username.isEmpty ? 'Username cannot be blank' : '';
+  String errorsOnPassword() {
+    return password == null || password.isEmpty
+        ? 'Password cannot be blank'
+        : '';
   }
+
+
 }
