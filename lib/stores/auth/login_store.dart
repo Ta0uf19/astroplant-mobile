@@ -39,14 +39,17 @@ abstract class _LoginStore with Store {
 
   @action
   Future getCurrentUser() async{
+    isLogged = false;
     try {
       _user =
           ObservableFuture(_authRepository.getInfo());
       user = await _user;
       isLogged = true;
+      print('is logged : true');
       return user;
     } on Exception catch (e) {
       errorMessage = e.toString().replaceFirst(RegExp(r'Exception: '), '');
+      print('is logged : false, error : $errorMessage');
     }
   }
 
