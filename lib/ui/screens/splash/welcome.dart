@@ -1,9 +1,14 @@
+import 'package:app/stores/auth/login_store.dart';
 import 'package:app/ui/widgets/cbutton.dart';
 import 'package:app/ui/constants.dart';
 import 'package:app/ui/screens/auth/login.dart';
 import 'package:app/ui/screens/auth/register.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
+
+import '../home.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -11,7 +16,40 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  bool status = false;
+
+  // Store that contains all the data and the logic we will need in this page
+  LoginStore _loginStore;
+
+  // To store reactions
+  List<ReactionDisposer> _disposers;
+
+  // Load reactions and store them in _disposers
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _loginStore ??= Provider.of<LoginStore>(context);
+    _disposers ??= [
+      reactionOnIsLogged(),
+    ];
+  }
+
+  // Navigate whenever the bool isLogged equal to true
+  ReactionDisposer reactionOnIsLogged() {
+    return reaction(
+          (_) => _loginStore.isLogged,
+          (bool isLogged) {
+        if (isLogged) {
+          print('is logged');
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+                  (Route<dynamic> route) => false);
+        } else {
+          print('fail logging');
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

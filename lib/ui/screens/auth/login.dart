@@ -157,30 +157,22 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget buildUsernameInput() {
-    return Observer(
-      builder: (_) {
-        return CTextInput(
+    return CTextInput(
           textHint: 'Username',
           onChanged: (value) {
             username = value;
           },
         );
-      },
-    );
   }
 
   Widget buildPasswordInput() {
-    return Observer(
-      builder: (_) {
-        return CTextInput(
+    return  CTextInput(
           textHint: 'Password',
           isPasswordType: true,
           onChanged: (value) {
             password = value;
           },
         );
-      },
-    );
   }
 
   Widget buildButtonSubmit() {
@@ -197,6 +189,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget buildLoading() {
     return Observer(
+      name: 'Loading',
       builder: (_) {
         if (_loginStore.loginState == StoreState.loading) {
           return Center(child: CircularProgressIndicator());
