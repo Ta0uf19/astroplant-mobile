@@ -1,3 +1,5 @@
+import 'package:app/di/injector_provider.dart';
+import 'package:app/data/auth/auth_repository.dart';
 import 'package:app/ui/widgets/cbutton.dart';
 import 'package:app/ui/widgets/ccard.dart';
 import 'package:app/ui/widgets/ccolumn_text.dart';
@@ -11,6 +13,8 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 // StatelessWidget
 class CHeader {
+  static final AuthRepository _authRepository = inject<AuthRepository>();
+
   static AppBar buildAppBarWithCToggle({String title = ''}) {
     return AppBar(
       title: Text(title),
@@ -156,8 +160,10 @@ class CHeader {
                   textStyle: themeData.textTheme.headline3
                       .copyWith(color: CColors.white),
                   borderRadius: BorderRadius.circular(28),
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
+                  onPressed: () async {
+                    await _authRepository.logout();
+
+                    await Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (context) => WelcomeScreen()),
                             (Route<dynamic> route) => false

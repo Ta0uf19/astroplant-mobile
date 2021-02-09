@@ -9,6 +9,7 @@ class User {
   String emailAddress;
   bool useEmailAddressForGravatar;
   String gravatarAlternative;
+  String password;
 
 
   User(this.id, this.username, this.displayName, this.emailAddress, this.useEmailAddressForGravatar, this.gravatarAlternative);
@@ -18,6 +19,6 @@ class User {
 
   @override
   String toString() {
-    return 'User{id: $id, username: $username, displayName: $displayName, emailAddress: $emailAddress, useEmailAddressForGravatar: $useEmailAddressForGravatar, gravatarAlternative: $gravatarAlternative}';
+    return 'User{id: $id, username: $username, displayName: $displayName, emailAddress: $emailAddress, useEmailAddressForGravatar: $useEmailAddressForGravatar, gravatarAlternative: $gravatarAlternative, password: $password}';
   }
 }

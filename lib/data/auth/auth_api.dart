@@ -17,6 +17,7 @@ class AuthApi {
       print(e.toString());
       throw Exception('Failed to login');
     }
+
   }
 
   /// Obtain an access token from a refresh token.
