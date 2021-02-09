@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   setupInjection();
-  var definitionRepository = inject<DefinitionRepository>();
+  var definitionRepository = inject<DefinitionsRepository>();
 
   test('test api', () async {
     var listP = await definitionRepository.getPeripheralDefinitions();

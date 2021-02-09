@@ -232,6 +232,14 @@ CCardPeripheral(
   onPressed: () {},
   activeToggle: false,
 ),
+CCardPeripheral(  
+  title: "Air Co² Sensor",  
+  subtitle: "Carbon concentration",  
+  stream: streamOfMeasurements,  /// Stream<RawMeasurement> streamOfMeasurements : stream for measurements (Using web socket, api.. ect.)
+  unit: "ppm",  
+  onPressed: () {},
+  activeToggle: false,
+),
 ```
 
 ## Widget Toggle   (*CToggleWidget*)

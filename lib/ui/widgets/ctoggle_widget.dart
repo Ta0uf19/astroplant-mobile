@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 
 /// Interface
-abstract class IToggleable<T extends Widget> {
+abstract class IToggleable<T extends Widget>{
   /// This methods clone immutable widget and add the possibility to specify
   /// active/inactive state for toggle widget when pressed
   T copyWith({bool activeToggle});
@@ -45,7 +45,7 @@ class CToggleWidget extends StatefulWidget {
 
   CToggleWidget({
     Key key,
-    @required this.children,
+    this.children = const <IToggleable>[],
     this.onPressed,
     this.defaultSelectedIndex = 0,
     this.spacePadding = 20

@@ -1,27 +1,46 @@
+import 'package:app/data/definitions/definitions_repository.dart';
+import 'package:app/di/injector_provider.dart';
 import 'package:app/models/definitions/peripheral_definition.dart';
+import 'package:app/models/definitions/quantity_type.dart';
 import 'package:mobx/mobx.dart';
-part 'peripheral_store.g.dart';
+part 'definition_store.g.dart';
 
-class PeripheralStore = _PeripheralStore with _$PeripheralStore;
+class DefinitionStore = _DefinitionStore with _$DefinitionStore;
 
-abstract class _PeripheralStore with Store {
+abstract class _DefinitionStore with Store {
 
-  final 
+  final DefinitionsRepository _repository = inject<DefinitionsRepository>();
 
-  ObservableList<PeripheralDefinition> peripherals = ObservableList.of([]);
+  @observable
+  ObservableMap<int, PeripheralDefinition> mapPeripherals = ObservableMap();
 
+  @observable
+  ObservableMap<int, QuantityType> mapQuantityTypes = ObservableMap();
+
+  /// Check if we have already fetched definitions
+  @computed
+  bool get hasResults => mapQuantityTypes.isNotEmpty
+      && mapPeripherals.isNotEmpty;
+
+  /// Fetch all definitions
   @action
-  void addPeripheral(PeripheralDefinition peripheral) {
-    peripherals.add(peripheral);
+  Future init() async {
+
+    // Get all definitions
+    var peripherals = await _repository.getPeripheralDefinitions();
+    var qty = await _repository.getQuantityTypes();
+
+    // State quantity type / peripheral definition in Map
+    mapPeripherals.addAll(
+        <int, PeripheralDefinition> {
+          for (PeripheralDefinition e in peripherals) e.id: e
+        }
+    );
+
+    mapQuantityTypes.addAll(
+        <int, QuantityType>{
+          for (QuantityType e in qty) e.id: e
+        }
+    );
   }
-
-  @action
-  void fetchPeripheralDefinitions() {
-
-  }
-
-
-
-
-
 }

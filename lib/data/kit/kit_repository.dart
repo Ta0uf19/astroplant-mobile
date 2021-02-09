@@ -2,6 +2,7 @@
 import 'package:app/di/injector_provider.dart';
 import 'package:app/models/kit/aggregate_measurement.dart';
 import 'package:app/models/kit/kit_configuration.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'kits_api.dart';
 
@@ -16,8 +17,7 @@ class KitRepository {
 
     /// Aggregate measurements made by a kit.
     Future<List<AggregateMeasurement>> aggregateMeasurements(String kitSerial,
-        {int peripheralId,
-      int quantityTypeId,
+        {@required int peripheralId, @required int quantityTypeId,
       int configurationId,
       String cursor}) async {
 

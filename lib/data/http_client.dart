@@ -15,12 +15,12 @@ class HttpClient {
     _client
       ..options.baseUrl = Endpoints.baseUrl
       ..options.headers = {'Content-Type': 'application/json; charset=utf-8', 'Accept': 'application/json'}
-      ..interceptors.add(LogInterceptor(
-        request: true,
-        responseBody: true,
-        requestBody: true,
-        requestHeader: true,
-      ))
+      // ..interceptors.add(LogInterceptor(
+      //   request: true,
+      //   responseBody: true,
+      //   requestBody: true,
+      //   requestHeader: true,
+      // ))
       ..interceptors.add(
         InterceptorsWrapper(
           onRequest: (Options options) async {

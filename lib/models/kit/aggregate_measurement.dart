@@ -7,8 +7,14 @@ class AggregateMeasurement {
   int kitId;
   int kitConfigurationId;
   int quantityTypeId;
-  String datetimeStart;
-  String datetimeEnd;
+  DateTime datetimeStart;
+  DateTime datetimeEnd;
+
+  // values
+  double average;
+  double count;
+  double maximum;
+  double minimum;
 
   AggregateMeasurement({
     @required this.id,
@@ -18,6 +24,10 @@ class AggregateMeasurement {
     @required this.quantityTypeId,
     @required this.datetimeStart,
     @required this.datetimeEnd,
+    @required this.average,
+    @required this.count,
+    @required this.maximum,
+    @required this.minimum,
   });
 
   /// Dart has no reflection, there is no library that serialization/deserialization
@@ -29,8 +39,12 @@ class AggregateMeasurement {
       kitId: map['kitId'] as int,
       kitConfigurationId: map['kitConfigurationId'] as int,
       quantityTypeId: map['quantityTypeId'] as int,
-      datetimeStart: map['datetimeStart'] as String,
-      datetimeEnd: map['datetimeEnd'] as String,
+      datetimeStart: DateTime.parse(map['datetimeStart']),
+      datetimeEnd: DateTime.parse(map['datetimeEnd']),
+      average: map['values']['average'] as double,
+      count: map['values']['count'] as double,
+      maximum: map['values']['maximum'] as double,
+      minimum: map['values']['minimum'] as double,
     );
   }
 
@@ -44,11 +58,16 @@ class AggregateMeasurement {
       'quantityTypeId': quantityTypeId,
       'datetimeStart': datetimeStart,
       'datetimeEnd': datetimeEnd,
+      'average': average,
+      'count': count,
+      'maximum': maximum,
+      'minimum': minimum,
     } as Map<String, dynamic>;
   }
 
   @override
   String toString() {
-    return 'AggregateMeasurement{id: $id, peripheralId: $peripheralId, kitId: $kitId, kitConfigurationId: $kitConfigurationId, quantityTypeId: $quantityTypeId, datetimeStart: $datetimeStart, datetimeEnd: $datetimeEnd}';
+    return 'AggregateMeasurement{id: $id, peripheralId: $peripheralId, kitId: $kitId, kitConfigurationId: $kitConfigurationId, quantityTypeId: $quantityTypeId, datetimeStart: $datetimeStart, datetimeEnd: $datetimeEnd, average: $average, count: $count, maximum: $maximum, minimum: $minimum}';
   }
+
 }

@@ -5,14 +5,14 @@ import 'package:web_socket_channel/io.dart';
 
 class KitWebSocket {
 
-    static int webSocketRequestId = 0;
+    static int _webSocketRequestId = 0;
     final IOWebSocketChannel channel = IOWebSocketChannel.connect(Endpoints.wsUrl);
     int subscriptionId;
 
     String _prepareRpcRequest(String method, dynamic params) {
         return json.encode({
             'jsonrpc': '2.0',
-            'id': webSocketRequestId++,
+            'id': _webSocketRequestId++,
             'method': method,
             'params': params,
         });
@@ -25,14 +25,13 @@ class KitWebSocket {
     }
 
     /// Get stream
-    Stream getStreamMeasurements() {
-        //var p = json.decode(channel.stream.first.toString())['result'];
-        //print(channel.stream.first.toString());
+    Stream<RawMeasurement> getStreamMeasurements() {
         return channel.stream
             .map((event) => json.decode(event))
             .where((event) => event.containsKey('params') == true)
             .map((event) => event['params'])
             .map((event) => RawMeasurement.fromJson(event['result']))
+            .asBroadcastStream()
         ;
     }
 

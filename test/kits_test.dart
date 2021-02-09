@@ -9,23 +9,26 @@ void main() {
   var username = 'dtestd';
   var authRepository = inject<AuthRepository>();
   var kitRepository = inject<KitRepository>();
+  var ws = inject<KitWebSocket>();
 
-  test('login and get configurations/aggregations for a kit', () async {
+  test('login and get configurations for a kit', () async {
     // login
     await authRepository.login(username, username);
     // get configuration
-    var kitConfiguration = await kitRepository.getConfigurations(
-        'k-9pd7-cdkc-cmm7');
-    // get aggregation
-    var kitAggregate = await kitRepository.aggregateMeasurements(
-        'k-hvcx-p3qg-7dfq', peripheralId: 396, quantityTypeId: 4);
-
+    var kitConfiguration = await kitRepository.getConfigurations('k-9pd7-cdkc-cmm7');
     print(kitConfiguration);
+  });
+
+  test('get aggregations for a kit', () async {
+
+    // get aggregation measurements
+    var kitAggregate = await kitRepository.aggregateMeasurements('k-hvcx-p3qg-7dfq', peripheralId: 396, quantityTypeId: 4);
     print(kitAggregate);
+
   });
 
   test('real time websocket', () async {
-      var ws = KitWebSocket();
+
       /// Send message to ws
       ws.subscribeMeasurements('k-hvcx-p3qg-7dfq');
       var stream = ws.getStreamMeasurements();

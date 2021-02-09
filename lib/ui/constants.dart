@@ -11,6 +11,16 @@ class CColors {
   static const greyDark = Color.fromRGBO(29, 29, 29, 1.0);
   static const greyMedium = Color.fromRGBO(141, 141, 141, 1.0);
   static const greyLight = Color.fromRGBO(220, 220, 220, 1.0);
+
+  // card colors
+  static const cardInactive = Color(0xFF30363E);
+  static const cardGradient1 = Color(0xff27ED76);
+  static const cardGradient2 = Color(0xff0DBF54);
+
+  // shimmer colors
+  static const shimmerBaseColor = Color(0xFF30363E);
+  static const shimmerHighlightColor = Color(0xFF5a6069);
+
 }
 
 // Custom dimensions

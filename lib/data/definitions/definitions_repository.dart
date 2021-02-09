@@ -3,7 +3,7 @@ import 'package:app/models/definitions/peripheral_definition.dart';
 import 'package:app/models/definitions/quantity_type.dart';
 import 'package:app/data/definitions/definitions_api.dart';
 
-class DefinitionRepository {
+class DefinitionsRepository {
 
   final DefinitionsApi _api = inject<DefinitionsApi>();
 

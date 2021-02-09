@@ -6,14 +6,20 @@ class RawMeasurement {
   int peripheralId;
   int quantityTypeId;
   DateTime dateTime;
-  double value;
+  double measure;
+  String unitSymbol;
+  String title;
+  String subtitle;
 
   RawMeasurement({
-    @required this.kitSerial,
     @required this.peripheralId,
     @required this.quantityTypeId,
-    @required this.dateTime,
-    @required this.value,
+    this.kitSerial,
+    this.dateTime,
+    this.measure,
+    this.title,
+    this.subtitle,
+    this.unitSymbol
   });
 
   factory RawMeasurement.fromJson(Map<String, dynamic> map) {
@@ -22,7 +28,7 @@ class RawMeasurement {
       peripheralId: map['peripheral'] as int,
       quantityTypeId: map['quantityType'] as int,
       dateTime: DateTime.fromMillisecondsSinceEpoch(map['datetime']),
-      value: map['value'] as double,
+      measure: map['value'] as double,
     );
   }
 
@@ -33,12 +39,12 @@ class RawMeasurement {
       'peripheralId': peripheralId,
       'quantityTypeId': quantityTypeId,
       'dateTime': dateTime,
-      'value': value,
+      'value': measure,
     } as Map<String, dynamic>;
   }
 
   @override
   String toString() {
-    return 'RawMeasurement{kitSerial: $kitSerial, peripheralId: $peripheralId, quantityTypeId: $quantityTypeId, dateTime: $dateTime, value: $value}';
+    return 'RawMeasurement{kitSerial: $kitSerial, peripheralId: $peripheralId, quantityTypeId: $quantityTypeId, dateTime: $dateTime, measure: $measure, unitSymbol: $unitSymbol, title: $title, subtitle: $subtitle}';
   }
 }
