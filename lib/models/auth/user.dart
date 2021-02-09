@@ -9,6 +9,7 @@ class User {
   String emailAddress;
   bool useEmailAddressForGravatar;
   String gravatarAlternative;
+  String password;
 
 
   User(this.id, this.username, this.displayName, this.emailAddress, this.useEmailAddressForGravatar, this.gravatarAlternative);
@@ -16,8 +17,5 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
-  @override
-  String toString() {
-    return 'User{id: $id, username: $username, displayName: $displayName, emailAddress: $emailAddress, useEmailAddressForGravatar: $useEmailAddressForGravatar, gravatarAlternative: $gravatarAlternative}';
-  }
+
 }

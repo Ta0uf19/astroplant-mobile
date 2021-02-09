@@ -17,6 +17,12 @@ void main() {
 
     // logout user
     await authRepository.logout();
+    try {
+      await authRepository.getInfo();
+    }catch(e){
+      print('here we will handle the exception'+e.toString());
+    }
+
     expect(() => authRepository.getInfo(), throwsA(isA<Exception>()));
 
   });
