@@ -2,6 +2,7 @@ import 'package:app/di/injector_provider.dart';
 import 'package:app/routes.dart';
 import 'package:app/stores/auth/login_store.dart';
 import 'package:app/stores/auth/register_store.dart';
+import 'package:app/stores/kit/kit_store.dart';
 import 'package:app/ui/constants.dart';
 import 'package:app/ui/screens/splash/welcome.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       providers: [
         Provider(create: (_) => LoginStore()),
         Provider(create: (_) => RegisterStore()),
+        Provider(create: (_) => KitStore()),
       ],
       child: MaterialApp(
         title: 'Astroplant',

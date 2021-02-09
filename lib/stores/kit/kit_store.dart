@@ -1,6 +1,7 @@
 import 'package:app/data/kit/kit_repository.dart';
 import 'package:app/data/kit/kit_ws.dart';
 import 'package:app/di/injector_provider.dart';
+import 'package:app/models/kit/aggregate_measurement.dart';
 import 'package:app/models/kit/kit_configuration.dart';
 import 'package:app/models/kit/raw_measurement.dart';
 import 'package:app/stores/definitions/definition_store.dart';
@@ -13,7 +14,7 @@ abstract class _KitStore with Store {
 
   final DefinitionStore _definitionStore = DefinitionStore();
   final KitRepository _repository = inject<KitRepository>();
-  final KitWebSocket _kitWs = inject<KitWebSocket>();
+  KitWebSocket _kitWs = inject<KitWebSocket>();
 
   /// Kit information
   @observable
@@ -68,6 +69,7 @@ abstract class _KitStore with Store {
                   .expectedQuantityTypes
                   .expand((quantityId) => {
                         RawMeasurement(
+                            kitSerial: serial,
                             title: _definitionStore
                                 .mapQuantityTypes[quantityId].physicalQuantity,
                             subtitle: peripheral.name,
@@ -75,7 +77,8 @@ abstract class _KitStore with Store {
                                 .mapQuantityTypes[quantityId]
                                 .physicalUnitSymbol,
                             quantityTypeId: quantityId,
-                            peripheralId: peripheral.id)
+                            peripheralId: peripheral.id
+                        )
                       })
                   .toList()
             })
@@ -86,12 +89,25 @@ abstract class _KitStore with Store {
     return rawMeasurements;
   }
 
-  /// Get streams raw measurements
+  /// Get aggregate measurements made by a kit.
+  Future<List<AggregateMeasurement>> fetchAggregateMeasurements(int peripheralId, int quantityTypeId) {
+    return _repository.aggregateMeasurements(serial, peripheralId: peripheralId, quantityTypeId: peripheralId);
+  }
+
+  /// Get streams raw measurements in real time
   Stream<RawMeasurement> getStreamMeasurements() {
     // subscribe to stream of measurements
     _kitWs.subscribeMeasurements(serial);
 
     return _kitWs.getStreamMeasurements();
+  }
+
+  /// Close stream of measurements
+  void closeStreamMeasurements() {
+    _kitWs.close();
+
+    // create new instance of kit websocket
+    _kitWs = inject<KitWebSocket>();
   }
 
 }

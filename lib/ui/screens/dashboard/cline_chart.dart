@@ -1,8 +1,8 @@
 import 'package:app/data/kit/kit_repository.dart';
 import 'package:app/di/injector_provider.dart';
-import 'package:app/models/kit/aggregate_measurement.dart';
 import 'package:app/models/kit/raw_measurement.dart';
 import 'package:app/ui/constants.dart';
+import 'package:app/ui/screens/dashboard/dashboard.dart';
 import 'package:app/utils/NumberUtils.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:dart_date/dart_date.dart';
 
 class CLineChart extends StatefulWidget {
+
   @override
   _CLineChartState createState() => _CLineChartState();
 }
@@ -30,31 +31,38 @@ class _CLineChartState extends State<CLineChart> {
   double _minY = 0;
   double _maxY = 0;
   double _leftTitlesInterval = 0;
-  List<AggregateMeasurement> data;
   RawMeasurement selectedMeasurement;
+  Future<List<FlSpot>> _future;
 
   @override
   void initState() {
     super.initState();
-    // selectedMeasurement = DashboardScreen.of(context).selectedMeasurement;
-    // print(selectedMeasurement);
-    // if(selectedMeasurement != null) {
-    //   _prepareData();
-    // }
-    _prepareData();
   }
 
-  void _prepareData() async {
+  @override
+  void didUpdateWidget(covariant CLineChart oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    var newMeasurement = DashboardScreen.of(context).selectedMeasurement;
+
+    if(selectedMeasurement != newMeasurement) {
+      selectedMeasurement = newMeasurement;
+      print('new selected measurement -- ${selectedMeasurement}');
+      _future = _prepareData();
+    }
+  }
+
+  Future<List<FlSpot>> _prepareData() async {
 
     var minY = double.maxFinite;
     var maxY = double.minPositive;
 
-    data = await kitRepository.aggregateMeasurements('k-hvcx-p3qg-7dfq', peripheralId: 396, quantityTypeId: 4);
+    var _data = await kitRepository.aggregateMeasurements(selectedMeasurement.kitSerial, peripheralId: selectedMeasurement.peripheralId, quantityTypeId: selectedMeasurement.quantityTypeId);
 
     // pick last date for measurement
-    var lastDate = data.first.datetimeStart;
+    var lastDate = _data.first.datetimeStart;
 
-    _values = data
+    _values = _data
         .where((measurement) => measurement.datetimeStart.isSameDay(lastDate))
         .map((measurement) {
             var avg = measurement.average;
@@ -76,6 +84,9 @@ class _CLineChartState extends State<CLineChart> {
     _maxY = (maxY / _divider).ceilToDouble() * _divider;
     _leftTitlesInterval =
         ((_maxY - _minY) / (_leftLabelsCount - 1)).floorToDouble();
+    
+    
+    return _values;
   }
 
   LineChartData _mainData() {
@@ -191,25 +202,56 @@ class _CLineChartState extends State<CLineChart> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        AspectRatio(
-          aspectRatio: 1.2,
-          child: Container(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                right: 10,
-                left: 0,
-                top: 20,
-                bottom: 15,
+    return FutureBuilder(
+      initialData: false,
+      future: _future,
+      builder: (context, snapshot) {
+        if(snapshot.hasData) {
+          return Stack(
+            children: <Widget>[
+              AspectRatio(
+                aspectRatio: 1.2,
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      right: 10,
+                      left: 0,
+                      top: 20,
+                      bottom: 15,
+                    ),
+                    child: _values.isEmpty
+                        ? Center(child: CircularProgressIndicator())
+                        : LineChart(_mainData()),
+                  ),
+                ),
               ),
-              child: _values.isEmpty
-                  ? Center(child: CircularProgressIndicator())
-                  : LineChart(_mainData()),
-            ),
-          ),
-        ),
-      ],
+            ],
+          );
+        }
+        else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
+      // child: Stack(
+      //   children: <Widget>[
+      //     AspectRatio(
+      //       aspectRatio: 1.2,
+      //       child: Container(
+      //         child: Padding(
+      //           padding: const EdgeInsets.only(
+      //             right: 10,
+      //             left: 0,
+      //             top: 20,
+      //             bottom: 15,
+      //           ),
+      //           child: _values.isEmpty
+      //               ? Center(child: CircularProgressIndicator())
+      //               : LineChart(_mainData()),
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

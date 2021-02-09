@@ -12,6 +12,7 @@ import 'package:app/ui/widgets/ctoggle_widget.dart';
 import 'package:app/ui/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DashboardScreen extends StatefulWidget {
   @override
@@ -43,16 +44,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
           return Scaffold(
             backgroundColor: CColors.black,
             appBar: CHeader.buildAppBarWithCButton(
-                context: context, title: 'Dashboard'),
+              context: context,
+              title: 'Dashboard',
+            ),
             body: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
                   Container(
                     width: size.width,
                     padding: EdgeInsets.only(
-                        left: CPadding.defaultSidesSmall,
-                        right: CPadding.defaultSidesSmall,
-                        top: CPadding.defaultSmall),
+                      left: CPadding.defaultSidesSmall,
+                      right: CPadding.defaultSidesSmall,
+                      top: CPadding.defaultSmall,
+                    ),
                     child: Column(
                       children: [
                         CHeadingTitle(title: 'Realtime'),
@@ -62,7 +66,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             CHeadingTitle(
-                                title: _selectedMeasurement?.title ?? ''),
+                              title: _selectedMeasurement?.title ?? '',
+                            ),
                             CToggleWidget(
                               onPressed: (index) {
                                 log('button pressed ' + index.toString());
@@ -94,7 +99,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             ),
                           ],
                         ),
-                        CLineChart(),
+                        selectedMeasurement != null ? CLineChart() : CircularProgressIndicator(),
                       ],
                     ),
                   ),
@@ -122,50 +127,17 @@ class RawMeasurementsDashboard extends StatefulWidget {
 
 class _RawMeasurementsDashboardState extends State<RawMeasurementsDashboard> {
 
-  // final DefinitionStore defStore = DefinitionStore();
-  final KitStore kitStore = KitStore();
-
+  KitStore kitStore;
   final int _defaultSelectedIndex = 0;
-  // var kitWebSocket = inject<KitWebSocket>();
-  // var kitRepository = inject<KitRepository>();
-  // var definitionRepository = inject<DefinitionsRepository>();
   Stream channel;
-  //
-  // List<KitConfiguration> configurations;
-  // KitConfiguration activeConfiguration;
-
-  // List<PeripheralDefinition> peripheralDefinition;
-  // List<QuantityType> quantityType;
   Future<List<RawMeasurement>> rawMeasurements;
 
   @override
   void initState() {
     super.initState();
-    kitStore.serial = 'k-hvcx-p3qg-7dfq';
-    rawMeasurements = _getRawMeasurements();
-
-    // subscribe to stream of measurements
-    // kitWebSocket.subscribeMeasurements('k-hvcx-p3qg-7dfq');
-    // channel = kitWebSocket.getStreamMeasurements();
-
-    channel = kitStore.getStreamMeasurements();
   }
 
   Future<List<RawMeasurement>> _getRawMeasurements() async {
-
-    // // fetch definitions
-    // await defStore.init();
-    // print(defStore.hasResults);
-    //
-    // peripheralDefinition =
-    //     await definitionRepository.getPeripheralDefinitions();
-    // quantityType = await definitionRepository.getQuantityTypes();
-    //
-    // // State quantity type / peripheral definition in Map
-    // var mapDefinition = <int, PeripheralDefinition>{
-    //   for (PeripheralDefinition e in peripheralDefinition) e.id: e
-    // };
-    // var mapQuantityType = {for (QuantityType e in quantityType) e.id: e};
 
     // Look for the active configuration (active) for our selected kit and get peripherals with their ids
     // Then, for every peripheral get quantityTypeID and map all that to List<RawMeasurement>
@@ -181,37 +153,24 @@ class _RawMeasurementsDashboardState extends State<RawMeasurementsDashboard> {
 
     return kitStore.rawMeasurements;
 
-    // // Get first active configuration
-    // configurations = await kitRepository.getConfigurations('k-hvcx-p3qg-7dfq');
-    // activeConfiguration =
-    //     configurations.where((element) => element.active == true).first;
-    //
-    // var peripherals = activeConfiguration.peripherals;
-    //
-    // var p = peripherals
-    //     .expand((peripheral) => {
-    //           mapDefinition[peripheral.peripheralDefinitionId]
-    //               .expectedQuantityTypes
-    //               .expand((quantityId) => {
-    //                     RawMeasurement(
-    //                         title: mapQuantityType[quantityId].physicalQuantity,
-    //                         subtitle: peripheral.name,
-    //                         unitSymbol:
-    //                             mapQuantityType[quantityId].physicalUnitSymbol,
-    //                         quantityTypeId: quantityId,
-    //                         peripheralId: peripheral.id)
-    //                   })
-    //               .toList()
-    //         })
-    //     .toList()
-    //     .expand((i) => i)
-    //     .toList();
-    //
-    //
-    // // select default raw measurement
-    // DashboardScreen.of(context).selectedMeasurement = p[_defaultSelectedIndex];
-    //
-    // return p;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // initializing stores
+    kitStore = Provider.of<KitStore>(context);
+    kitStore.serial = 'k-vhc3-3f8p-x9fd';
+    rawMeasurements = _getRawMeasurements();
+
+    // subscribe to streams of measurements for realtime
+    channel = kitStore.getStreamMeasurements();
+  }
+
+  @override
+  void dispose() {
+    kitStore.closeStreamMeasurements();
+    super.dispose();
   }
 
   /// Card
