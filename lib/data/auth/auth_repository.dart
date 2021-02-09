@@ -9,13 +9,13 @@ class AuthRepository {
   final AuthApi _api = inject<AuthApi>();
 
   /// Login by username and password.
-  Future<AuthenticationTokens> login(String username, String password) async {
+  Future<User> login(String username, String password) async {
     var result = await _api.authenticateByCredentials(username, password);
     // set auth token
     var pref = await SharedPreferences.getInstance();
     await pref.setString('auth_token', result.accessToken);
     await pref.setString('refresh_token', result.refreshToken);
-    return result;
+    return getInfo();
   }
 
   /// Obtain an access token from a refresh token.
