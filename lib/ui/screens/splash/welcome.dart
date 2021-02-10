@@ -1,9 +1,16 @@
+import 'package:app/stores/auth/login_store.dart';
+import 'package:app/stores/store_state.dart';
 import 'package:app/ui/widgets/cbutton.dart';
 import 'package:app/ui/constants.dart';
 import 'package:app/ui/screens/auth/login.dart';
 import 'package:app/ui/screens/auth/register.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
+
+import '../home.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -11,7 +18,40 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  bool status = false;
+
+  // Store that contains all the data and the logic we will need in this page
+  LoginStore _loginStore;
+
+  // To store reactions
+  List<ReactionDisposer> _disposers;
+
+  // Load reactions and store them in _disposers
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _loginStore ??= Provider.of<LoginStore>(context);
+    _disposers ??= [
+      reactionOnIsLogged(),
+    ];
+  }
+
+  // Navigate whenever the bool isLogged equal to true
+  ReactionDisposer reactionOnIsLogged() {
+    return reaction(
+          (_) => _loginStore.isLogged,
+          (bool isLogged) {
+        if (isLogged) {
+          print('is logged');
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+                  (Route<dynamic> route) => false);
+        } else {
+          print('fail logging');
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +62,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         'Educational citizen science project with the European Space Agency to engage a new generation of space farmers, collect data and ideas for agriculture on Mars';
     final appName = 'Astroplant';
     final logIn = 'I already have an account';
+
+    getCurrentUser(context);
+
     return Scaffold(
       backgroundColor: CColors.black,
       appBar: AppBar(
@@ -60,6 +103,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     textAlign: TextAlign.center,
                     style: themeData.textTheme.bodyText1,
                   ),
+                  buildLoading(),
                 ],
               ),
             ),
@@ -105,6 +149,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
+  Widget buildLoading() {
+    return Observer(
+      name: 'Loading',
+      builder: (_) {
+        if (_loginStore.loginState == StoreState.loading) {
+          return Center(child: CircularProgressIndicator());
+        }
+        // here we can add on success, to show user that he's logging successfully
+        return Container();
+      },
+    );
+  }
+
+  void getCurrentUser(BuildContext context) {
+    final store = Provider.of<LoginStore>(context);
+    store.getCurrentUser();
+  }
 
 }
 

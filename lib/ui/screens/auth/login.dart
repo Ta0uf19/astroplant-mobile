@@ -29,6 +29,11 @@ class _LoginScreenState extends State<LoginScreen> {
   /// in our case we will use the same context to shaw the external SnackBar
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
+  /// Form fields
+  String username = '';
+
+  String password = '';
+
   /// Reaction : A method that will be called whenever the subject change
 
   // Load reactions and store them in _disposers
@@ -152,30 +157,22 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget buildUsernameInput() {
-    return Observer(
-      builder: (_) {
-        return CTextInput(
+    return CTextInput(
           textHint: 'Username',
           onChanged: (value) {
-            _loginStore.username = value;
+            username = value;
           },
         );
-      },
-    );
   }
 
   Widget buildPasswordInput() {
-    return Observer(
-      builder: (_) {
-        return CTextInput(
+    return  CTextInput(
           textHint: 'Password',
           isPasswordType: true,
           onChanged: (value) {
-            _loginStore.password = value;
+            password = value;
           },
         );
-      },
-    );
   }
 
   Widget buildButtonSubmit() {
@@ -192,8 +189,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget buildLoading() {
     return Observer(
+      name: 'Loading',
       builder: (_) {
-        if (_loginStore.state == StoreState.loading) {
+        if (_loginStore.loginState == StoreState.loading) {
           return Center(child: CircularProgressIndicator());
         }
         // here we can add on success, to show user that he's logging successfully
@@ -205,6 +203,6 @@ class _LoginScreenState extends State<LoginScreen> {
   void submitLoginForm(BuildContext context) {
     final store = Provider.of<LoginStore>(context);
     store.errorMessage='';
-    store.doLogin();
+    store.doLogin(username, password);
   }
 }

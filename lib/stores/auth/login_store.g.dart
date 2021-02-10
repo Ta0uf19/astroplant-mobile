@@ -9,75 +9,41 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginStore on _LoginStore, Store {
-  Computed<StoreState> _$stateComputed;
+  Computed<StoreState> _$loginStateComputed;
 
   @override
-  StoreState get state => (_$stateComputed ??=
-          Computed<StoreState>(() => super.state, name: '_LoginStore.state'))
-      .value;
+  StoreState get loginState =>
+      (_$loginStateComputed ??= Computed<StoreState>(() => super.loginState,
+              name: '_LoginStore.loginState'))
+          .value;
 
-  final _$usernameAtom = Atom(name: '_LoginStore.username');
+  final _$userAtom = Atom(name: '_LoginStore.user');
 
   @override
-  String get username {
-    _$usernameAtom.reportRead();
-    return super.username;
+  User get user {
+    _$userAtom.reportRead();
+    return super.user;
   }
 
   @override
-  set username(String value) {
-    _$usernameAtom.reportWrite(value, super.username, () {
-      super.username = value;
+  set user(User value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
     });
   }
 
-  final _$passwordAtom = Atom(name: '_LoginStore.password');
+  final _$_userAtom = Atom(name: '_LoginStore._user');
 
   @override
-  String get password {
-    _$passwordAtom.reportRead();
-    return super.password;
+  ObservableFuture<User> get _user {
+    _$_userAtom.reportRead();
+    return super._user;
   }
 
   @override
-  set password(String value) {
-    _$passwordAtom.reportWrite(value, super.password, () {
-      super.password = value;
-    });
-  }
-
-  final _$authenticationTokensAtom =
-      Atom(name: '_LoginStore.authenticationTokens');
-
-  @override
-  AuthenticationTokens get authenticationTokens {
-    _$authenticationTokensAtom.reportRead();
-    return super.authenticationTokens;
-  }
-
-  @override
-  set authenticationTokens(AuthenticationTokens value) {
-    _$authenticationTokensAtom.reportWrite(value, super.authenticationTokens,
-        () {
-      super.authenticationTokens = value;
-    });
-  }
-
-  final _$_futureAuthenticationTokensAtom =
-      Atom(name: '_LoginStore._futureAuthenticationTokens');
-
-  @override
-  ObservableFuture<AuthenticationTokens> get _futureAuthenticationTokens {
-    _$_futureAuthenticationTokensAtom.reportRead();
-    return super._futureAuthenticationTokens;
-  }
-
-  @override
-  set _futureAuthenticationTokens(
-      ObservableFuture<AuthenticationTokens> value) {
-    _$_futureAuthenticationTokensAtom
-        .reportWrite(value, super._futureAuthenticationTokens, () {
-      super._futureAuthenticationTokens = value;
+  set _user(ObservableFuture<User> value) {
+    _$_userAtom.reportWrite(value, super._user, () {
+      super._user = value;
     });
   }
 
@@ -111,22 +77,27 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$doLogoutAsyncAction = AsyncAction('_LoginStore.doLogout');
+
+  @override
+  Future<dynamic> doLogout() {
+    return _$doLogoutAsyncAction.run(() => super.doLogout());
+  }
+
   final _$doLoginAsyncAction = AsyncAction('_LoginStore.doLogin');
 
   @override
-  Future<dynamic> doLogin() {
-    return _$doLoginAsyncAction.run(() => super.doLogin());
+  Future<dynamic> doLogin(String username, String password) {
+    return _$doLoginAsyncAction.run(() => super.doLogin(username, password));
   }
 
   @override
   String toString() {
     return '''
-username: ${username},
-password: ${password},
-authenticationTokens: ${authenticationTokens},
+user: ${user},
 isLogged: ${isLogged},
 errorMessage: ${errorMessage},
-state: ${state}
+loginState: ${loginState}
     ''';
   }
 }
