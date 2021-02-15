@@ -17,6 +17,10 @@ class KitsApi {
       var list = <KitConfiguration>[];
       response.data
           .forEach((model) => list.add(KitConfiguration.fromJson(model)));
+
+      //sort configuration by id
+      list.sort((config1,config2)=> config1.id.compareTo(config2.id));
+
       return list;
     } catch (e) {
       print(e.toString());
