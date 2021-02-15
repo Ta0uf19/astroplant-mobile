@@ -160,7 +160,7 @@ class _RawMeasurementsDashboardState extends State<RawMeasurementsDashboard> {
     super.didChangeDependencies();
     // initializing stores
     kitStore = Provider.of<KitStore>(context);
-    kitStore.serial = 'k-vhc3-3f8p-x9fd';
+    kitStore.serial = 'k-9pd7-cdkc-cmm7';//'k-vhc3-3f8p-x9fd';
     rawMeasurements = _getRawMeasurements();
 
     // subscribe to streams of measurements for realtime

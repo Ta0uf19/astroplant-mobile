@@ -160,6 +160,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                         toggleSize: 15,
                         onToggle: (val) {
                           setState(() {
+                            _kitStore.activateConfiguration(index);
                             //var status = val;
                           });
                         }),
