@@ -74,7 +74,8 @@ class KitsApi {
     final response = await _http
           .patch(Endpoints.kitConfigurationUrl.expand({'configurationId': configurationId }), body : body);
       print(response.statusCode);
-      return response.statusCode >= 200 && response.statusCode < 300 ? true : false;
+      print(response);
+      return response.statusCode >= 200 && response.statusCode < 300 ? true : throw Exception(response.statusMessage);;
     } catch (e) {
       print(e.toString());
       rethrow;

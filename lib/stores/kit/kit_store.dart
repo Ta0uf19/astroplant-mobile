@@ -105,15 +105,41 @@ abstract class _KitStore with Store {
   }
 
   @action
-  Future<bool> activateConfiguration(int id) async {
+  Future<bool> activateConfiguration(int index) async {
+    var indexActive =
+        configurations.indexWhere((element) => element.active == true);
     try {
-      await ObservableFuture(_repository.updateConfiguration(id, active: true));
+      if (indexActive != -1) configurations[indexActive].active = false;
+      configurations[index].active = true;
 
-      configurations.where((element) => element.active == true).first.active =
-          false;
-      configurations[id].active = true;
+      await ObservableFuture(_repository
+          .updateConfiguration(configurations[index].id, active: true));
+
+      configurations[index].neverUsed = false;
+
       return true;
     } on Exception catch (e) {
+      if (indexActive != -1) configurations[indexActive].active = true;
+      configurations[index].active = false;
+
+      print(e.toString());
+      return false;
+    }
+  }
+
+  @action
+  Future<bool> deactivateConfiguration(int index) async {
+    var indexActive =
+        configurations.indexWhere((element) => element.active == true);
+    try {
+      configurations[indexActive].active = false;
+      await ObservableFuture(_repository
+          .updateConfiguration(configurations[index].id, active: false));
+
+      return true;
+    } on Exception catch (e) {
+      configurations[indexActive].active = true;
+
       print(e.toString());
       return false;
     }

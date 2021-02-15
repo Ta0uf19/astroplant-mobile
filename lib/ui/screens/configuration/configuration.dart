@@ -131,7 +131,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                         width: 20,
                       ),
                       CColumnText(
-                        title: snapshot.data[index].controllerSymbol,
+                        title: snapshot.data[index].description,
                         subTitle: 'identifier : ${snapshot.data[index].id}',
                         description: snapshot.data[index].active
                             ? 'Currently used'
@@ -160,7 +160,9 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
                         toggleSize: 15,
                         onToggle: (val) {
                           setState(() {
-                            _kitStore.activateConfiguration(index);
+                            snapshot.data[index].active == false
+                                ? _kitStore.activateConfiguration(index)
+                                : _kitStore.deactivateConfiguration(index);
                             //var status = val;
                           });
                         }),
