@@ -144,4 +144,22 @@ abstract class _KitStore with Store {
       return false;
     }
   }
+
+  @action
+  Future<KitConfiguration> addConfiguration(String description) async {
+   try {
+      var configuration = await ObservableFuture(_repository
+          .addConfiguration(description,serial));
+
+      configuration != null
+          ? configurations.add(configuration)
+          : print('store : add configuration error');
+
+      print(configurations.length);
+      return configuration;
+    } on Exception catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 }

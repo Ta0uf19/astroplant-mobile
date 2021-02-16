@@ -85,6 +85,33 @@ mixin _$KitStore on _KitStore, Store {
     });
   }
 
+  final _$activateConfigurationAsyncAction =
+      AsyncAction('_KitStore.activateConfiguration');
+
+  @override
+  Future<bool> activateConfiguration(int index) {
+    return _$activateConfigurationAsyncAction
+        .run(() => super.activateConfiguration(index));
+  }
+
+  final _$deactivateConfigurationAsyncAction =
+      AsyncAction('_KitStore.deactivateConfiguration');
+
+  @override
+  Future<bool> deactivateConfiguration(int index) {
+    return _$deactivateConfigurationAsyncAction
+        .run(() => super.deactivateConfiguration(index));
+  }
+
+  final _$addConfigurationAsyncAction =
+      AsyncAction('_KitStore.addConfiguration');
+
+  @override
+  Future<KitConfiguration> addConfiguration(String description) {
+    return _$addConfigurationAsyncAction
+        .run(() => super.addConfiguration(description));
+  }
+
   final _$_KitStoreActionController = ActionController(name: '_KitStore');
 
   @override

@@ -77,6 +77,13 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$getCurrentUserAsyncAction = AsyncAction('_LoginStore.getCurrentUser');
+
+  @override
+  Future<dynamic> getCurrentUser() {
+    return _$getCurrentUserAsyncAction.run(() => super.getCurrentUser());
+  }
+
   final _$doLogoutAsyncAction = AsyncAction('_LoginStore.doLogout');
 
   @override

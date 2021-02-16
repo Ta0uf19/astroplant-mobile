@@ -19,7 +19,7 @@ class KitsApi {
           .forEach((model) => list.add(KitConfiguration.fromJson(model)));
 
       //sort configuration by id
-      list.sort((config1,config2)=> config1.id.compareTo(config2.id));
+      list.sort((config1, config2) => config1.id.compareTo(config2.id));
 
       return list;
     } catch (e) {
@@ -61,7 +61,8 @@ class KitsApi {
 
   /// Update a configuration
   /// return false if the update failed else return true
-  Future<bool> updateConfiguration(int configurationId,
+  Future<bool> updateConfiguration(
+      int configurationId,
       String description,
       String controllerSymbolLocation,
       String controllerSymbol,
@@ -69,20 +70,48 @@ class KitsApi {
       bool active) async {
     try {
       dynamic body = {};
-      if(description != null) body.putIfAbsent('description', () => '$description');
-      if(controllerSymbolLocation != null) body.putIfAbsent('controllerSymbolLocation', () => '$controllerSymbolLocation');
-      if(controllerSymbol != null) body.putIfAbsent('controllerSymbol', () => 'controllerSymbol');
-      if(controlRules != null) body.putIfAbsent('controlRules', () => controlRules);
-      if(active != null) body.putIfAbsent('active', () => active);
+      if (description != null) {
+        body.putIfAbsent('description', () => '$description');
+      }
+      if (controllerSymbolLocation != null) {
+        body.putIfAbsent(
+            'controllerSymbolLocation', () => '$controllerSymbolLocation');
+      }
+      if (controllerSymbol != null) {
+        body.putIfAbsent('controllerSymbol', () => 'controllerSymbol');
+      }
+      if (controlRules != null) {
+        body.putIfAbsent('controlRules', () => controlRules);
+      }
+      if (active != null) body.putIfAbsent('active', () => active);
 
-    final response = await _http
-          .patch(Endpoints.kitConfigurationUrl.expand({'configurationId': configurationId }), body : body);
+      final response = await _http.patch(
+          Endpoints.kitConfigurationUrl
+              .expand({'configurationId': configurationId}),
+          body: body);
       print(response.statusCode);
       print(response);
-      return response.statusCode >= 200 && response.statusCode < 300 ? true : throw Exception(response.statusMessage);;
+      return response.statusCode >= 200 && response.statusCode < 300
+          ? true
+          : throw Exception(response.statusMessage);
+      ;
     } catch (e) {
       print(e.toString());
       rethrow;
     }
+  }
+
+  Future<KitConfiguration> addConfiguration(String description, String kitSerial) async {
+    final response = await _http.post(
+        Endpoints.configurationUrl
+            .expand({'kitSerial': kitSerial}),
+        body: {
+          'description' : description
+        });
+    print(response.data);
+    return response.statusCode >= 200 && response.statusCode < 300
+        ? KitConfiguration.fromJson(response.data)
+        : throw Exception(response.statusMessage);
+    
   }
 }

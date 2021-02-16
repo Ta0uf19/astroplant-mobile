@@ -1,7 +1,6 @@
 import 'package:app/data/auth/auth_repository.dart';
 import 'package:app/data/kit/kit_repository.dart';
 import 'package:app/di/injector_provider.dart';
-import 'package:app/data/definitions/definitions_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

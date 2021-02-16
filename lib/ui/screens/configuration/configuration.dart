@@ -9,6 +9,7 @@ import 'package:app/ui/widgets/ctext_input.dart';
 import 'package:app/ui/widgets/ctoggle_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
@@ -29,9 +30,6 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
   /// in our case we will use the same context to shaw the external SnackBar
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
-  /// Future list of configuration
-  Future<List<KitConfiguration>> listKitConfiguration;
-
   /// Reaction : A method that will be called whenever the subject change
 
   // Load reactions and store them in _disposers
@@ -40,18 +38,17 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
     super.didChangeDependencies();
     _kitStore ??= Provider.of<KitStore>(context);
     _disposers ??= [
-      reactionOnIsLogged(),
+      reactionOnConfigurationChanges(),
     ];
 
-    listKitConfiguration = _getListKitConfiguration();
+    _getListKitConfiguration();
   }
 
-  // Navigate whenever the bool isLogged equal to true
-  ReactionDisposer reactionOnIsLogged() {
+  ReactionDisposer reactionOnConfigurationChanges() {
     return reaction(
-          (_) => _kitStore.configurations,
-          (List<KitConfiguration> listKitConfiguration) {
-        if (listKitConfiguration.isNotEmpty) {
+      (_) => _kitStore.configurations.length,
+      (int listKitConfiguration) {
+        if (listKitConfiguration != 0) {
           print('listKitConfiguration isNotEmpty');
         } else {
           print('listKitConfiguration isEmpty');
@@ -67,15 +64,13 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
     super.dispose();
   }
 
-  Future<List<KitConfiguration>> _getListKitConfiguration() async {
-    // Look for the active configuration (active) for our selected kit and get peripherals with their ids
-    // Then, for every peripheral get quantityTypeID and map all that to List<RawMeasurement>
-
+  // Refresh store list of configuration
+  Future _getListKitConfiguration() async {
     await _kitStore.fetchConfigurations();
     print(_kitStore.hasResults);
     print(_kitStore.activeConfiguration);
 
-    return _kitStore.configurations;
+    return;
   }
 
   @override
@@ -88,7 +83,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
           context: context, title: 'Configuration'),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showAddConfigurationDialog(context, themeData);
+          showAddConfigurationDialogue(context, themeData);
         },
         child: Icon(Icons.add),
       ),
@@ -99,85 +94,95 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
           right: CPadding.defaultSidesSmall,
           top: CPadding.defaultSmall,
         ),
-        child: FutureBuilder<List<KitConfiguration>>(
-          future: listKitConfiguration,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) { return  buildListViewConfiguration(snapshot); }
-            else {
-              print('loading config');
-              return Container();
-            };
-          }
+        child: Observer(
+          builder: (context) => buildListOfConfigurations(),
         ),
       ),
     );
   }
 
-  ListView buildListViewConfiguration(AsyncSnapshot<List<KitConfiguration>> snapshot) {
+  // Create ListView of Store.configurations
+  ListView buildListOfConfigurations() {
     return ListView.builder(
-            itemCount: snapshot.data.length,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
-                child: CCard(
-                  borderRadius: 7,
-                  height: 100,
-                  body: Row(
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/configuration.svg',
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      CColumnText(
-                        title: snapshot.data[index].description,
-                        subTitle: 'identifier : ${snapshot.data[index].id}',
-                        description: snapshot.data[index].active
-                            ? 'Currently used'
-                            : snapshot.data[index].neverUsed
-                            ? 'Never used'
-                            : '',
-                        colorText: CColors.white,
-                      ),
-                    ],
-                  ),
-                  colorBackground: Color.fromRGBO(29, 29, 29, 1),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => EditConfigurationScreen()),
-                    );
-                  },
-                  suffixWidget: Container(
-                    padding: EdgeInsets.all(CPadding.defaultSmall),
-                    alignment: Alignment.center,
-                    child: CToggleSwitch(
-                        value: snapshot.data[index].active,
-                        width: 40,
-                        height: 25,
-                        toggleSize: 15,
-                        onToggle: (val) {
-                          setState(() {
-                            snapshot.data[index].active == false
-                                ? _kitStore.activateConfiguration(index)
-                                : _kitStore.deactivateConfiguration(index);
-                            //var status = val;
-                          });
-                        }),
-                  ),
+          itemCount: _kitStore.configurations.length,
+          itemBuilder: (BuildContext context, int index) => Container(
+            margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
+            child: buildRowConfiguration(index, context),
+          ),
+        );
+  }
+
+  // Create one row of configuration
+  CCard buildRowConfiguration(int index, BuildContext context) {
+    return CCard(
+            borderRadius: 7,
+            height: 100,
+            body: Row(
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/configuration.svg',
                 ),
+                SizedBox(
+                  width: 20,
+                ),
+                CColumnText(
+                  title: _kitStore.configurations[index].description,
+                  subTitle:
+                      'identifier : ${_kitStore.configurations[index].id}',
+                  description: _kitStore.configurations[index].active
+                      ? 'Currently used'
+                      : _kitStore.configurations[index].neverUsed
+                          ? 'Never used'
+                          : '',
+                  colorText: CColors.white,
+                ),
+              ],
+            ),
+            colorBackground: Color.fromRGBO(29, 29, 29, 1),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => EditConfigurationScreen()),
               );
             },
+            suffixWidget: Container(
+              padding: EdgeInsets.all(CPadding.defaultSmall),
+              alignment: Alignment.center,
+              child: CToggleSwitch(
+                  value: _kitStore.configurations[index].active,
+                  width: 40,
+                  height: 25,
+                  toggleSize: 15,
+                  onToggle: (val) {
+                    setState(() {
+                      _kitStore.configurations[index].active == false
+                          ? _kitStore.activateConfiguration(index)
+                          : _kitStore.deactivateConfiguration(index);
+                      //var status = val;
+                    });
+                  }),
+            ),
           );
   }
 
-  showAddConfigurationDialog(BuildContext context, ThemeData themeData) {
+  showAddConfigurationDialogue(BuildContext context, ThemeData themeData) {
+    var description = '';
+
     // set up the button
     Widget okButton = FlatButton(
       child: Text('Create'),
-      onPressed: () {},
+      onPressed: () async {
+        print('description $description');
+        var configuration = await _kitStore.addConfiguration(description);
+        //if(configuration != null )listKitConfiguration = _getListKitConfiguration();
+        if (configuration != null) {
+          _getListKitConfiguration();
+          Navigator.pop(context);
+        } else {
+          print('screen : add configuration error');
+        }
+      },
     );
 
     //set up text field
@@ -185,6 +190,9 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
       textHint: 'Description',
       backgroundColor: CColors.greyLight,
       textColor: CColors.black,
+      onChanged: (value) {
+        description = value;
+      },
     );
 
     // set up the AlertDialog

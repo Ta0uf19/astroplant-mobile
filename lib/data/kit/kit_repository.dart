@@ -34,4 +34,8 @@ class KitRepository {
     return await _api.updateConfiguration(configurationId, description,
         controllerSymbolLocation, controllerSymbol, controlRules, active);
   }
+
+  Future<KitConfiguration> addConfiguration(String description, String kitSerial) async {
+    return await _api.addConfiguration(description, kitSerial);
+  }
 }
