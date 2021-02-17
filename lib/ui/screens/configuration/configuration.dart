@@ -143,7 +143,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => EditConfigurationScreen()),
+                    builder: (context) => EditConfigurationScreen(indexConfiguration: index,)),
               );
             },
             suffixWidget: Container(

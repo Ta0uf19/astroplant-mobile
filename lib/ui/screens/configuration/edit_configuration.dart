@@ -1,24 +1,70 @@
+import 'package:app/models/kit/kit_configuration.dart';
+import 'package:app/stores/kit/kit_store.dart';
 import 'package:app/ui/widgets/cbottom_nav.dart';
 import 'package:app/ui/widgets/cbutton.dart';
 import 'package:app/ui/widgets/ccard.dart';
 import 'package:app/ui/widgets/ccolumn_text.dart';
 import 'package:app/ui/widgets/cheader.dart';
 import 'package:app/ui/constants.dart';
-import 'package:app/ui/custom_icons.dart';
 import 'package:app/ui/screens/configuration/configuration.dart';
 import 'package:app/ui/screens/configuration/edit_rules.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
+
+import '../../custom_icons.dart';
 
 class EditConfigurationScreen extends StatefulWidget {
+
+  // Declare a field that holds the configuration.
+  final int indexConfiguration;
+
+  // In the constructor, require a configuration.
+  EditConfigurationScreen({Key key, @required this.indexConfiguration}) : super(key: key);
+
   @override
   _EditConfigurationScreenState createState() =>
-      _EditConfigurationScreenState();
+      _EditConfigurationScreenState(indexConfiguration: indexConfiguration);
 }
 
 class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
-  bool status = false;
+
+  // Declare a field that holds the configuration.
+  final int indexConfiguration;
+
+  // In the constructor, require a configuration.
+  _EditConfigurationScreenState({Key key, @required this.indexConfiguration});
+
+  // Store that contains all the data and the logic we will need in this page
+  KitStore _kitStore;
+
+  // To store reactions
+  List<ReactionDisposer> _disposers;
+
+  /// To use the same context as the main widget in an external widget,
+  /// in our case we will use the same context to shaw the external SnackBar
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  /// Reaction : A method that will be called whenever the subject change
+
+  // Load reactions and store them in _disposers
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _kitStore ??= Provider.of<KitStore>(context);
+    _disposers ??= [
+    ];
+
+  }
+
+  // Destroy reactions when the page is removed from the tree permanently
+  @override
+  void dispose() {
+    _disposers.forEach((d) => d());
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +83,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
         index: 2,
       ),
       appBar: CHeader.buildAppBarWithCButton(context: context,title: 'Edit Configuration'),
+      // we used ListView instead of scrollableChild to be able to do nested list
       body: ListView.builder(
           itemCount: 1,
           itemBuilder: (BuildContext context, int block) {
@@ -67,7 +114,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              'Beta testing phase, it is important to regularly check you are running the late, kit software. Please check you are running the latest version',
+                              _kitStore.configurations[indexConfiguration].description,
                               style: themeData.textTheme.subtitle2,
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
@@ -102,7 +149,9 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                             size: 16,
                           ),
                           borderRadius: BorderRadius.circular(8),
-                          onPressed: () {},
+                          onPressed: () {
+                            //TODO add peripheral
+                          },
                         ),
                       ],
                     ),
@@ -110,7 +159,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
-                    itemCount: 4,
+                    itemCount: _kitStore.configurations[indexConfiguration].peripherals.length,
                     itemBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
@@ -120,9 +169,9 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                             body: Row(
                               children: [
                                 CColumnText(
-                                  title: 'Temp',
-                                  subTitle: 'Identifier : #127',
-                                  description: 'Virtual temperature sensor',
+                                  title: _kitStore.configurations[indexConfiguration].peripherals[index].name,
+                                  subTitle: 'Identifier : #${_kitStore.configurations[indexConfiguration].peripherals[index].id}',
+                                  description: _kitStore.peripheralDefinition[_kitStore.configurations[indexConfiguration].peripherals[index].peripheralDefinitionId].name,
                                   colorText: CColors.white,
                                 ),
                               ],

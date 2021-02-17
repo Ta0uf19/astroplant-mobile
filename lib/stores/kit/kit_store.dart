@@ -1,8 +1,10 @@
 import 'package:app/data/kit/kit_repository.dart';
 import 'package:app/data/kit/kit_ws.dart';
 import 'package:app/di/injector_provider.dart';
+import 'package:app/models/definitions/peripheral_definition.dart';
 import 'package:app/models/kit/aggregate_measurement.dart';
 import 'package:app/models/kit/kit_configuration.dart';
+import 'package:app/models/kit/peripheral.dart';
 import 'package:app/models/kit/raw_measurement.dart';
 import 'package:app/stores/definitions/definition_store.dart';
 import 'package:mobx/mobx.dart';
@@ -47,6 +49,8 @@ abstract class _KitStore with Store {
     return configurationsFuture;
   }
 
+  ObservableMap<int, PeripheralDefinition> peripheralDefinition;
+
   /// Get active configuration
   @computed
   KitConfiguration get activeConfiguration =>
@@ -55,6 +59,8 @@ abstract class _KitStore with Store {
   /// Fetch raw measurements
   Future<List<RawMeasurement>> fetchRawMeasurements() async {
     await _definitionStore.init();
+
+    peripheralDefinition = _definitionStore.mapPeripherals;
 
     rawMeasurements = activeConfiguration.peripherals
         .expand((peripheral) => {
