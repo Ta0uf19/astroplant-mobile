@@ -1,24 +1,72 @@
+import 'package:app/stores/kit/kit_store.dart';
+import 'package:app/ui/screens/configuration/components/cdialog.dart';
+import 'package:app/ui/screens/configuration/components/cbottom_sheet_configuration.dart';
+import 'package:app/ui/screens/configuration/components/peripheral_menu.dart';
 import 'package:app/ui/widgets/cbottom_nav.dart';
 import 'package:app/ui/widgets/cbutton.dart';
 import 'package:app/ui/widgets/ccard.dart';
 import 'package:app/ui/widgets/ccolumn_text.dart';
 import 'package:app/ui/widgets/cheader.dart';
 import 'package:app/ui/constants.dart';
-import 'package:app/ui/custom_icons.dart';
 import 'package:app/ui/screens/configuration/configuration.dart';
 import 'package:app/ui/screens/configuration/edit_rules.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
+
+import '../../custom_icons.dart';
 
 class EditConfigurationScreen extends StatefulWidget {
+
+  // Declare a field that holds the configuration.
+  final int indexConfiguration;
+
+  // In the constructor, require a configuration.
+  EditConfigurationScreen({Key key, @required this.indexConfiguration}) : super(key: key);
+
   @override
   _EditConfigurationScreenState createState() =>
-      _EditConfigurationScreenState();
+      _EditConfigurationScreenState(indexConfiguration: indexConfiguration);
 }
 
 class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
-  bool status = false;
+
+  // Declare a field that holds the configuration.
+  final int indexConfiguration;
+
+  // In the constructor, require a configuration.
+  _EditConfigurationScreenState({Key key, @required this.indexConfiguration});
+
+  // Store that contains all the data and the logic we will need in this page
+  KitStore _kitStore;
+
+  // To store reactions
+  List<ReactionDisposer> _disposers;
+
+  /// To use the same context as the main widget in an external widget,
+  /// in our case we will use the same context to shaw the external SnackBar
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  /// Reaction : A method that will be called whenever the subject change
+
+  // Load reactions and store them in _disposers
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _kitStore ??= Provider.of<KitStore>(context);
+    _disposers ??= [
+    ];
+
+  }
+
+  // Destroy reactions when the page is removed from the tree permanently
+  @override
+  void dispose() {
+    _disposers.forEach((d) => d());
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +85,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
         index: 2,
       ),
       appBar: CHeader.buildAppBarWithCButton(context: context,title: 'Edit Configuration'),
+      // we used ListView instead of scrollableChild to be able to do nested list
       body: ListView.builder(
           itemCount: 1,
           itemBuilder: (BuildContext context, int block) {
@@ -67,7 +116,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                           ),
                           Expanded(
                             child: Text(
-                              'Beta testing phase, it is important to regularly check you are running the late, kit software. Please check you are running the latest version',
+                              _kitStore.configurations[indexConfiguration].description,
                               style: themeData.textTheme.subtitle2,
                               textAlign: TextAlign.justify,
                               overflow: TextOverflow.ellipsis,
@@ -102,7 +151,9 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                             size: 16,
                           ),
                           borderRadius: BorderRadius.circular(8),
-                          onPressed: () {},
+                          onPressed: () {
+                            CBottomSheetConfiguration.showBottomSheetSelectPeripherals(context);
+                            },
                         ),
                       ],
                     ),
@@ -110,7 +161,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                   ListView.builder(
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
-                    itemCount: 4,
+                    itemCount: _kitStore.configurations[indexConfiguration].peripherals.length,
                     itemBuilder: (context, index) {
                       return Container(
                         margin: EdgeInsets.only(bottom: CPadding.defaultSmall),
@@ -120,9 +171,9 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                             body: Row(
                               children: [
                                 CColumnText(
-                                  title: 'Temp',
-                                  subTitle: 'Identifier : #127',
-                                  description: 'Virtual temperature sensor',
+                                  title: _kitStore.configurations[indexConfiguration].peripherals[index].name,
+                                  subTitle: 'Identifier : #${_kitStore.configurations[indexConfiguration].peripherals[index].id}',
+                                  description: _kitStore.peripheralDefinition[_kitStore.configurations[indexConfiguration].peripherals[index].peripheralDefinitionId].name,
                                   colorText: CColors.white,
                                 ),
                               ],
@@ -184,7 +235,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                       borderWidth: 1,
                       borderRadius: BorderRadius.circular(28),
                       onPressed: () {
-                        showDeleteConfigurationDialog(context,themeData);
+                        CDialog.showDeleteConfigurationDialog(context,themeData);
                       },
                     ),
                   ),
@@ -195,61 +246,10 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
     );
   }
 
-  showDeleteConfigurationDialog(BuildContext context, ThemeData themeData) {
-    // set up the button
-    Widget okButton = FlatButton(
-      child: Text("Yes, I'm sure"),
-      onPressed: () {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ConfigurationScreen()),
-                (Route<dynamic> route) => false
-        );
-      },
-    );
-
-    Widget cancelButton = FlatButton(
-      child: Text('Cancel'),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-
-    // set up the AlertDialog
-    var alert = AlertDialog(
-      title: Text(
-        'Delete',
-        style: themeData.textTheme.headline3.copyWith(
-          color: CColors.black,
-        ),
-      ),
-      content: Text(
-        'Are you sure you want to permanently remove this configuration ?',
-        style: themeData.textTheme.subtitle1.copyWith(
-          color: CColors.black,
-        ),
-        textAlign: TextAlign.center,
-      ),
-      actions: [
-        cancelButton,
-        okButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
-
 
   Widget btnMenu = PopupMenuButton<String>(
     onSelected: (value) {
-      choiceAction(value);
+      PeripheralMenu.choiceAction(value);
     },
     child: SvgPicture.asset(
       'assets/icons/menu.svg',
@@ -266,20 +266,8 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
     },
   );
 
-  static void choiceAction(String choice) {
-    if (choice == Choices.Settings) {
-      print('Settings');
-    } else if (choice == Choices.Subscribe) {
-      print('Subscribe');
-    } else if (choice == Choices.SignOut) {
-      print('SignOut');
-    }
-  }
-}
-class Choices {
-  static const String Subscribe = 'Subscribe';
-  static const String Settings = 'Settings';
-  static const String SignOut = 'Sign out';
 
-  static const List<String> choices = <String>[Subscribe, Settings, SignOut];
+
+
 }
+

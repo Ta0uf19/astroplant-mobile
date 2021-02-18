@@ -17,6 +17,8 @@ class Endpoints {
   static UriTemplate configurationUrl = UriTemplate(baseUrl + '/kits/{kitSerial}/configurations');
   static UriTemplate aggregateUrl = UriTemplate(baseUrl + '/kits/{kitSerial}/aggregate-measurements');
 
+  /// Configuration
+  static UriTemplate kitConfigurationUrl =  UriTemplate(baseUrl +'/kit-configurations/{configurationId}');
 
   /// Endpoints to get information about definitions such as quantity types.
 

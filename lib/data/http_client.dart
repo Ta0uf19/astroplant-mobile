@@ -60,4 +60,5 @@ class HttpClient {
   Future<Response> post(String url, { dynamic body }) => _client.post(url, data: body);
   Future<Response> put(String url, { dynamic body }) => _client.put(url, data: body);
   Future<Response> delete(String url, { dynamic body }) => _client.delete(url);
+  Future<Response> patch(String url, { dynamic body }) => _client.patch(url, data: body);
 }
