@@ -1,5 +1,7 @@
-import 'package:app/models/kit/kit_configuration.dart';
 import 'package:app/stores/kit/kit_store.dart';
+import 'package:app/ui/screens/configuration/components/cdialog.dart';
+import 'package:app/ui/screens/configuration/components/cbottom_sheet_configuration.dart';
+import 'package:app/ui/screens/configuration/components/peripheral_menu.dart';
 import 'package:app/ui/widgets/cbottom_nav.dart';
 import 'package:app/ui/widgets/cbutton.dart';
 import 'package:app/ui/widgets/ccard.dart';
@@ -150,8 +152,8 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                           ),
                           borderRadius: BorderRadius.circular(8),
                           onPressed: () {
-                            //TODO add peripheral
-                          },
+                            CBottomSheetConfiguration.showBottomSheetAddPeripherals(context);
+                            },
                         ),
                       ],
                     ),
@@ -233,7 +235,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                       borderWidth: 1,
                       borderRadius: BorderRadius.circular(28),
                       onPressed: () {
-                        showDeleteConfigurationDialog(context,themeData);
+                        CDialog.showDeleteConfigurationDialog(context,themeData);
                       },
                     ),
                   ),
@@ -244,61 +246,10 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
     );
   }
 
-  showDeleteConfigurationDialog(BuildContext context, ThemeData themeData) {
-    // set up the button
-    Widget okButton = FlatButton(
-      child: Text("Yes, I'm sure"),
-      onPressed: () {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ConfigurationScreen()),
-                (Route<dynamic> route) => false
-        );
-      },
-    );
-
-    Widget cancelButton = FlatButton(
-      child: Text('Cancel'),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-
-    // set up the AlertDialog
-    var alert = AlertDialog(
-      title: Text(
-        'Delete',
-        style: themeData.textTheme.headline3.copyWith(
-          color: CColors.black,
-        ),
-      ),
-      content: Text(
-        'Are you sure you want to permanently remove this configuration ?',
-        style: themeData.textTheme.subtitle1.copyWith(
-          color: CColors.black,
-        ),
-        textAlign: TextAlign.center,
-      ),
-      actions: [
-        cancelButton,
-        okButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
-
 
   Widget btnMenu = PopupMenuButton<String>(
     onSelected: (value) {
-      choiceAction(value);
+      PeripheralMenu.choiceAction(value);
     },
     child: SvgPicture.asset(
       'assets/icons/menu.svg',
@@ -315,20 +266,8 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
     },
   );
 
-  static void choiceAction(String choice) {
-    if (choice == Choices.Settings) {
-      print('Settings');
-    } else if (choice == Choices.Subscribe) {
-      print('Subscribe');
-    } else if (choice == Choices.SignOut) {
-      print('SignOut');
-    }
-  }
-}
-class Choices {
-  static const String Subscribe = 'Subscribe';
-  static const String Settings = 'Settings';
-  static const String SignOut = 'Sign out';
 
-  static const List<String> choices = <String>[Subscribe, Settings, SignOut];
+
+
 }
+
