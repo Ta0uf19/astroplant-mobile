@@ -1,21 +1,19 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../configuration.dart';
 
-class CDialog{
-  static void showDeleteConfigurationDialog(BuildContext context, ThemeData themeData) {
+class CDialog {
+  static void showDeleteConfigurationDialog(
+      BuildContext context, ThemeData themeData) {
     // set up the button
     Widget okButton = FlatButton(
       child: Text("Yes, I'm sure"),
       onPressed: () {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(
-                builder: (context) => ConfigurationScreen()),
-                (Route<dynamic> route) => false
-        );
+            MaterialPageRoute(builder: (context) => ConfigurationScreen()),
+            (Route<dynamic> route) => false);
       },
     );
 
@@ -55,7 +53,4 @@ class CDialog{
       },
     );
   }
-
-
-
 }

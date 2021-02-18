@@ -1,15 +1,10 @@
-
-
-
 class PeripheralMenu {
   static void choiceAction(String choice) {
     if (choice == PeripheralMenuChoices.Settings) {
       print('Settings');
-    }
-    else if (choice == PeripheralMenuChoices.Subscribe) {
+    } else if (choice == PeripheralMenuChoices.Subscribe) {
       print('Subscribe');
-    }
-    else if (choice == PeripheralMenuChoices.SignOut) {
+    } else if (choice == PeripheralMenuChoices.SignOut) {
       print('SignOut');
     }
   }

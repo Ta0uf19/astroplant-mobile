@@ -166,7 +166,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
           );
   }
 
-  showAddConfigurationDialogue(BuildContext context, ThemeData themeData) {
+  void showAddConfigurationDialogue(BuildContext context, ThemeData themeData) {
     var description = '';
 
     // set up the button
@@ -177,7 +177,7 @@ class _ConfigurationScreenState extends State<ConfigurationScreen> {
         var configuration = await _kitStore.addConfiguration(description);
         //if(configuration != null )listKitConfiguration = _getListKitConfiguration();
         if (configuration != null) {
-          _getListKitConfiguration();
+          await _getListKitConfiguration();
           Navigator.pop(context);
         } else {
           print('screen : add configuration error');

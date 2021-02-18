@@ -152,7 +152,7 @@ class _EditConfigurationScreenState extends State<EditConfigurationScreen> {
                           ),
                           borderRadius: BorderRadius.circular(8),
                           onPressed: () {
-                            CBottomSheetConfiguration.showBottomSheetAddPeripherals(context);
+                            CBottomSheetConfiguration.showBottomSheetSelectPeripherals(context);
                             },
                         ),
                       ],
