@@ -6,6 +6,9 @@ The mobile application will enable users to set up their kit easily by offering 
 ### Documentation
 **Wiki** : https://github.com/Ta0uf19/astroplant-mobile/wiki
 
+### Preview
+![Preview](https://i.ibb.co/PZKPXvw/ezgif-com-gif-maker-4.gif)
+
 ### Libraries & Tools Used
 * [Dio](https://github.com/flutterchina/dio)
 * [Dependency Injection](https://github.com/fluttercommunity/get_it)
@@ -47,5 +50,3 @@ Now, lets dive into the lib folder which has the main code for the application.
 8- main.dart - This is the starting point of the application. All the application level configurations are defined in this file i.e, theme, routes, title, orientation etc.
 ```
 
-### Preview
-![Preview](https://i.ibb.co/PZKPXvw/ezgif-com-gif-maker-4.gif)
