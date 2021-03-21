@@ -48,4 +48,4 @@ Now, lets dive into the lib folder which has the main code for the application.
 ```
 
 ### Preview
-![Preview](https://i.ibb.co/CJcNQ66/ezgif-com-gif-maker-3.gif)
+![Preview](https://i.ibb.co/PZKPXvw/ezgif-com-gif-maker-4.gif)
