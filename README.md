@@ -1,5 +1,9 @@
 # Astroplant mobile application
 
+For the purpose of offering the users more choices to control their Astroplant kit, creating a mobile application is initiated.
+The mobile application will enable users to set up their kit easily by offering them all the necessary tools to configure the kit by adding sensors applying rules to them …, it will also behave as a remote control by communicating with the kit, this feature will be useful for switching on, off or rebooting the kit and many other sub-features. This solution will behave like a decision-making system by showing the user historical data about all involved factors using smooth, nice graphs and statistics, it will show the data in real time as well. The mobile application will respect ergonomic standards, handy and available in IOS and Android.
+
+### Documentation
 **Wiki** : https://github.com/Ta0uf19/astroplant-mobile/wiki
 
 ### Libraries & Tools Used
